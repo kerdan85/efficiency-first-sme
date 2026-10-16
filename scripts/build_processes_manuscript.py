@@ -117,6 +117,15 @@ body = rep(body, r"""the Monte Carlo seed and a README with run instructions."""
 body = rep(body, r"""\subsection{Cost of conserved energy of demand-side measures}""", r"""\subsection{Cost of conserved energy of demand-side measures}
 \label{sec:cceresults}""")
 
+# ---------------------------------------------------------------- condensed research gap (single paragraph)
+_i = body.index(r"\subsection{Research gap and contribution}")
+_j = body.index(r"\section{Materials and Methods}")
+_j = body.rfind("%% ===", _i, _j) if body.rfind("%% ===", _i, _j) > 0 else _j
+body = body[:_i] + r"""\subsection{Research gap and contribution}
+Taken together, the literature offers a well-defined principle and mature appraisal metrics, but little evidence on how EE1st changes the investment decisions of SMEs under emerging-economy tariffs. Plant-level studies appraise efficiency or PV in isolation, reduce tariffs to an average price, treat security qualitatively and, when optimising PV and storage, take the load as given. This study addresses these gaps with an open, bill-based modelling and optimisation framework, applied to a Mexican footwear SME, that sizes PV and storage after efficiency, co-optimises all three in urbs and reports plant-level security indicators.
+
+""" + body[_j:]
+
 # ---------------------------------------------------------------- citations: numeric (ACS)
 cite_text = {
     r"\citet{cfe2026gdmto,dof2025tariffs}": r"\cite{cfe2026gdmto,dof2025tariffs}",
