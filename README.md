@@ -1,5 +1,7 @@
 # efficiency-first-sme
 
+[![DOI](https://zenodo.org/badge/1422240170.svg)](https://doi.org/10.5281/zenodo.23419738) [![tests](https://github.com/kerdan85/efficiency-first-sme/actions/workflows/tests.yml/badge.svg)](https://github.com/kerdan85/efficiency-first-sme/actions)
+
 Sizing rooftop PV and batteries after energy efficiency in manufacturing SMEs. One repository with two parts:
 
 * **the paper** (root folders): code, public input data and results for the Mexican footwear-plant case study;
@@ -12,7 +14,7 @@ Article:
 > Submitted to *Processes* (MDPI), Special Issue "Advanced Modelling, Optimisation and AI for
 > Sustainable Energy Systems".
 
-Archived version: https://doi.org/10.5281/zenodo.XXXXXXX
+Archived version (all releases): https://doi.org/10.5281/zenodo.23419738
 
 
 > **Confidential data.** The plant's billing, production and audit records are confidential and are not part of the

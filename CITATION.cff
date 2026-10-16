@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software or data, please cite it as below."
 title: "efficiency-first-sme: model, public data, results and the ee1st toolkit for sizing rooftop PV and batteries after energy efficiency in SMEs"
-version: 1.0.0
-date-released: 2026-10-14
+version: 1.0.1
+date-released: 2026-10-16
 license: [MIT, CC-BY-4.0]
-repository-code: "https://github.com/XXXX/efficiency-first-sme"
-doi: "10.5281/zenodo.XXXXXXX"
+repository-code: "https://github.com/kerdan85/efficiency-first-sme"
+doi: "10.5281/zenodo.23419738"
 authors:
   - family-names: "Alberú Argüeso"
     given-names: "Yeniba"

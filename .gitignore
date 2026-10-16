@@ -26,3 +26,6 @@ ee1st/examples/*/results/
 ee1st/src/*.egg-info/
 .pytest_cache/
 urbs/urbs_dispatch.csv.gz
+
+# macOS
+.DS_Store

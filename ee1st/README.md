@@ -1,6 +1,6 @@
 # ee1st — Energy Efficiency First appraisal for SMEs
 
-Part of the repository [`efficiency-first-sme`](../README.md) (DOI: 10.5281/zenodo.XXXXXXX); tests run from the root workflow `.github/workflows/tests.yml`.
+Part of the repository [`efficiency-first-sme`](../README.md) (DOI: 10.5281/zenodo.23419738); tests run from the root workflow `.github/workflows/tests.yml`.
 
 `ee1st` tests the Energy Efficiency First principle in a small or medium plant. It puts demand-side measures and
 supply-side options (rooftop PV, batteries, heat electrification) on the **same indicators** — cost of conserved energy,
