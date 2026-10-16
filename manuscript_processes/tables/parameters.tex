@@ -1,5 +1,5 @@
 {\footnotesize
-\begin{longtable}{p{3.4cm}rlcp{4.0cm}}
+\begin{longtable}{p{4.4cm}rlcp{4.0cm}}
 \caption{Model parameters, ranges and status.}\label{tab:parameters}\\
 \toprule
 Parameter & Central & Range & Status & Source / note \\
@@ -9,60 +9,60 @@ Parameter & Central & Range & Status & Source / note \\
 Parameter & Central & Range & Status & Source / note \\
 \midrule
 \endhead
-\texttt{discount\_\allowbreak{}rate} & 0.1 & 0.06--0.14 & A & student report; sensitivity \\
-\texttt{horizon\_\allowbreak{}yr} & 20 & fixed & A & student report \\
-\texttt{tariff\_\allowbreak{}real\_\allowbreak{}escalation} & 0 & -0.01--0.02 & A & constant real tariffs \\
-\texttt{ef\_\allowbreak{}grid\_\allowbreak{}t\_\allowbreak{}per\_\allowbreak{}MWh} & 0.444 & fixed & O & \cite{semarnat2025fesen} \\
-\texttt{gas\_\allowbreak{}share\_\allowbreak{}generation} & 0.638 & 0.6--0.68 & O & \cite{sener2025plan} Tabla 2.2 \\
-\texttt{ccgt\_\allowbreak{}heat\_\allowbreak{}rate\_\allowbreak{}GJ\_\allowbreak{}per\_\allowbreak{}MWh} & 7.2 & 6.5--8.5 & A & typical CCGT 42-55\% LHV \\
-\texttt{gas\_\allowbreak{}import\_\allowbreak{}share} & 0.74 & 0.7--0.78 & O* & \cite{eia2025mexico} 6.4/8.6 Bcf/d \\
-\texttt{ca\_\allowbreak{}saving\_\allowbreak{}frac} & 0.2 & 0.1--0.3 & L & \cite{doe2016compressed} leaks 20-30\% -> <10\%; 1\%/2 psi \\
-\texttt{ca\_\allowbreak{}capex} & 50000 & 35000--80000 & Q & student estimate \\
-\texttt{ca\_\allowbreak{}om} & 8000 & 5000--12000 & A & annual ultrasonic leak survey \\
-\texttt{ca\_\allowbreak{}life} & 10 & fixed & A &  \\
-\texttt{sew\_\allowbreak{}motor\_\allowbreak{}share} & 0.7 & 0.5--0.85 & A & share of stitching-area energy in clutch motors \\
-\texttt{sew\_\allowbreak{}saving\_\allowbreak{}frac} & 0.65 & 0.5--0.75 & L & \cite{nemesa2023} \\
-\texttt{sew\_\allowbreak{}motor\_\allowbreak{}kW} & 0.35 & 0.25--0.45 & L & clutch motor running power \\
-\texttt{sew\_\allowbreak{}cost\_\allowbreak{}per\_\allowbreak{}unit} & 3800 & 2800--5500 & A & installed servo motor, market \\
-\texttt{sew\_\allowbreak{}life} & 10 & fixed & A &  \\
-\texttt{heat\_\allowbreak{}share} & 0.65 & 0.5--0.8 & A & heater share of vulcanising+injection energy \\
-\texttt{heat\_\allowbreak{}saving\_\allowbreak{}frac} & 0.2 & 0.1--0.3 & L & \cite{kent2018}; grey literature 15-30\% \\
-\texttt{heat\_\allowbreak{}capex} & 100000 & 60000--150000 & A & jackets + controls \\
-\texttt{heat\_\allowbreak{}life} & 8 & fixed & A &  \\
-\texttt{base\_\allowbreak{}saving\_\allowbreak{}frac} & 0.1 & 0.05--0.2 & L & \cite{mouzon2007}; \cite{kara2011} \\
-\texttt{base\_\allowbreak{}capex} & 40000 & 20000--70000 & A & timers, contactors, sub-meters \\
-\texttt{base\_\allowbreak{}life} & 10 & fixed & A &  \\
-\texttt{pfc\_\allowbreak{}kvar} & 50 & fixed & Q & student design \\
-\texttt{pfc\_\allowbreak{}pf\_\allowbreak{}after} & 0.97 & 0.95--0.99 & A & automatic bank \\
-\texttt{pfc\_\allowbreak{}capex} & 85000 & 70000--110000 & Q & student estimate \\
-\texttt{pfc\_\allowbreak{}life} & 15 & fixed & A &  \\
-\texttt{pv\_\allowbreak{}kWp} & 163.8 & fixed & D & 252 x 650 W modules (student design) \\
-\texttt{pv\_\allowbreak{}cost\_\allowbreak{}per\_\allowbreak{}W} & 11 & 9--14 & Q & student quote 1.8 MMXN / 163.8 kWp \\
-\texttt{pv\_\allowbreak{}PR} & 0.8 & 0.75--0.85 & L & \cite{reich2012} \\
-\texttt{pv\_\allowbreak{}tilt\_\allowbreak{}deg} & 20 & fixed & D & latitude tilt \\
-\texttt{pv\_\allowbreak{}albedo} & 0.2 & fixed & A &  \\
-\texttt{pv\_\allowbreak{}degradation} & 0.005 & 0.003--0.008 & L & typical crystalline Si \\
-\texttt{pv\_\allowbreak{}om\_\allowbreak{}frac} & 0.01 & 0.005--0.015 & A & of capex per year \\
-\texttt{pv\_\allowbreak{}inverter\_\allowbreak{}repl\_\allowbreak{}frac} & 0.1 & 0.08--0.15 & A & of capex at year 12 \\
-\texttt{pv\_\allowbreak{}life} & 25 & fixed & L &  \\
-\texttt{pv\_\allowbreak{}m2\_\allowbreak{}per\_\allowbreak{}kWp} & 5.5 & 5--6.5 & A & 650 W module 3.1 m2 incl. spacing \\
-\texttt{pv\_\allowbreak{}demand\_\allowbreak{}credit} & 1 & 0--1 & R & net metering reduces Q-based billed demand \\
-\texttt{lpg\_\allowbreak{}price\_\allowbreak{}MXN\_\allowbreak{}per\_\allowbreak{}kg\_\allowbreak{}incl\_\allowbreak{}vat} & 19.76 & fixed & O & CNE max price, PROFECO 11-17 Oct 2026 \\
-\texttt{lpg\_\allowbreak{}LHV\_\allowbreak{}MJ\_\allowbreak{}per\_\allowbreak{}kg} & 47.3 & fixed & L & IPCC 2006 Vol.2 Table 1.2 NCV \\
-\texttt{lpg\_\allowbreak{}EF\_\allowbreak{}kg\_\allowbreak{}per\_\allowbreak{}GJ} & 63.1 & fixed & L & IPCC 2006 Vol.2 Table 2.2 \\
-\texttt{ng\_\allowbreak{}EF\_\allowbreak{}kg\_\allowbreak{}per\_\allowbreak{}GJ} & 56.1 & fixed & L & IPCC 2006 Vol.2 Table 2.2 \\
-\texttt{ng\_\allowbreak{}enduser\_\allowbreak{}markup} & 2 & 1.5--3 & A & transport+distribution over IPGN \\
-\texttt{boiler\_\allowbreak{}eff} & 0.85 & 0.8--0.9 & A &  \\
-\texttt{hp\_\allowbreak{}cop} & 3 & 2.5--4 & L & \cite{arpagaus2018}; \cite{schlosser2020} (<100 C) \\
-\texttt{ca\_\allowbreak{}heat\_\allowbreak{}recovery\_\allowbreak{}frac} & 0.7 & 0.5--0.8 & L & \cite{doe2016compressed} >80\% available \\
-\texttt{night\_\allowbreak{}load\_\allowbreak{}kW} & 15 & 8--25 & A & always-on load outside shifts; needs interval data \\
-\texttt{bat\_\allowbreak{}cost\_\allowbreak{}per\_\allowbreak{}kWh} & 8500 & fixed & A & installed C\&I LFP; NREL ATB 2024 (\citealp{nrel2024atb}) pack 199 USD/kWh + inverter/BOS \\
-\texttt{bat\_\allowbreak{}rte} & 0.85 & fixed & L & NREL ATB 2024 (\citealp{nrel2024atb}) commercial battery \\
-\texttt{bat\_\allowbreak{}dod} & 0.9 & fixed & A & usable fraction of nameplate \\
-\texttt{bat\_\allowbreak{}c\_\allowbreak{}rate} & 0.5 & fixed & A & kW per kWh \\
-\texttt{bat\_\allowbreak{}om\_\allowbreak{}frac} & 0.025 & fixed & L & NREL ATB 2024 (\citealp{nrel2024atb}): 2.5\% of capex per year \\
-\texttt{bat\_\allowbreak{}life} & 15 & fixed & L & NREL ATB 2024 (\citealp{nrel2024atb}) \\
-\texttt{expired\_\allowbreak{}credit\_\allowbreak{}value} & 0 & 0--1 & A & MXN/kWh paid for credits older than 12 months (PML); 0 = conservative \\
-\texttt{net\_\allowbreak{}billing\_\allowbreak{}export\_\allowbreak{}value} & 1 & 0.6--1.5 & A & MXN/kWh export value in a net-billing stress case \\
+Real discount rate & 0.1 & 0.06--0.14 & A & Audit report; varied 6--14\% \\
+Appraisal horizon (yr) & 20 & fixed & A & Audit report \\
+Real tariff escalation (yr$^{-1}$) & 0 & -0.01--0.02 & A & Constant real tariffs \\
+Grid emission factor (tCO$_2$e MWh$^{-1}$) & 0.444 & fixed & O & \cite{semarnat2025fesen} \\
+Gas-fired share of generation & 0.638 & 0.6--0.68 & O & \cite{sener2025plan} (Table 2.2) \\
+Heat rate of gas-fired generation (GJ MWh$^{-1}$) & 7.2 & 6.5--8.5 & A & Typical CCGT, 42--55\% LHV efficiency \\
+Imported share of natural gas & 0.74 & 0.7--0.78 & O* & \cite{eia2025mexico} (6.4 of 8.6 Bcf d$^{-1}$) \\
+E1 saving (share of compressor energy) & 0.2 & 0.1--0.3 & L & \cite{doe2016compressed}: leaks 20--30\% reduced to $<$10\%; 1\% per 2 psi \\
+E1 capital cost (MXN) & 50000 & 35000--80000 & Q & Audit report \\
+E1 O\&M (MXN yr$^{-1}$) & 8000 & 5000--12000 & A & Annual ultrasonic leak survey \\
+E1 life (yr) & 10 & fixed & A &  \\
+E2 clutch-motor share of stitching energy & 0.7 & 0.5--0.85 & A &  \\
+E2 saving per motor & 0.65 & 0.5--0.75 & L & \cite{nemesa2023} \\
+Clutch motor running power (kW) & 0.35 & 0.25--0.45 & L & Literature range \\
+E2 installed cost per servo motor (MXN) & 3800 & 2800--5500 & A & Market prices \\
+E2 life (yr) & 10 & fixed & A &  \\
+E3 heater share of vulcanising and injection energy & 0.65 & 0.5--0.8 & A &  \\
+E3 saving (share of heater energy) & 0.2 & 0.1--0.3 & L & \cite{kent2018}; grey literature 15--30\% \\
+E3 capital cost (MXN) & 100000 & 60000--150000 & A & Insulating jackets and controls \\
+E3 life (yr) & 8 & fixed & A &  \\
+E4 saving (share of base load) & 0.1 & 0.05--0.2 & L & \cite{mouzon2007}; \cite{kara2011} \\
+E4 capital cost (MXN) & 40000 & 20000--70000 & A & Timers, contactors, sub-meters \\
+E4 life (yr) & 10 & fixed & A &  \\
+E5 capacitor bank (kVAr) & 50 & fixed & Q & Audit design \\
+E5 power factor after correction & 0.97 & 0.95--0.99 & A & Automatic bank \\
+E5 capital cost (MXN) & 85000 & 70000--110000 & Q & Audit report \\
+E5 life (yr) & 15 & fixed & A &  \\
+S1 PV capacity (kWp) & 163.8 & fixed & D & 252 modules of 650 W (audit design) \\
+PV installed cost (MXN W$^{-1}$) & 11 & 9--14 & Q & Audit quotation: 1.8 MMXN for 163.8 kWp \\
+PV performance ratio & 0.8 & 0.75--0.85 & L & \cite{reich2012} \\
+PV tilt ($^\circ$) & 20 & fixed & D & Latitude tilt \\
+Ground albedo & 0.2 & fixed & A &  \\
+PV degradation (yr$^{-1}$) & 0.005 & 0.003--0.008 & L & Typical crystalline silicon \\
+PV O\&M (share of capital yr$^{-1}$) & 0.01 & 0.005--0.015 & A &  \\
+Inverter replacement (share of capital, year 12) & 0.1 & 0.08--0.15 & A &  \\
+PV life (yr) & 25 & fixed & L &  \\
+Roof area (m$^2$ kWp$^{-1}$) & 5.5 & 5--6.5 & A & 650 W module of 3.1 m$^2$ with spacing \\
+PV credit on billed demand (1 = yes) & 1 & 0--1 & R & Net metering reduces Q-based billed demand \\
+LPG price (MXN kg$^{-1}$, incl.\ VAT) & 19.76 & fixed & O & CNE maximum price, PROFECO, 11--17 Oct 2026; VAT removed in the model \\
+LPG lower heating value (MJ kg$^{-1}$) & 47.3 & fixed & L & \cite{ipcc2006} (Vol. 2, Table 1.2) \\
+LPG emission factor (kgCO$_2$ GJ$^{-1}$) & 63.1 & fixed & L & \cite{ipcc2006} (Vol. 2, Table 2.2) \\
+Natural-gas emission factor (kgCO$_2$ GJ$^{-1}$) & 56.1 & fixed & L & \cite{ipcc2006} (Vol. 2, Table 2.2) \\
+Natural-gas end-user markup over IPGN & 2 & 1.5--3 & A & Transport and distribution \\
+Boiler efficiency & 0.85 & 0.8--0.9 & A &  \\
+Heat-pump COP & 3 & 2.5--4 & L & \cite{arpagaus2018}; \cite{schlosser2020} ($<$100\,$^\circ$C) \\
+Recoverable compressor heat (share of input) & 0.7 & 0.5--0.8 & L & \cite{doe2016compressed}: $>$80\% available \\
+Always-on load (kW) & 15 & 8--25 & A & Needs interval data \\
+Battery installed cost (MXN per nameplate kWh) & 8500 & fixed & A & \cite{nrel2024atb} pack 199 USD kWh$^{-1}$ plus inverter and balance of system; break-even analysis \\
+Battery round-trip efficiency & 0.85 & fixed & L & \cite{nrel2024atb} \\
+Battery usable fraction of nameplate & 0.9 & fixed & A &  \\
+Battery power (kW per nameplate kWh) & 0.5 & fixed & A &  \\
+Battery O\&M (share of capital yr$^{-1}$) & 0.025 & fixed & L & \cite{nrel2024atb} \\
+Battery life (yr) & 15 & fixed & L & \cite{nrel2024atb} \\
+Value of expired credits (MXN kWh$^{-1}$) & 0 & 0--1 & A & 0 = conservative \\
+Export price under net billing (MXN kWh$^{-1}$) & 1 & 0.6--1.5 & A & Stress case \\
 \bottomrule
 \end{longtable}}

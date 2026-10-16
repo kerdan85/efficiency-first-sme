@@ -164,7 +164,7 @@ tab = r"""\begin{table}[H]
 \resizebox{\linewidth}{!}{%%
 \begin{tabular}{llrrrrrr}
 \toprule
-Compensation regime & Efficiency & Measures adopted & PV (kWp) & Battery (kWh) & Grid imports (MWh) & CO$_2$ (t) & Cost (kMXN yr$^{-1}$) \\
+Compensation regime & Efficiency & Measures adopted & PV (kWp) & Battery (usable kWh) & Grid imports (MWh) & CO$_2$ (t) & Cost (kMXN yr$^{-1}$) \\
 \midrule
 %s
 \bottomrule
@@ -185,7 +185,7 @@ for f in (1.0, 0.75, 0.50, 0.25):
             cells += [f"{abs(round(max(rr.bat_kWh_usable, 0))):.0f}", f"{rr.pv_kWp:.0f}", f"{rr.total_cost/1e3:,.0f}".replace(",", "{,}")]
     bl.append(f"{f*100:.0f}\\% & " + " & ".join(cells) + " \\\\")
 tabb = r"""\begin{table}[H]
-\caption{Effect of battery cost on the urbs optimum under net metering.}
+\caption{Effect of battery cost on the urbs optimum under net metering (battery in usable kWh).}
 \label{tab:urbsbat}
 \footnotesize
 \resizebox{\linewidth}{!}{%%

@@ -123,22 +123,80 @@ Month & Fixed (MXN month$^{-1}$) & Energy (MXN kWh$^{-1}$) & Distribution (MXN k
 # ---------------- Appendix: parameters
 nice = {"measured": "M", "official": "O", "official-derived": "O*", "literature": "L", "quote": "Q",
         "assumption": "A", "design": "D", "regulatory": "R"}
+LABEL = {  # readable parameter name and cleaned source note (citation keys are converted below)
+    "discount_rate": ("Real discount rate", "Audit report; varied 6--14\\%"),
+    "horizon_yr": ("Appraisal horizon (yr)", "Audit report"),
+    "tariff_real_escalation": ("Real tariff escalation (yr$^{-1}$)", "Constant real tariffs"),
+    "ef_grid_t_per_MWh": ("Grid emission factor (tCO$_2$e MWh$^{-1}$)", "semarnat2025fesen"),
+    "gas_share_generation": ("Gas-fired share of generation", "sener2025plan (Table 2.2)"),
+    "ccgt_heat_rate_GJ_per_MWh": ("Heat rate of gas-fired generation (GJ MWh$^{-1}$)", "Typical CCGT, 42--55\\% LHV efficiency"),
+    "gas_import_share": ("Imported share of natural gas", "eia2025mexico (6.4 of 8.6 Bcf d$^{-1}$)"),
+    "ca_saving_frac": ("E1 saving (share of compressor energy)", "doe2016compressed: leaks 20--30\\% reduced to $<$10\\%; 1\\% per 2 psi"),
+    "ca_capex": ("E1 capital cost (MXN)", "Audit report"),
+    "ca_om": ("E1 O\\&M (MXN yr$^{-1}$)", "Annual ultrasonic leak survey"),
+    "ca_life": ("E1 life (yr)", ""),
+    "sew_motor_share": ("E2 clutch-motor share of stitching energy", ""),
+    "sew_saving_frac": ("E2 saving per motor", "nemesa2023"),
+    "sew_motor_kW": ("Clutch motor running power (kW)", "Literature range"),
+    "sew_cost_per_unit": ("E2 installed cost per servo motor (MXN)", "Market prices"),
+    "sew_life": ("E2 life (yr)", ""),
+    "heat_share": ("E3 heater share of vulcanising and injection energy", ""),
+    "heat_saving_frac": ("E3 saving (share of heater energy)", "kent2018; grey literature 15--30\\%"),
+    "heat_capex": ("E3 capital cost (MXN)", "Insulating jackets and controls"),
+    "heat_life": ("E3 life (yr)", ""),
+    "base_saving_frac": ("E4 saving (share of base load)", "mouzon2007; kara2011"),
+    "base_capex": ("E4 capital cost (MXN)", "Timers, contactors, sub-meters"),
+    "base_life": ("E4 life (yr)", ""),
+    "pfc_kvar": ("E5 capacitor bank (kVAr)", "Audit design"),
+    "pfc_pf_after": ("E5 power factor after correction", "Automatic bank"),
+    "pfc_capex": ("E5 capital cost (MXN)", "Audit report"),
+    "pfc_life": ("E5 life (yr)", ""),
+    "pv_kWp": ("S1 PV capacity (kWp)", "252 modules of 650 W (audit design)"),
+    "pv_cost_per_W": ("PV installed cost (MXN W$^{-1}$)", "Audit quotation: 1.8 MMXN for 163.8 kWp"),
+    "pv_PR": ("PV performance ratio", "reich2012"),
+    "pv_tilt_deg": ("PV tilt ($^\\circ$)", "Latitude tilt"),
+    "pv_albedo": ("Ground albedo", ""),
+    "pv_degradation": ("PV degradation (yr$^{-1}$)", "Typical crystalline silicon"),
+    "pv_om_frac": ("PV O\\&M (share of capital yr$^{-1}$)", ""),
+    "pv_inverter_repl_frac": ("Inverter replacement (share of capital, year 12)", ""),
+    "pv_life": ("PV life (yr)", ""),
+    "pv_m2_per_kWp": ("Roof area (m$^2$ kWp$^{-1}$)", "650 W module of 3.1 m$^2$ with spacing"),
+    "pv_demand_credit": ("PV credit on billed demand (1 = yes)", "Net metering reduces Q-based billed demand"),
+    "lpg_price_MXN_per_kg_incl_vat": ("LPG price (MXN kg$^{-1}$, incl.\\ VAT)", "CNE maximum price, PROFECO, 11--17 Oct 2026; VAT removed in the model"),
+    "lpg_LHV_MJ_per_kg": ("LPG lower heating value (MJ kg$^{-1}$)", "ipcc2006 (Vol. 2, Table 1.2)"),
+    "lpg_EF_kg_per_GJ": ("LPG emission factor (kgCO$_2$ GJ$^{-1}$)", "ipcc2006 (Vol. 2, Table 2.2)"),
+    "ng_EF_kg_per_GJ": ("Natural-gas emission factor (kgCO$_2$ GJ$^{-1}$)", "ipcc2006 (Vol. 2, Table 2.2)"),
+    "ng_enduser_markup": ("Natural-gas end-user markup over IPGN", "Transport and distribution"),
+    "boiler_eff": ("Boiler efficiency", ""),
+    "hp_cop": ("Heat-pump COP", "arpagaus2018; schlosser2020 ($<$100\\,$^\\circ$C)"),
+    "ca_heat_recovery_frac": ("Recoverable compressor heat (share of input)", "doe2016compressed: $>$80\\% available"),
+    "night_load_kW": ("Always-on load (kW)", "Needs interval data"),
+    "bat_cost_per_kWh": ("Battery installed cost (MXN per nameplate kWh)", "nrel2024atb pack 199 USD kWh$^{-1}$ plus inverter and balance of system; break-even analysis"),
+    "bat_rte": ("Battery round-trip efficiency", "nrel2024atb"),
+    "bat_dod": ("Battery usable fraction of nameplate", ""),
+    "bat_c_rate": ("Battery power (kW per nameplate kWh)", ""),
+    "bat_om_frac": ("Battery O\\&M (share of capital yr$^{-1}$)", "nrel2024atb"),
+    "bat_life": ("Battery life (yr)", "nrel2024atb"),
+    "expired_credit_value": ("Value of expired credits (MXN kWh$^{-1}$)", "0 = conservative"),
+    "net_billing_export_value": ("Export price under net billing (MXN kWh$^{-1}$)", "Stress case"),
+}
 rows = []
 for k, (c, lo, hi, st, src) in {**PARAMS, **NZ_PARAMS}.items():
     if k == "bat_cost_per_kWh":
         lo, hi = c, c
     rng = "fixed" if lo == hi else f"{lo:g}--{hi:g}"
-    src_tex = src.replace("_", r"\_").replace("%", r"\%").replace("&", r"\&")
+    lab, src = LABEL.get(k, (k.replace("_", " "), src))
+    src_tex = src
     for key in ["doe2016compressed", "nemesa2023", "reich2012", "kent2018", "mouzon2007", "kara2011",
                 "arpagaus2018", "schlosser2020", "semarnat2025fesen", "eia2025mexico", "sener2025plan"]:
         pass
-    src_tex = src_tex.replace("NREL ATB 2024", "NREL ATB 2024 (\\citealp{nrel2024atb})")
     for key in ["doe2016compressed", "nemesa2023", "reich2012", "kent2018", "mouzon2007", "kara2011",
-                "arpagaus2018", "schlosser2020", "semarnat2025fesen", "eia2025mexico", "sener2025plan"]:
+                "arpagaus2018", "schlosser2020", "semarnat2025fesen", "eia2025mexico", "sener2025plan",
+                "ipcc2006", "nrel2024atb"]:
         src_tex = src_tex.replace(key, r"\citet{" + key + "}")
-    rows.append(f"\\texttt{{{k.replace('_', chr(92)+'_')}}} & {c:g} & {rng} & {nice[st]} & {src_tex} \\\\")
+    rows.append(f"{lab} & {c:g} & {rng} & {nice[st]} & {src_tex} \\\\")
 (T / "parameters.tex").write_text(r"""{\footnotesize
-\begin{longtable}{p{3.4cm}rlcp{4.0cm}}
+\begin{longtable}{p{4.4cm}rlcp{4.0cm}}
 \caption{Model parameters, ranges and status.}\label{tab:parameters}\\
 \toprule
 Parameter & Central & Range & Status & Source / note \\
@@ -160,7 +218,7 @@ piv["swing"] = (piv[("npv_P4", "high")] - piv[("npv_P4", "low")]).abs()
 piv = piv.sort_values("swing", ascending=False).head(12)
 rows = []
 for p_, r in piv.iterrows():
-    rows.append(f"\\texttt{{{p_.replace('_', chr(92)+'_')}}} & " + " & ".join(
+    rows.append(f"{LABEL.get(p_, (p_.replace('_', ' '), ''))[0]} & " + " & ".join(
         f"{r[(c, lab_)]/1e6:.2f}" for c in ["npv_P1", "npv_P2", "npv_P4"] for lab_ in ["low", "high"]) + " \\\\")
 (T / "sensitivity.tex").write_text(r"""\begin{table}[H]
 \centering

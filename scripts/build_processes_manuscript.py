@@ -26,41 +26,41 @@ def rep(text, a, b, count=1):
 
 # ---------------------------------------------------------------- framing for the Special Issue
 body = rep(body, r"""We re-estimate the energy baseline from the original records and build a tariff model from official charges, validated against the plant's bills. We then compare demand-side measures and supply-side options on common indicators: energy, emissions, cost of conserved energy, net present value (NPV) and a set of plant-level security and resilience metrics. The analysis is an \emph{ex-ante} evaluation study. It does not observe post-retrofit performance, but it is built on measured bills and official tariffs and quantifies uncertainty explicitly, so that its limits are visible. All data and code are released for reuse.""",
-r"""We develop a bill-validated modelling and optimisation framework for this decision. It couples a tariff model built from official charges and validated against the plant's bills, a production-normalised energy baseline and models of each measure with four optimisation problems: the right-sizing of PV after efficiency, efficiency-first pathways that add measures in merit order, a least-capital search over PV and battery designs simulated hourly under three compensation regimes, and a joint cost-optimal design of efficiency, PV and storage formulated as a linear programme in the open energy-system model urbs. Uncertainty is propagated by Monte Carlo simulation, and the hourly PV and storage model is verified against EnergyPlus. All options are compared on common indicators: energy, emissions, cost of conserved energy, net present value (NPV) and a set of plant-level security and resilience metrics. The analysis is an \emph{ex-ante} evaluation study. It does not observe post-retrofit performance, but it is built on measured bills and official tariffs and quantifies uncertainty explicitly, so that its limits are visible. The code is released as an open toolkit that other SMEs can apply to their own bills.""")
+r"""We develop a modelling and optimisation framework for this decision. It couples a tariff model built from official charges and validated against the plant's bills, a production-normalised energy baseline and models of each measure with four optimisation problems: the right-sizing of PV after efficiency, efficiency-first pathways that add measures in merit order, a least-capital search over PV and battery designs simulated hourly under three compensation regimes, and a joint cost-optimal design of efficiency, PV and storage formulated as a linear programme in the open energy-system model urbs. Uncertainty is propagated by Monte Carlo simulation, and the hourly PV and storage model is verified against EnergyPlus. All options are compared on common indicators: energy, emissions, cost of conserved energy, net present value (NPV) and a set of plant-level security and resilience metrics. The analysis is an \emph{ex-ante} evaluation study. It does not observe post-retrofit performance, but it is built on measured bills and official tariffs and quantifies uncertainty explicitly, so that its limits are visible. The code is released as an open toolkit that other SMEs can apply to their own bills.""")
 
 body = rep(body, r"""\subsection{Research gap and contribution}""",
 r"""\subsection{Optimisation of distributed energy resources}
-Design optimisation of on-site generation and storage is a mature field. Platforms such as REopt formulate the sizing and dispatch of PV, storage and conventional generation as mixed-integer linear programmes that minimise life-cycle cost under detailed tariffs \cite{cutler2017reopt}. For a UK commercial building, integrated optimisation of PV and battery capacity with half-hourly demand and prices found that the combined system depended on ancillary-service revenues and remained a questionable investment, with a payback of about eight years \cite{mariaud2017}; stochastic programming has been used to design distributed energy systems that remain cost-effective under uncertain demand, prices and solar resource \cite{mavromatidis2018}; and, in Mexico City, combining geospatial analysis with energy optimisation showed that rooftop PV in a dense borough could reach about 25\% energy autonomy, whereas 90\% required storage \cite{gonzalezcarreon2025}. Building performance simulation tools such as EnergyPlus provide physically detailed PV and storage models that are often used to verify simplified models \cite{crawley2001}, although their predictions depend strongly on input quality; measured rather than tabulated wall transmittances, for instance, changed the predicted heating-plus-cooling demand of a Mexican housing archetype by up to 42\% \cite{garciakerdan2026uvalue}. In these studies, however, the electricity demand is usually an exogenous input: the supply system is optimised for the load as it is, not for the load that cost-effective efficiency would leave. Demand-side measures, when included, are typically represented as a fixed reduction rather than as competing resources with their own costs and uncertainty.
+Design optimisation of on-site generation and storage is a mature field. Platforms such as REopt formulate the sizing and dispatch of PV, storage and conventional generation as mixed-integer linear programmes that minimise life-cycle cost under detailed tariffs \cite{cutler2017reopt}. For a UK commercial building, integrated optimisation of PV and battery capacity with half-hourly demand and prices found that the combined system depended on ancillary-service revenues and remained a questionable investment, with a payback of about eight years \cite{mariaud2017}; stochastic programming has been used to design distributed energy systems that remain cost-effective under uncertain demand, prices and solar resource \cite{mavromatidis2018}; and, in Mexico City, combining geospatial analysis with energy optimisation showed that rooftop PV in a dense borough could reach about 25\% energy autonomy, whereas 90\% required storage \cite{gonzalezcarreon2025}. Building performance simulation tools such as EnergyPlus provide physically detailed PV and storage models that are often used to verify simplified models \cite{crawley2001}, although their predictions depend strongly on input quality; measured rather than tabulated wall transmittances, for instance, changed the predicted heating-plus-cooling demand of a Mexican housing archetype by up to 42\% \cite{garciakerdan2026uvalue}. Demand-side options have been co-optimised with supply in some of these frameworks: DER-CAM has been extended to choose building retrofits together with distributed generation \cite{stadler2014dercam}, and mixed-integer models have optimised envelope retrofits jointly with conversion and storage units for residential buildings and communities \cite{wu2017retrofit,schutz2017milp}. These applications concern building envelopes in residential and commercial settings. In industrial SMEs the electricity demand is still usually an exogenous input: the supply system is optimised for the load as it is, not for the load that cost-effective process measures would leave, and such measures, when included, are typically represented as a fixed reduction rather than as competing resources with their own costs, hourly profiles and uncertainty.
 
 \subsection{Research gap and contribution}""")
 
 body = rep(body, r"""Third, security and resilience are discussed qualitatively at the firm level, even though they are a central motivation for the principle.""",
-r"""Third, security and resilience are discussed qualitatively at the firm level, even though they are a central motivation for the principle. Fourth, design-optimisation models of PV and storage take the load as given, so they size supply for a demand that efficiency would have reduced.""")
+r"""Third, security and resilience are discussed qualitatively at the firm level, even though they are a central motivation for the principle. Fourth, design-optimisation studies of PV and storage for industrial SMEs rarely treat process efficiency measures as decision variables, so they size supply for a demand that efficiency would have reduced.""")
 
 body = rep(body, r"""This study addresses these gaps with a reproducible, bill-validated appraisal of a Mexican footwear SME. Its contribution is fivefold. (i) It places demand-side measures, rooftop PV and fuel switching on common indicators of energy, emissions, CCE, NPV and security, using official tariffs, prices and emission factors. (ii) It quantifies EE1st as a sequencing decision, comparing supply-only and efficiency-first pathways that reach the same reduction in grid purchases.""",
-r"""This study addresses these gaps with a reproducible, bill-validated modelling and optimisation framework applied to a Mexican footwear SME. Its contribution is fivefold. (i) It places demand-side measures, rooftop PV and fuel switching on common indicators of energy, emissions, CCE, NPV and security, using a tariff model validated against bills and official prices and emission factors. (ii) It formulates EE1st as a sequencing and sizing problem, comparing supply-only and efficiency-first pathways that reach the same reduction in grid purchases.""")
+r"""This study addresses these gaps with a reproducible modelling and optimisation framework applied to a Mexican footwear SME. In line with the scope of this Special Issue on advanced modelling and optimisation for sustainable energy systems, it combines simulation, heuristic and exact optimisation and uncertainty analysis at the scale of a single plant. Its contribution is fivefold. (i) It places demand-side measures, rooftop PV and fuel switching on common indicators of energy, emissions, CCE, NPV and security, using a tariff model validated against bills and official prices and emission factors. (ii) It formulates EE1st as a sequencing and sizing problem, comparing supply-only and efficiency-first pathways that reach the same reduction in grid purchases.""")
 body = rep(body, r"""(iv) It tests whether the plant can reach net-zero electricity with renewables and storage, distinguishing annual netting from hourly self-sufficiency.""",
-r"""(iv) It optimises PV and battery designs for net-zero electricity with an hourly model verified against EnergyPlus and benchmarks them against a linear programme in urbs that co-optimises efficiency, PV and storage, distinguishing annual netting from hourly self-sufficiency and testing three compensation regimes.""")
+r"""(iv) It optimises PV and battery designs for net-zero electricity with an hourly model verified against EnergyPlus and benchmarks them against a linear programme in urbs that co-optimises efficiency, PV and storage, distinguishing annual netting from hourly self-sufficiency and testing alternative compensation regimes (net metering, net billing and, in urbs, self-consumption).""")
 
 # ---------------------------------------------------------------- new methods subsection: framework and optimisation problems
 body = rep(body, r"""\subsection{Energy baseline and performance indicator}""",
 r"""\subsection{Modelling and optimisation framework}
 \label{sec:framework}
-Figure~\ref{fig:framework} summarises the framework. Monthly simulation models of the energy baseline, the tariff, the demand-side measures and rooftop PV (Sections~\ref{sec:baseline}--\ref{sec:indicators}) evaluate any portfolio of options. Four optimisation problems are solved on top of these models. Let $G(\mathcal{E},k)$ denote annual grid purchases after implementing the set of measures $\mathcal{E}$ and a PV array of $k$~kWp, and $G_0$ the reference-year purchases.
+Figure~\ref{fig:framework} summarises the framework. Monthly simulation models of the energy baseline, the tariff, the demand-side measures and rooftop PV (Sections~\ref{sec:baseline}--\ref{sec:indicators}) evaluate any portfolio of options. Four optimisation problems, labelled A--D to distinguish them from the portfolios P1--P4, are solved on top of these models. Let $G(\mathcal{E},k)$ denote annual grid purchases after implementing the set of measures $\mathcal{E}$ and a PV array of $k$~kWp, and $G_0$ the reference-year purchases.
 
-\emph{Problem 1, right-sizing PV after efficiency.} For the full set of measures $\mathcal{E}^{\ast}$, find
+\emph{Problem A, right-sizing PV after efficiency.} For the full set of measures $\mathcal{E}^{\ast}$, find
 \begin{equation}
-k_4^{\ast} = \min\{k \ge 0 : G(\mathcal{E}^{\ast},k) \le G(\varnothing,k_2)\},
-\label{eq:p4}
+k_{\mathrm{EE}}^{\ast} = \min\{k \ge 0 : G(\mathcal{E}^{\ast},k) \le G(\varnothing,k_2)\},
+\label{eq:pA}
 \end{equation}
 where $k_2$ is the supply-only design. Because $G$ decreases monotonically in $k$, the problem is solved by bisection to 0.1~kWp.
 
-\emph{Problem 2, efficiency-first pathways.} For each target reduction $\tau$ in grid purchases, measures are added in ascending order of CCE until $G \le (1-\tau)G_0$; if the target is not met, the smallest PV array that closes the gap is found by bisection. The supply-only pathway sizes PV directly from its specific yield for the same $\tau$. Power-factor correction is included in both pathways.
+\emph{Problem B, efficiency-first pathways.} For each target reduction $\tau$ in grid purchases, measures are added in ascending order of CCE until $G \le (1-\tau)G_0$; if the target is not met, the smallest PV array that closes the gap is found by bisection. The supply-only pathway sizes PV directly from its specific yield for the same $\tau$. Power-factor correction is included in both pathways.
 
-\emph{Problem 3, least-capital PV and storage design.} For a self-sufficiency target $\sigma$, find
+\emph{Problem C, least-capital PV and storage design.} For a self-sufficiency target $\sigma$, find
 \begin{equation}
 \min_{k\in\mathcal{K},\,b\in\mathcal{B}} C(k,b) \quad \text{subject to} \quad S(k,b) \ge \sigma,
-\label{eq:p3}
+\label{eq:pC}
 \end{equation}
 where $C$ is capital cost, $S$ is hourly self-sufficiency simulated over 8,760 hours, $\mathcal{K}$ contains 19 PV sizes (0.6--2.4 times the annual net-zero size of each measure set, capped at 700~kWp) and $\mathcal{B}$ 25 battery sizes (0--2,400~kWh; Section~\ref{sec:nzmethod}). The 950 designs (two measure sets) are enumerated exhaustively, which guarantees the optimum on the grid without assumptions on the convexity of $S$, and each is valued under three compensation regimes. Monte Carlo simulation propagates parameter uncertainty through the monthly models for the designs obtained at central values.
 
@@ -76,6 +76,11 @@ where $C$ is capital cost, $S$ is hourly self-sufficiency simulated over 8,760 h
 \subsection{Energy baseline and performance indicator}""")
 body = rep(body, r"""\subsection{Tariff model and validation}""", r"""\subsection{Tariff model and validation}
 \label{sec:tariffmodel}""")
+body = rep(body, r"""\subsection{Uncertainty analysis}""", r"""\subsection{Uncertainty analysis}
+\label{sec:uncertainty}""")
+body = rep(body, r"""the probability that P4 outperforms P2 and Spearman""", r"""the probability that P4 outperforms P2 (with the P4 array both fixed at its central-value size and re-sized in each draw to match P2's grid purchases) and Spearman""")
+app = rep(app, r"""baseline of Section~\ref{sec:method}""", r"""baseline of Section~\ref{sec:baseline}""")
+body = rep(body, r"""\textbf{S1 Rooftop PV} is the 163.8~kWp array (252 modules of 650~W)""", r"""\textbf{S1 Rooftop PV} is the 163.8~kWp array (252 modules of 650~W; Appendix~\ref{app:pv})""")
 body = rep(body, r"""\subsection{Energy baseline and performance indicator}
 Following""", r"""\subsection{Energy baseline and performance indicator}
 \label{sec:baseline}
@@ -106,7 +111,7 @@ body = rep(body, r"""not a cost saving.
 \end{itemize}""", r"""not a cost saving.
 """ + U.CONCLUSION + r"""\end{itemize}""")
 body = rep(body, r"""Monte Carlo simulation propagates parameter uncertainty through the monthly models for the designs obtained at central values.""",
-       r"""Monte Carlo simulation propagates parameter uncertainty through the monthly models for the designs obtained at central values.""" + U.PROBLEM4)
+       r"""Capital cost is minimised, rather than life-cycle cost, because it is the binding constraint for most SMEs; the NPV of each design is reported alongside. Monte Carlo simulation propagates parameter uncertainty through the monthly models of Problems A and B (Section~\ref{sec:uncertainty}).""" + U.PROBLEM4)
 body = rep(body, r"""the Monte Carlo seed and a README with run instructions.""",
            r"""the Monte Carlo seed and a README with run instructions. The urbs benchmark is generated by two further scripts (input preparation and solution) that run urbs (GPL-3.0, commit 37487e6) with Pyomo 6.8 and HiGHS in a separate Python environment specified in the repository.""")
 body = rep(body, r"""\subsection{Cost of conserved energy of demand-side measures}""", r"""\subsection{Cost of conserved energy of demand-side measures}
@@ -192,6 +197,60 @@ shutil.copy(SRC / "numbers_urbs.tex", DST / "numbers_urbs.tex")
 shutil.copy(SRC / "references.bib", DST / "references.bib")
 with open(DST / "references.bib", "a") as fh:
     fh.write((DST / "references_processes.bib").read_text())
+
+# mdpi.bst does not print the url field of reports and web sources: move it into the note, MDPI style
+_bib = (DST / "references.bib").read_text()
+
+
+def _web(m):
+    entry = m.group(0)
+    if not re.match(r"@(misc|techreport|manual|online|report)", entry, re.I):
+        return entry
+    u = re.search(r"\n\s*url\s*=\s*\{([^}]*)\},?", entry)
+    if not u:
+        return entry
+    url = u.group(1)
+    entry = entry.replace(u.group(0), "")
+    add = f"Available online: \\url{{{url}}} (accessed on 14 October 2026)"
+    nm = re.search(r"note\s*=\s*\{", entry)
+    if nm:
+        i = nm.end(); depth = 1; j = i
+        while depth:
+            depth += {"{": 1, "}": -1}.get(entry[j], 0); j += 1
+        note = entry[i:j - 1].rstrip(". ")
+        if "ccessed" in note:
+            return entry
+        entry = entry[:i] + note + ". " + add + entry[j - 1:]
+    else:
+        entry = entry.rstrip().rstrip("}").rstrip().rstrip(",") + ",\n  note = {" + add + "}\n}" + "\n\n"
+    return entry
+
+
+_bib = re.sub(r"@\w+\{[^@]*", _web, _bib)
+
+
+def _howurl(m):
+    entry = m.group(0)
+    h = re.search(r"howpublished\s*=\s*\{(.*?)\\url\{([^}]*)\}\}", entry)
+    nt = re.search(r"note\s*=\s*\{Accessed ([^}]*)\}", entry)
+    if not (h and nt):
+        return entry
+    pre = h.group(1).strip().rstrip(".").strip()
+    if pre:
+        entry = entry.replace(h.group(0), f"howpublished = {{{pre}}}")
+    else:
+        entry = re.sub(r"\n[ \t]*" + re.escape(h.group(0)) + r",?", "", entry)
+    entry = entry.replace(nt.group(0), f"note = {{Available online: \\url{{{h.group(2)}}} (accessed on {nt.group(1)})}}")
+    return entry
+
+
+_bib = re.sub(r"@\w+\{[^@]*", _howurl, _bib)
+_bib = _bib.replace("20.10\\,$^\\circ$N, 98.76\\,$^\\circ$W", "Pachuca area")
+_bib = _bib.replace("howpublished = {Gobierno de M{\\'e}xico. \\url{https://www.gob.mx/conuee/documentos/manual-para-la-implementacion-de-un-sistema-de-gestion-de-la-energia}}",
+                    "howpublished = {Gobierno de M{\\'e}xico},\n  note = {Available online: \\url{https://www.gob.mx/conuee/documentos/manual-para-la-implementacion-de-un-sistema-de-gestion-de-la-energia} (accessed on 14 October 2026)}")
+_bib = _bib.replace("Consulted via \\url{https://mley.mx/LSE/articulo/25/}, 14 October 2026", "Available online: \\url{https://mley.mx/LSE/articulo/25/} (accessed on 14 October 2026)")
+_bib = _bib.replace("  address      = {Hayama, Japan},\n  year         = {2006}\n}", "  address      = {Hayama, Japan},\n  year         = {2006},\n  note         = {Available online: \\url{https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol2.html} (accessed on 14 October 2026)}\n}")
+(DST / "references.bib").write_text(_bib)
 
 front = (DST / "front.tex").read_text()
 back = (DST / "back.tex").read_text()

@@ -217,6 +217,30 @@ with open(ROOT / "manuscript/numbers.tex", "a") as fh:
         fh.write(f"\\newcommand{{\\n{k}}}{{{v}}}\n")
 json.dump(out, open(ROOT / "results/manuscript_numbers.json", "w"), indent=1, default=str)
 
+# ---------------------------------------------------------------- additions for peer review
+z = {}
+_bl = r["baseline"]["excl_24h_shift"]
+_t = 2.086  # Student t, 95%, n - 2 = 20 degrees of freedom
+_mean = _bl["intercept"] / r["baseline"]["base_load_share_ref"]
+z["IntCILo"] = f(_bl["intercept"] - _t * _bl["se_intercept"]); z["IntCIHi"] = f(_bl["intercept"] + _t * _bl["se_intercept"])
+z["BaseShareLo"] = pct((_bl["intercept"] - _t * _bl["se_intercept"]) / _mean)
+z["BaseShareHi"] = pct((_bl["intercept"] + _t * _bl["se_intercept"]) / _mean)
+_PT = r["portfolios"]
+_p4 = _PT["P4 Efficiency first + right-sized PV"]; _p3 = _PT["P3 Efficiency + PV (163.8 kWp)"]
+_p2 = _PT["P2 PV only (163.8 kWp)"]; _p1 = _PT["P1 Efficiency bundle"]
+z["NPVCapexOne"] = f(_p1["npv"] / _p1["capex"], 2); z["NPVCapexTwo"] = f(_p2["npv"] / _p2["capex"], 2)
+z["NPVCapexThree"] = f(_p3["npv"] / _p3["capex"], 2); z["NPVCapexFour"] = f(_p4["npv"] / _p4["capex"], 2)
+z["NPVCapexNZE"] = f(nze["npv"] / nze["capex"], 2)
+if "prob_P4r_gt_P2" in mc:
+    z["ProbFourRTwo"] = pct(mc["prob_P4r_gt_P2"]); z["ProbFourGridGE"] = pct(mc["prob_P4_grid_ge_P2"])
+    z["ProbFourRCapex"] = pct(mc["prob_P4r_capex_lt_P2"])
+    z["KWpFourRLo"] = f(mc["kwp_P4r"]["p5"]); z["KWpFourRHi"] = f(mc["kwp_P4r"]["p95"])
+out.update(z)
+with open(ROOT / "manuscript/numbers.tex", "a") as fh:
+    for k, v in z.items():
+        fh.write(f"\\newcommand{{\\n{k}}}{{{v}}}\n")
+json.dump(out, open(ROOT / "results/manuscript_numbers.json", "w"), indent=1, default=str)
+
 # typeset negative numbers with a true minus sign (works in text and math mode)
 import re as _re  # noqa: E402
 _p = ROOT / "manuscript/numbers.tex"

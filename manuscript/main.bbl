@@ -1,4 +1,4 @@
-\begin{thebibliography}{71}
+\begin{thebibliography}{72}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -20,7 +20,7 @@
 \newblock \bibinfo{title}{efficiency-first-sme: model, public data, results and
   the ee1st energy efficiency first toolkit for small and medium enterprises}.
 \newblock \bibinfo{howpublished}{Zenodo, version 1.0.0}.
-\newblock \DOIprefix\doi{10.5281/zenodo.XXXXXXX}. \bibinfo{note}{software}.
+\newblock \DOIprefix\doi{10.5281/zenodo.23419738}. \bibinfo{note}{software}.
 %Type = Article
 \bibitem[{Anh et~al.(2024)Anh, Quang and Anh}]{anh2024}
 \bibinfo{author}{Anh, D.L.T.}, \bibinfo{author}{Quang, N.T.T.},
@@ -41,6 +41,14 @@
 \newblock \bibinfo{journal}{Energy} \bibinfo{volume}{152},
   \bibinfo{pages}{985--1010}.
 \newblock \DOIprefix\doi{10.1016/j.energy.2018.03.166}.
+%Type = Techreport
+\bibitem[{{ASHRAE}(2014)}]{ashrae14}
+\bibinfo{author}{{ASHRAE}}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{{ASHRAE} Guideline 14-2014: Measurement of Energy,
+  Demand, and Water Savings}.
+\newblock \bibinfo{type}{Technical Report}. American Society of Heating,
+  Refrigerating and Air-Conditioning Engineers. \bibinfo{address}{Atlanta, GA,
+  USA}.
 %Type = Article
 \bibitem[{Cagno et~al.(2013)Cagno, Worrell, Trianni and Pugliese}]{cagno2013}
 \bibinfo{author}{Cagno, E.}, \bibinfo{author}{Worrell, E.},

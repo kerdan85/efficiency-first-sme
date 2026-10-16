@@ -406,5 +406,19 @@
  "EPKWpNZE": "244",
  "EPSSNZE": "58",
  "EPImpNZE": "150",
- "EPKWpSave": "72"
+ "EPKWpSave": "72",
+ "IntCILo": "20{,}601",
+ "IntCIHi": "30{,}080",
+ "BaseShareLo": "54",
+ "BaseShareHi": "78",
+ "NPVCapexOne": "3.57",
+ "NPVCapexTwo": "1.98",
+ "NPVCapexThree": "2.21",
+ "NPVCapexFour": "2.44",
+ "NPVCapexNZE": "2.15",
+ "ProbFourRTwo": "97",
+ "ProbFourGridGE": "57",
+ "ProbFourRCapex": "99",
+ "KWpFourRLo": "81",
+ "KWpFourRHi": "105"
 }

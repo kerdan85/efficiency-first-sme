@@ -8,6 +8,9 @@
   ({EU}) 2023/955 (recast).
 \newblock Official Journal of the European Union, L 231, 20.9.2023, p. 1,
   2023.
+\newblock Available online:
+  \url{https://eur-lex.europa.eu/eli/dir/2023/1791/oj} (accessed on 14 October
+  2026).
 
 \bibitem[{European Commission}(2021)]{ec2021ee1st}
 {European Commission}.
@@ -17,6 +20,9 @@
   beyond.
 \newblock Official Journal of the European Union, L 350, 4.10.2021, p. 9,
   2021.
+\newblock Available online:
+  \url{https://eur-lex.europa.eu/eli/reco/2021/1749/oj} (accessed on 14 October
+  2026).
 
 \bibitem[{European Commission}(2024)]{ec2024ee1st}
 {European Commission}.
@@ -29,13 +35,17 @@
 {International Energy Agency}.
 \newblock Energy Efficiency 2024.
 \newblock Technical report, IEA, Paris,  2024.
-\newblock Published 7 November 2024. Licence: CC BY 4.0.
+\newblock Published 7 November 2024. Licence: CC BY 4.0. Available online:
+  \url{https://www.iea.org/reports/energy-efficiency-2024} (accessed on 14
+  October 2026).
 
 \bibitem[{International Energy Agency}(2025)]{iea2025ee}
 {International Energy Agency}.
 \newblock Energy Efficiency 2025.
 \newblock Technical report, IEA, Paris,  2025.
-\newblock Published 20 November 2025. Licence: CC BY 4.0.
+\newblock Published 20 November 2025. Licence: CC BY 4.0. Available online:
+  \url{https://www.iea.org/reports/energy-efficiency-2025} (accessed on 14
+  October 2026).
 
 \bibitem[Mandel et~al.(2022)Mandel, Pat{\'o}, Broc, and Eichhammer]{mandel2022}
 Mandel, T.; Pat{\'o}, Z.; Broc, J.S.; Eichhammer, W.
@@ -124,32 +134,35 @@ Thollander, P.; Andrei, M.; Jalo, N.; Rohdin, P.; Palm, J.; Sann{\"o}, A.;
 {Secretar{\'i}a de Energ{\'i}a}.
 \newblock Acuerdo por el que la Secretar{\'i}a de Energ{\'i}a emite el Plan de
   Desarrollo del Sector El{\'e}ctrico.
-\newblock Diario Oficial de la Federaci{\'o}n, 17 October 2025.
-  \url{https://dof.gob.mx/nota_detalle.php?codigo=5770297&fecha=17/10/2025},
-  2025.
-\newblock Accessed 14 October 2026.
+\newblock Diario Oficial de la Federaci{\'o}n, 17 October 2025,  2025.
+\newblock Available online:
+  \url{https://dof.gob.mx/nota_detalle.php?codigo=5770297&fecha=17/10/2025}
+  (accessed on 14 October 2026).
 
 \bibitem[{U.S. Energy Information Administration}(2025)]{eia2025mexico}
 {U.S. Energy Information Administration}.
 \newblock {U.S.} natural gas exports to {Mexico} reach new records.
 \newblock U.S. Energy Information Administration, Today in Energy, 20 October
   2025,  2025.
+\newblock Available online:
+  \url{https://www.eia.gov/todayinEnergy/detail.php?id=66404} (accessed on 14
+  October 2026).
 
 \bibitem[{Comisi{\'o}n Reguladora de Energ{\'i}a}(2023)]{cre2023fesen2022}
 {Comisi{\'o}n Reguladora de Energ{\'i}a}.
 \newblock Aviso. Factor de emisi{\'o}n del Sistema El{\'e}ctrico Nacional 2022.
-\newblock 27 February 2023.
-  \url{https://www.gob.mx/cms/uploads/attachment/file/806468/4_-Aviso_FE_2022__1_.pdf},
-   2023.
-\newblock Accessed 14 October 2026.
+\newblock 27 February 2023,  2023.
+\newblock Available online:
+  \url{https://www.gob.mx/cms/uploads/attachment/file/806468/4_-Aviso_FE_2022__1_.pdf}
+  (accessed on 14 October 2026).
 
 \bibitem[{Comisi{\'o}n Reguladora de Energ{\'i}a}(2024)]{cre2024fesen2023}
 {Comisi{\'o}n Reguladora de Energ{\'i}a}.
 \newblock Aviso. Factor de emisi{\'o}n del Sistema El{\'e}ctrico Nacional 2023.
-\newblock 28 February 2024.
-  \url{https://www.gob.mx/cms/uploads/attachment/file/895937/Aviso_FE-SEN23.pdf},
-   2024.
-\newblock Accessed 14 October 2026.
+\newblock 28 February 2024,  2024.
+\newblock Available online:
+  \url{https://www.gob.mx/cms/uploads/attachment/file/895937/Aviso_FE-SEN23.pdf}
+  (accessed on 14 October 2026).
 
 \bibitem[{Secretar{\'i}a de Medio Ambiente y Recursos
   Naturales}(2025)]{semarnat2025fesen}
@@ -158,14 +171,17 @@ Thollander, P.; Andrei, M.; Jalo, N.; Rohdin, P.; Palm, J.; Sann{\"o}, A.;
   ({FESEN} 2024).
 \newblock Registro Nacional de Emisiones (RENE), Gobierno de M{\'e}xico, 28
   February 2025,  2025.
+\newblock Available online:
+  \url{https://www.gob.mx/cms/uploads/attachment/file/981194/aviso_fesen_2024.pdf}
+  (accessed on 14 October 2026).
 
 \bibitem[{C{\'a}mara de Diputados}(2025)]{lse2025}
 {C{\'a}mara de Diputados}.
 \newblock Ley del Sector El{\'e}ctrico, art{\'i}culo 25 (Generaci{\'o}n
   Distribuida).
 \newblock Diario Oficial de la Federaci{\'o}n, 18 March 2025,  2025.
-\newblock Consulted via \url{https://mley.mx/LSE/articulo/25/}, 14 October
-  2026.
+\newblock Available online: \url{https://mley.mx/LSE/articulo/25/} (accessed on
+  14 October 2026).
 
 \bibitem[{ISO}(2018)]{iso50001}
 {ISO}.
@@ -176,9 +192,10 @@ Thollander, P.; Andrei, M.; Jalo, N.; Rohdin, P.; Palm, J.; Sann{\"o}, A.;
 {CONUEE}.; {GIZ}.
 \newblock Manual para la implementaci{\'o}n de un sistema de gesti{\'o}n de la
   energ{\'i}a.
-\newblock Gobierno de M{\'e}xico.
-  \url{https://www.gob.mx/conuee/documentos/manual-para-la-implementacion-de-un-sistema-de-gestion-de-la-energia},
-   2022.
+\newblock Gobierno de M{\'e}xico,  2022.
+\newblock Available online:
+  \url{https://www.gob.mx/conuee/documentos/manual-para-la-implementacion-de-un-sistema-de-gestion-de-la-energia}
+  (accessed on 14 October 2026).
 
 \bibitem[Johansson et~al.(2019)Johansson, Mardan, Cornelis, Kimura, and
   Thollander]{johansson2019}
@@ -245,7 +262,9 @@ Nehler, T.
   Efficiency and Renewable Energy, Advanced Manufacturing Office, Washington,
   DC,  2016.
 \newblock Prepared by Lawrence Berkeley National Laboratory and Resource
-  Dynamics Corporation.
+  Dynamics Corporation. Available online:
+  \url{https://www.energy.gov/sites/prod/files/2016/03/f30/Improving%20Compressed%20Air%20Sourcebook%20version%203.pdf}
+  (accessed on 14 October 2026).
 
 \bibitem[Saidur et~al.(2010)Saidur, Rahim, and Hasanuzzaman]{saidur2010}
 Saidur, R.; Rahim, N.A.; Hasanuzzaman, M.
@@ -360,6 +379,9 @@ Huang, S.K.; Kuo, L.; Chou, K.L.
 {International Renewable Energy Agency}.
 \newblock Renewable Power Generation Costs in 2024.
 \newblock Technical report, IRENA, Abu Dhabi,  2025.
+\newblock Available online:
+  \url{https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024}
+  (accessed on 14 October 2026).
 
 \bibitem[Delf{\'i}n-Portela et~al.(2023)Delf{\'i}n-Portela, Sandoval-Herazo,
   Reyes-Gonz{\'a}lez, Mata-Alejandro, L{\'o}pez-M{\'e}ndez,
@@ -410,7 +432,9 @@ Madeddu, S.; Ueckerdt, F.; Pehl, M.; Peterseim, J.; Lord, M.; Kumar, K.A.;
 {International Energy Agency}.
 \newblock The Future of Heat Pumps.
 \newblock Technical report, IEA, Paris,  2022.
-\newblock Published 30 November 2022. Licence: CC BY 4.0.
+\newblock Published 30 November 2022. Licence: CC BY 4.0. Available online:
+  \url{https://www.iea.org/reports/the-future-of-heat-pumps} (accessed on 14
+  October 2026).
 
 \bibitem[Mills et~al.(2006)Mills, Kromer, Weiss, and Mathew]{mills2006}
 Mills, E.; Kromer, S.; Weiss, G.; Mathew, P.A.
@@ -493,21 +517,44 @@ Crawley, D.B.; Lawrie, L.K.; Winkelmann, F.C.; Buhl, W.F.; Huang, Y.J.;
 \newblock {\em Buildings} {\bf 2026}, {\em 16},~3731.
 \newblock {\url{https://doi.org/10.3390/buildings16183731}}.
 
+\bibitem[Stadler et~al.(2014)Stadler, Groissb{\"o}ck, Cardoso, and
+  Marnay]{stadler2014dercam}
+Stadler, M.; Groissb{\"o}ck, M.; Cardoso, G.; Marnay, C.
+\newblock Optimizing Distributed Energy Resources and building retrofits with
+  the strategic {DER-CAModel}.
+\newblock {\em Applied Energy} {\bf 2014}, {\em 132},~557--567.
+\newblock {\url{https://doi.org/10.1016/j.apenergy.2014.07.041}}.
+
+\bibitem[Wu et~al.(2017)Wu, Mavromatidis, Orehounig, and
+  Carmeliet]{wu2017retrofit}
+Wu, R.; Mavromatidis, G.; Orehounig, K.; Carmeliet, J.
+\newblock Multiobjective optimisation of energy systems and building envelope
+  retrofit in a residential community.
+\newblock {\em Applied Energy} {\bf 2017}, {\em 190},~634--649.
+\newblock {\url{https://doi.org/10.1016/j.apenergy.2016.12.161}}.
+
+\bibitem[Sch{\"u}tz et~al.(2017)Sch{\"u}tz, Schiffer, Harb, Fuchs, and
+  M{\"u}ller]{schutz2017milp}
+Sch{\"u}tz, T.; Schiffer, L.; Harb, H.; Fuchs, M.; M{\"u}ller, D.
+\newblock Optimal design of energy conversion units and envelopes for
+  residential building retrofits using a comprehensive {MILP} model.
+\newblock {\em Applied Energy} {\bf 2017}, {\em 185},~1--15.
+\newblock {\url{https://doi.org/10.1016/j.apenergy.2016.10.049}}.
+
 \bibitem[{Comisi{\'o}n Federal de Electricidad}(2026)]{cfe2026gdmto}
 {Comisi{\'o}n Federal de Electricidad}.
 \newblock Tarifa {GDMTO}: Gran demanda en media tensi{\'o}n ordinaria. Cuotas
-  aplicables, Divisi{\'o}n Centro Oriente, enero 2024--octubre 2026.
-\newblock
-  \url{https://app.cfe.mx/Aplicaciones/CCFE/Tarifas/TarifasCREIndustria/Tarifas/GranDemandaMTO.aspx},
-   2026.
-\newblock Accessed 14 October 2026.
+  aplicables, Divisi{\'o}n Centro Oriente, enero 2024--octubre 2026,  2026.
+\newblock Available online:
+  \url{https://app.cfe.mx/Aplicaciones/CCFE/Tarifas/TarifasCREIndustria/Tarifas/GranDemandaMTO.aspx}
+  (accessed on 14 October 2026).
 
 \bibitem[{Comisi{\'o}n Nacional de Energ{\'i}a}(2026)]{cne2026ipgn}
 {Comisi{\'o}n Nacional de Energ{\'i}a}.
 \newblock {\'I}ndice de Referencia Nacional de Precios de Gas Natural al
-  Mayoreo ({IPGN}), September 2025--August 2026.
-\newblock \url{https://www.cne.gob.mx/IPGN/},  2026.
-\newblock Accessed 14 October 2026.
+  Mayoreo ({IPGN}), September 2025--August 2026,  2026.
+\newblock Available online: \url{https://www.cne.gob.mx/IPGN/} (accessed on 14
+  October 2026).
 
 \bibitem[{Comisi{\'o}n Reguladora de Energ{\'i}a}(2025)]{dof2025tariffs}
 {Comisi{\'o}n Reguladora de Energ{\'i}a}.
@@ -515,10 +562,10 @@ Crawley, D.B.; Lawrie, L.K.; Winkelmann, F.C.; Buhl, W.F.; Huang, Y.J.;
   tarifas finales que aplicar{\'a} de manera individual {CFE} Suministrador de
   Servicios B{\'a}sicos \ldots\ aplicables del 1 de enero al 31 de diciembre de
   2025 y su Anexo {\'U}nico.
-\newblock Diario Oficial de la Federaci{\'o}n, 24 January 2025.
-  \url{https://dof.gob.mx/nota_detalle.php?codigo=5747760&fecha=24/01/2025},
-  2025.
-\newblock Accessed 14 October 2026.
+\newblock Diario Oficial de la Federaci{\'o}n, 24 January 2025,  2025.
+\newblock Available online:
+  \url{https://dof.gob.mx/nota_detalle.php?codigo=5747760&fecha=24/01/2025}
+  (accessed on 14 October 2026).
 
 \bibitem[{Secretar{\'i}a de Medio Ambiente y Recursos
   Naturales}(2026)]{semarnat2026aviso}
@@ -526,26 +573,25 @@ Crawley, D.B.; Lawrie, L.K.; Winkelmann, F.C.; Buhl, W.F.; Huang, Y.J.;
 \newblock Aviso a los establecimientos sujetos a reporte en el Registro
   Nacional de Emisiones: factor de emisi{\'o}n del Sistema El{\'e}ctrico
   Nacional para el periodo de reporte {COA} 2026.
-\newblock 29 May 2026.
-  \url{https://www.gob.mx/cms/uploads/attachment/file/1081506/aviso_factor_de_emision_electrico_coa_2026.pdf},
-   2026.
-\newblock Accessed 14 October 2026.
+\newblock 29 May 2026,  2026.
+\newblock Available online:
+  \url{https://www.gob.mx/cms/uploads/attachment/file/1081506/aviso_factor_de_emision_electrico_coa_2026.pdf}
+  (accessed on 14 October 2026).
 
 \bibitem[{Procuradur{\'i}a Federal del Consumidor}(2026)]{profeco2026lpg}
 {Procuradur{\'i}a Federal del Consumidor}.
 \newblock Precios m{\'a}ximos de gas {LP} por regi{\'o}n, semana del 11 al 17
-  de octubre de 2026.
-\newblock
-  \url{https://combustibles.profeco.gob.mx/maximoGas/2026/MAXIMOGAS_101126.pdf},
-   2026.
-\newblock Accessed 14 October 2026.
+  de octubre de 2026,  2026.
+\newblock Available online:
+  \url{https://combustibles.profeco.gob.mx/maximoGas/2026/MAXIMOGAS_101126.pdf}
+  (accessed on 14 October 2026).
 
 \bibitem[{NASA Langley Research Center}(2026)]{nasapower}
 {NASA Langley Research Center}.
 \newblock {POWER} Climatology {API} v2.10.1, 2001--2025 monthly climatology,
-  20.10\,$^\circ$N, 98.76\,$^\circ$W.
-\newblock \url{https://power.larc.nasa.gov/},  2026.
-\newblock Accessed 14 October 2026.
+  Pachuca area,  2026.
+\newblock Available online: \url{https://power.larc.nasa.gov/} (accessed on 14
+  October 2026).
 
 \bibitem[{ISO}(2023)]{iso50006}
 {ISO}.
@@ -573,6 +619,9 @@ Reich, N.H.; Mueller, B.; Armbruster, A.; van Sark, W.G.J.H.M.; Kiefer, K.;
   Volume 2: Energy.
 \newblock Technical report, Institute for Global Environmental Strategies,
   Hayama, Japan,  2006.
+\newblock Available online:
+  \url{https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol2.html} (accessed on
+  14 October 2026).
 
 \bibitem[{Comisi{\'o}n Reguladora de Energ{\'i}a}(2017)]{cre2017dg}
 {Comisi{\'o}n Reguladora de Energ{\'i}a}.
@@ -581,18 +630,18 @@ Reich, N.H.; Mueller, B.; Armbruster, A.; van Sark, W.G.J.H.M.; Kiefer, K.;
   metodolog{\'i}a de c{\'a}lculo de contraprestaci{\'o}n y las especificaciones
   t{\'e}cnicas generales aplicables a las centrales el{\'e}ctricas de
   generaci{\'o}n distribuida y generaci{\'o}n limpia distribuida.
-\newblock Diario Oficial de la Federaci{\'o}n, 7 March 2017.
+\newblock Diario Oficial de la Federaci{\'o}n, 7 March 2017,  2017.
+\newblock Available online:
   \url{https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/GenDis/(DOF
-  2017-03-07 CRE) RES-142-2017 DACG Generaci\%C3\%B3n Distribuida.pdf},  2017.
-\newblock Accessed 14 October 2026.
+  2017-03-07 CRE) RES-142-2017 DACG Generaci\%C3\%B3n Distribuida.pdf}
+  (accessed on 14 October 2026).
 
 \bibitem[{National Renewable Energy Laboratory}(2024)]{nrel2024atb}
 {National Renewable Energy Laboratory}.
-\newblock 2024 Annual Technology Baseline: Commercial Battery Storage.
-\newblock
-  \url{https://atb.nrel.gov/electricity/2024/commercial_battery_storage},
-  2024.
-\newblock Accessed 14 October 2026.
+\newblock 2024 Annual Technology Baseline: Commercial Battery Storage,  2024.
+\newblock Available online:
+  \url{https://atb.nrel.gov/electricity/2024/commercial_battery_storage}
+  (accessed on 14 October 2026).
 
 \bibitem[Dorfner et~al.(2026)]{urbs}
 Dorfner, J.;  et~al.
@@ -609,7 +658,14 @@ Dorfner, J.;  et~al.
 \newblock efficiency-first-sme: model, public data, results and the ee1st
   Energy Efficiency First toolkit for small and medium enterprises.
 \newblock Zenodo, version 1.0.0,  2026.
-\newblock Software, {\url{https://doi.org/10.5281/zenodo.XXXXXXX}}.
+\newblock Software, {\url{https://doi.org/10.5281/zenodo.23419738}}.
+
+\bibitem[{ASHRAE}(2014)]{ashrae14}
+{ASHRAE}.
+\newblock {ASHRAE} Guideline 14-2014: Measurement of Energy, Demand, and Water
+  Savings.
+\newblock Technical report, American Society of Heating, Refrigerating and
+  Air-Conditioning Engineers, Atlanta, GA, USA,  2014.
 
 \bibitem[{García Kerdan} and {Reyes de Luna}(2026)]{garciakerdan2026educon}
 {García Kerdan}, I.; {Reyes de Luna}, E.F.

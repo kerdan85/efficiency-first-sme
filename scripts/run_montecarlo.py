@@ -32,6 +32,15 @@ for i in range(N):
         e = evaluate(pf, P, D)
         r[f"npv_{lab}"] = e["npv"]; r[f"co2_{lab}"] = e["co2_saved_t"]; r[f"grid_{lab}"] = e["grid_saved_frac"]
         r[f"capex_{lab}"] = e["capex"]
+    # P4 re-sized in this draw: smallest PV after efficiency that matches P2's grid purchases in the same draw
+    target = evaluate({"pv_kWp": 163.8}, P, D)["grid1_MWh"]
+    lo, hi = 0.0, 163.8
+    for _ in range(22):
+        mid = (lo + hi) / 2
+        g = evaluate({"measures": EE, "pv_kWp": mid}, P, D)["grid1_MWh"]
+        lo, hi = (mid, hi) if g > target else (lo, mid)
+    e = evaluate({"measures": EE, "pv_kWp": hi}, P, D)
+    r["kwp_P4r"] = hi; r["npv_P4r"] = e["npv"]; r["capex_P4r"] = e["capex"]; r["grid_P4r"] = e["grid_saved_frac"]
     for m in ["E1", "E2", "E3", "E4"]:
         r[f"cce_{m}"] = cce(m, P, D)[0]
     r["lcoe_PV"] = pv_lcoe(P, D)[0]
@@ -47,6 +56,10 @@ for col in [c for c in MC.columns if not c.startswith("par_")]:
                      p95=float(s.quantile(0.95)))
 summ["prob_npv_pos"] = {lab: float((MC[f"npv_{lab}"] > 0).mean()) for lab in ["P1", "P2", "P3", "P4"]}
 summ["prob_P4_gt_P2"] = float((MC.npv_P4 > MC.npv_P2).mean())
+summ["prob_P4r_gt_P2"] = float((MC.npv_P4r > MC.npv_P2).mean())
+summ["prob_P4r_capex_lt_P2"] = float((MC.capex_P4r < MC.capex_P2).mean())
+summ["prob_P4_grid_ge_P2"] = float((MC.grid_P4 >= MC.grid_P2 - 1e-9).mean())
+summ["kwp_P4r"] = dict(p5=float(MC.kwp_P4r.quantile(0.05)), p50=float(MC.kwp_P4r.median()), p95=float(MC.kwp_P4r.quantile(0.95)))
 summ["prob_P1_npv_per_capex_gt_P2"] = float(((MC.npv_P1 / MC.capex_P1) > (MC.npv_P2 / MC.capex_P2)).mean())
 cc = MC[[f"cce_{m}" for m in ["E1", "E2", "E3", "E4"]] + ["lcoe_PV"]]
 summ["prob_cheapest"] = {c: float((cc.idxmin(axis=1) == c).mean()) for c in cc.columns}

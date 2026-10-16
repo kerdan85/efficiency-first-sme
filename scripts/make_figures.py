@@ -50,29 +50,32 @@ b = D["billing"]
 fig, axs = plt.subplots(1, 3, figsize=(W2, 52 * MM), gridspec_kw=dict(width_ratios=[1.5, 1, 1], wspace=0.42))
 ax = axs[0]
 x = np.arange(len(b))
-ax.bar(x, b.energy_kWh / 1000, color=C_BASE, width=0.75, label="Electricity (MWh)")
-p = b.production_pairs / 1000
-ax.plot(x, p, "o-", color=OI["black"], ms=2.2, lw=0.8, label="Production (10$^3$ pairs)")
+# monthly records are confidential: both series are shown as an index (period mean = 100)
+EM, PM = b.energy_kWh.mean(), b.production_pairs.mean()
+ax.bar(x, b.energy_kWh / EM * 100, color=C_BASE, width=0.75, label="Electricity")
+p = b.production_pairs / PM * 100
+ax.plot(x, p, "o-", color=OI["black"], ms=2.2, lw=0.8, label="Production")
 import calendar
 ax.set_xticks(x[::6]); ax.set_xticklabels([calendar.month_abbr[int(m[5:])] + " " + m[2:4] for m in b.month[::6]])
-ax.set_ylabel("MWh per month  |  10$^3$ pairs per month")
+ax.set_ylabel("Index (period mean = 100)")
 ax.set_xlim(-0.8, len(b) - 0.2)
 ax.legend(loc="upper left", ncol=1, handlelength=1.2)
 ax.axvspan(21.5, 24.5, color=OI["yellow"], alpha=0.35, lw=0)
-ax.text(23, 66, "24-h shifts", ha="center", fontsize=6)
+ax.set_ylim(0, 235)
+ax.text(23, 222, "24-h shifts", ha="center", fontsize=6)
 panel(ax, "a", x=-0.12)
 ax = axs[1]
 pp = b.dropna(subset=["production_pairs"])
 shift = pp.month.isin(["2025-11", "2025-12", "2026-01"])
-ax.scatter(pp[~shift].production_pairs / 1000, pp[~shift].energy_kWh / 1000, s=9, color=OI["blue"], lw=0, label="Regular months")
-ax.scatter(pp[shift].production_pairs / 1000, pp[shift].energy_kWh / 1000, s=11, marker="^", color=OI["verm"], lw=0, label="24-h-shift months")
-xx = np.linspace(0, 31, 50)
+ax.scatter(pp[~shift].production_pairs / PM * 100, pp[~shift].energy_kWh / EM * 100, s=9, color=OI["blue"], lw=0, label="Regular months")
+ax.scatter(pp[shift].production_pairs / PM * 100, pp[shift].energy_kWh / EM * 100, s=11, marker="^", color=OI["verm"], lw=0, label="24-h-shift months")
+xx = np.linspace(0, 260, 50)
 for key, ls, lab in (("excl_24h_shift", "-", "Fit excl. 24-h shifts"), ("student_subset_as_reported", "--", "Original fit (16 mo)")):
     m = res["baseline"][key]
-    ax.plot(xx, (m["intercept"] + m["slope"] * xx * 1000) / 1000, ls, color=OI["black"], lw=0.8,
+    ax.plot(xx, (m["intercept"] + m["slope"] * xx / 100 * PM) / EM * 100, ls, color=OI["black"], lw=0.8,
             label=f"{lab}, $R^2$={m['r2']:.2f}")
-ax.set_xlabel("Production (10$^3$ pairs per month)"); ax.set_ylabel("Electricity (MWh per month)")
-ax.set_ylim(0, 70); ax.set_xlim(0, 31)
+ax.set_xlabel("Production (index)"); ax.set_ylabel("Electricity (index)")
+ax.set_ylim(0, 200); ax.set_xlim(0, 260)
 ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.32), handlelength=1.4, fontsize=5.8, ncol=1)
 panel(ax, "b")
 ax = axs[2]
@@ -144,7 +147,7 @@ ax.bar(xs, [PT.loc[k, "grid_saved_frac"] * 100 for k in keys], color=cols, width
 ax.set_ylabel("Grid purchases avoided (%)"); ax.set_xticks(xs); ax.set_xticklabels(short); panel(ax, "b", x=-0.35)
 ax = axs[2]
 ax.bar(xs, [PT.loc[k, "billed_peak1_kW"] for k in keys], color=cols, width=0.65)
-ax.axhline(100, color=OI["verm"], lw=0.8, ls="--"); ax.text(3.4, 102, "GDMTO limit", ha="right", fontsize=6, color=OI["verm"])
+ax.axhline(100, color=OI["verm"], lw=0.8, ls="--"); ax.text(3.45, 171, "dashed: GDMTO limit, 100 kW", ha="right", va="top", fontsize=5.8, color=OI["verm"])
 ax.axhline(PT.loc["P0 Baseline", "billed_peak1_kW"], color=OI["grey"], lw=0.8); ax.text(-0.4, PT.loc["P0 Baseline", "billed_peak1_kW"] + 3, "P0", fontsize=6, color="#666666")
 ax.set_ylabel("Peak energy-implied demand (kW)"); ax.set_ylim(0, 175)
 ax.set_xticks(xs); ax.set_xticklabels(short); panel(ax, "c", x=-0.35)
@@ -239,7 +242,7 @@ nzj = json.load(open(RES / "netzero.json")); FR = pd.read_csv(RES / "netzero_fro
 p1, p2, p4 = (PT.loc[k] for k in (keys[0], keys[1], keys[3]))
 INK, SUB = "#222222", "#555555"
 fig = plt.figure(figsize=(W2, 88 * MM))
-fig.text(0.5, 0.975, "Efficiency first, then solar: sequencing investments in a Mexican footwear SME",
+fig.text(0.5, 0.975, "Sizing rooftop PV and batteries after energy efficiency: an optimisation framework for manufacturing SMEs",
          ha="center", va="top", fontsize=9.5, fontweight="bold", color=INK)
 
 
@@ -303,34 +306,37 @@ ax.text(p1.capex / 2e6, -0.45, "EE", ha="center", fontsize=5.5, color=OI["green"
 ax.text(p1.capex / 1e6 + pvc4 / 2e6, -0.45, "PV", ha="center", fontsize=5.5, color="#8a5d00")
 ax.set_ylim(-0.7, 1.5)
 fig.text(0.595, 0.27, f"\u2212{(1 - p4.capex / p2.capex)*100:.0f}% capital, \u2212{(1 - p4.roof_m2 / p2.roof_m2)*100:.0f}% roof,\n"
-         f"higher NPV in {mc['prob_P4_gt_P2']*100:.0f}% of runs", ha="center", va="top", fontsize=6.8, fontweight="bold", color=OI["blue"], linespacing=1.1)
+         f"higher NPV in {mc.get('prob_P4r_gt_P2', mc['prob_P4_gt_P2'])*100:.0f}% of runs", ha="center", va="top", fontsize=6.8, fontweight="bold", color=OI["blue"], linespacing=1.1)
 arrow(0.712, 0.734)
 
-# 3 net zero frontier
-head(0.747, 3, "Net-zero electricity", "Least-cost design per hourly self-sufficiency")
+# 3 deep decarbonisation: urbs cost-optimal frontier
+head(0.747, 3, "Optimise deep cuts (urbs)", "Least-cost system under CO$_2$ caps")
 ax = fig.add_axes([0.795, 0.40, 0.19, 0.38])
-for lab, col, name in (("supply", C_PV, "Solar only"), ("eefirst", C_EE, "Efficiency first")):
-    f = FR[FR.set == lab]
-    ax.plot(f.target * 100, f.npv_nm / 1e6, color=col, lw=1.3, label=name)
-ax.axhline(0, color=INK, lw=0.5)
-sE = nzj["scenarios"]["NZ-E annual, efficiency first"]; sS = nzj["scenarios"]["NZ-S annual, supply only"]
-ax.plot(sE["self_sufficiency"] * 100, sE["npv"] / 1e6, "o", ms=3.5, color=C_EE, mec="white", mew=0.5, zorder=5)
-ax.annotate(f"Annual net zero\n{sE['kWp']:.0f} vs {sS['kWp']:.0f} kWp", xy=(sE["self_sufficiency"] * 100, sE["npv"] / 1e6),
-            xytext=(63, 8.6), fontsize=5.8, color=INK, arrowprops=dict(arrowstyle="-", lw=0.4, color=SUB))
-ax.text(95.5, 1.2, "storage\nnot repaid", ha="right", va="bottom", fontsize=5.8, color=OI["verm"])
-ax.set_xlabel("Hourly self-sufficiency (%)", fontsize=6.5); ax.set_ylabel("NPV (M MXN)", fontsize=6.5)
-ax.tick_params(labelsize=6); ax.set_xlim(50, 96); ax.set_ylim(-17, 11.5)
-ax.legend(fontsize=5.8, loc="lower left", handlelength=1.2)
-fig.text(0.885, 0.27, "Annual net zero pays;\ndeep hourly autonomy does not", ha="center", va="top", fontsize=6.8,
-         fontweight="bold", color=INK, linespacing=1.1)
+UR = pd.read_csv(RES / "urbs_results.csv"); UR = UR[np.isclose(UR.bat_cost_factor, 1.0)]
+for ee, col, name in ((False, C_PV, "Supply only"), (True, C_EE, "Efficiency available")):
+    u = UR[(UR.case == "co2-cap") & (UR.efficiency == ee)].sort_values("co2_cap_frac", ascending=False)
+    ax.plot(u.co2_cap_frac * 100, u.total_cost / 1e6, "o-", color=col, ms=2.2, lw=1.3, label=name)
+    b20 = u[np.isclose(u.co2_cap_frac, 0.20)].iloc[0]
+    ax.annotate(f"{b20.bat_kWh_usable:.0f} kWh", xy=(20, b20.total_cost / 1e6), xytext=(23.5, b20.total_cost / 1e6 + (0.25 if not ee else -0.35)),
+                fontsize=5.6, color=col, arrowprops=dict(arrowstyle="-", lw=0.4, color=col))
+ax.axhline(UR.base_cost.iloc[0] / 1e6, color=SUB, lw=0.6, ls=":")
+ax.text(36, UR.base_cost.iloc[0] / 1e6 + 0.04, "grid only", fontsize=5.6, color=SUB)
+ax.set_xlim(37, 8); ax.set_xlabel("Grid CO$_2$ cap (% of baseline)", fontsize=6.5)
+ax.set_ylabel("Annualised cost (M MXN)", fontsize=6.5); ax.tick_params(labelsize=6)
+ax.legend(fontsize=5.6, loc="upper left", handlelength=1.2)
+_c = UR[UR.case == "co2-cap"]
+_sv = [1 - _c[(_c.efficiency) & np.isclose(_c.co2_cap_frac, k)].total_cost.iloc[0] / _c[(~_c.efficiency) & np.isclose(_c.co2_cap_frac, k)].total_cost.iloc[0]
+       for k in sorted(_c.co2_cap_frac.unique())]
+fig.text(0.885, 0.27, f"Efficiency enters first: \u2212{min(_sv)*100:.0f}\u2013{max(_sv)*100:.0f}% cost,\nabout half the storage",
+         ha="center", va="top", fontsize=6.8, fontweight="bold", color=INK, linespacing=1.1)
 
 # security strip
 fig.add_artist(plt.Line2D([0.012, 0.988], [0.185, 0.185], transform=fig.transFigure, color="#DDDDDD", lw=0.6))
 drop = (1 - res["pv_stress"]["npv_pv_no_demand_credit"] / p2.npv) * 100
-chips = [f"Peak demand {p2.billed_peak1_kW:.0f} \u2192 {p4.billed_peak1_kW:.0f} kW\nwith efficiency first",
+chips = [f"Annual net-zero electricity pays: {nzj['scenarios']['NZ-E annual, efficiency first']['kWp']:.0f} kWp\nafter efficiency vs {nzj['scenarios']['NZ-S annual, supply only']['kWp']:.0f} kWp without",
          f"If PV loses demand credit: solar NPV \u2212{drop:.0f}%,\nefficiency unaffected",
          f"{p4.co2_saved_t:.0f} tCO$_2$ and {p4.imported_gas_avoided_GJ:.0f} GJ of imported\ngas avoided per year"]
-fig.text(0.012, 0.095, "Security\nand resilience", fontsize=6.6, fontweight="bold", color=INK, va="center")
+fig.text(0.012, 0.095, "Net zero, security\nand resilience", fontsize=6.6, fontweight="bold", color=INK, va="center")
 for i, t in enumerate(chips):
     fig.add_artist(_FB((0.135 + i * 0.29, 0.04), 0.275, 0.11, boxstyle="round,pad=0.004,rounding_size=0.015",
                        transform=fig.transFigure, fc="#EAF5F0", ec="none"))
@@ -462,14 +468,14 @@ from matplotlib.patches import FancyBboxPatch as _Box  # noqa: E402
 fig = plt.figure(figsize=(W2, 92 * MM)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 100); ax.set_ylim(0, 50); ax.axis("off")
 cols = [("Inputs", 1.5, "#F0F0F0", ["Monthly bills (28)", "Production records (25)", "Audit end-use split", "Official tariffs, emission\nfactor, fuel prices", "NASA POWER climate\nand hourly weather"]),
         ("Simulation models", 26.5, "#E3F1EC", ["Tariff model, validated\nagainst 28 bills", "ISO 50006 baseline\n(base load)", "Measure models: savings\nwithout double counting", "Monthly PV (Klein)", "Hourly PV, synthetic load,\nbattery, credit bank"]),
-        ("Optimisation and uncertainty", 51.5, "#E2EDF7", ["Merit order and PV sizing\nby bisection (P4, pathways)", "Least-capex PV–battery\nsearch: 950 designs\n× 3 compensation regimes", "urbs energy-system LP:\njoint cost-optimal EE,\nPV and storage", "Monte Carlo (5,000 draws)\nand Spearman ranking", "One-way and regulatory\nstress tests"]),
-        ("Common indicators", 76.5, "#FBEFD9", ["Energy and CO$_2$", "CCE, LCOE, NPV, payback", "Imported gas avoided", "Bill-shock exposure,\npeak demand", "Roof area,\nself-sufficiency"])]
+        ("Optimisation and uncertainty", 51.5, "#E2EDF7", ["A: PV right-sizing by bisection\nB: merit-order pathways", "C: least-capital PV–battery\nsearch, 950 designs\n× 3 compensation regimes", "D: urbs energy-system LP,\njoint cost-optimal EE,\nPV and storage", "Monte Carlo (5,000 draws)\nand Spearman ranking", "One-way and regulatory\nstress tests"]),
+        ("Common indicators", 76.5, "#FBEFD9", ["Energy and CO$_2$", "CCE, LCOE, NPV, payback", "Imported gas avoided", "Bill-shock exposure,\nbilled demand", "Roof area,\nself-sufficiency"])]
 W, H = 22, 7.0
 for title, x, fc, items in cols:
     ax.text(x + W / 2, 48.3, title, ha="center", va="center", fontsize=9, fontweight="bold", color="#222222")
     for i, t in enumerate(items):
         y = 41.5 - i * 8.6
-        key = t.startswith("urbs")
+        key = "urbs" in t
         ax.add_patch(_Box((x, y - H / 2), W, H, boxstyle="round,pad=0.2,rounding_size=0.8", fc="#BFD7EE" if key else fc,
                           ec=OI["blue"] if key else "none", lw=1.3))
         ax.text(x + W / 2, y, t, ha="center", va="center", fontsize=8, color="#222222", linespacing=1.1,
