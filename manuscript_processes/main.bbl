@@ -175,13 +175,14 @@ Thollander, P.; Andrei, M.; Jalo, N.; Rohdin, P.; Palm, J.; Sann{\"o}, A.;
   \url{https://www.gob.mx/cms/uploads/attachment/file/981194/aviso_fesen_2024.pdf}
   (accessed on 14 October 2026).
 
-\bibitem[{C{\'a}mara de Diputados}(2025)]{lse2025}
-{C{\'a}mara de Diputados}.
+\bibitem[{Congreso de la Uni{\'o}n}(2025)]{lse2025}
+{Congreso de la Uni{\'o}n}.
 \newblock Ley del Sector El{\'e}ctrico, art{\'i}culo 25 (Generaci{\'o}n
   Distribuida).
 \newblock Diario Oficial de la Federaci{\'o}n, 18 March 2025,  2025.
-\newblock Available online: \url{https://mley.mx/LSE/articulo/25/} (accessed on
-  14 October 2026).
+\newblock Available online:
+  \url{https://www.diputados.gob.mx/LeyesBiblio/ref/lse.htm} (accessed on 14
+  October 2026).
 
 \bibitem[{ISO}(2018)]{iso50001}
 {ISO}.
@@ -559,9 +560,9 @@ Sch{\"u}tz, T.; Schiffer, L.; Harb, H.; Fuchs, M.; M{\"u}ller, D.
 \bibitem[{Comisi{\'o}n Reguladora de Energ{\'i}a}(2025)]{dof2025tariffs}
 {Comisi{\'o}n Reguladora de Energ{\'i}a}.
 \newblock Acuerdo por el que la {CRE} autoriza el c{\'a}lculo y ajuste de
-  tarifas finales que aplicar{\'a} de manera individual {CFE} Suministrador de
-  Servicios B{\'a}sicos \ldots\ aplicables del 1 de enero al 31 de diciembre de
-  2025 y su Anexo {\'U}nico.
+  tarifas finales que aplicar{\'a} de manera individual a {CFE} Suministrador
+  de Servicios B{\'a}sicos \ldots\ aplicables del 1 de enero al 31 de diciembre
+  de 2025 y su Anexo {\'U}nico.
 \newblock Diario Oficial de la Federaci{\'o}n, 24 January 2025,  2025.
 \newblock Available online:
   \url{https://dof.gob.mx/nota_detalle.php?codigo=5747760&fecha=24/01/2025}
@@ -625,11 +626,12 @@ Reich, N.H.; Mueller, B.; Armbruster, A.; van Sark, W.G.J.H.M.; Kiefer, K.;
 
 \bibitem[{Comisi{\'o}n Reguladora de Energ{\'i}a}(2017)]{cre2017dg}
 {Comisi{\'o}n Reguladora de Energ{\'i}a}.
-\newblock Resoluci{\'o}n {RES}/142/2017 por la que se expiden las disposiciones
-  administrativas de car{\'a}cter general, los modelos de contrato, la
-  metodolog{\'i}a de c{\'a}lculo de contraprestaci{\'o}n y las especificaciones
-  t{\'e}cnicas generales aplicables a las centrales el{\'e}ctricas de
-  generaci{\'o}n distribuida y generaci{\'o}n limpia distribuida.
+\newblock Resoluci{\'o}n {RES}/142/2017 de la Comisi{\'o}n Reguladora de
+  Energ{\'i}a por la que expide las disposiciones administrativas de
+  car{\'a}cter general, los modelos de contrato, la metodolog{\'i}a de
+  c{\'a}lculo de contraprestaci{\'o}n y las especificaciones t{\'e}cnicas
+  generales, aplicables a las centrales el{\'e}ctricas de generaci{\'o}n
+  distribuida y generaci{\'o}n limpia distribuida.
 \newblock Diario Oficial de la Federaci{\'o}n, 7 March 2017,  2017.
 \newblock Available online:
   \url{https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/GenDis/(DOF
@@ -646,18 +648,19 @@ Reich, N.H.; Mueller, B.; Armbruster, A.; van Sark, W.G.J.H.M.; Kiefer, K.;
 \bibitem[Dorfner et~al.(2026)]{urbs}
 Dorfner, J.;  et~al.
 \newblock urbs: A linear optimisation model for distributed energy systems.
-\newblock Zenodo,  2026.
-\newblock Technical University of Munich, Chair of Renewable and Sustainable
-  Energy Systems; GNU GPL v3. Version used: GitHub commit 37487e6 (27 August
-  2026), {\url{https://doi.org/10.5281/zenodo.594200}}.
+\newblock GitHub repository, Technical University of Munich, Chair of Renewable
+  and Sustainable Energy Systems; GNU GPL v3,  2026.
+\newblock Version used: commit 37487e6 (27 August 2026); last archived release
+  v1.0.1, doi:10.5281/zenodo.3265960. Available online:
+  \url{https://github.com/tum-ens/urbs} (accessed on 14 October 2026).
 
 \bibitem[{Alberú Argüeso} et~al.(2026){Alberú Argüeso}, {Aguado Guerra},
   {Acosta Sosa}, {Rosas-Meléndez}, and {García Kerdan}]{ee1st2026}
 {Alberú Argüeso}, Y.; {Aguado Guerra}, I.; {Acosta Sosa}, F.;
   {Rosas-Meléndez}, S.A.; {García Kerdan}, I.
 \newblock efficiency-first-sme: model, public data, results and the ee1st
-  Energy Efficiency First toolkit for small and medium enterprises.
-\newblock Zenodo, version 1.0.0,  2026.
+  toolkit (Energy Efficiency First for SMEs).
+\newblock Zenodo,  2026.
 \newblock Software, {\url{https://doi.org/10.5281/zenodo.23419738}}.
 
 \bibitem[{ASHRAE}(2014)]{ashrae14}
@@ -672,7 +675,7 @@ Dorfner, J.;  et~al.
 \newblock Engaging Undergraduates in Multidisciplinary Sustainability Research:
   a Focus on Green Hydrogen and Energy Systems Modelling.
 \newblock In Proceedings of the 2026 IEEE Global Engineering Education
-  Conference (EDUCON), Cairo, Egypt,  2026.
+  Conference (EDUCON), Cairo, Egypt,  2026; pp. 1--8.
 \newblock {\url{https://doi.org/10.1109/EDUCON67543.2026.11574284}}.
 
 \end{thebibliography}
