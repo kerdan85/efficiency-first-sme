@@ -1,0 +1,126 @@
+# Footwear SME, Pachuca, Mexico (CFE GDMTO tariff). Reproduces the deterministic results of
+# García Kerdan et al. (2026), "Efficiency first, then solar ...". Monetary values: 2026 MXN, VAT excluded.
+# Any number can be written as  x  |  [central, low, high]  |  {value: ..., status: ..., source: ..., mc: false}
+
+case:
+  name: Footwear SME, Pachuca (MX)
+  currency: MXN
+  location: {lat: 20.0965, lon: -98.7624, utc_offset: -6}
+
+data:
+  billing: data/billing_monthly.csv          # month, energy_kWh, max_demand_kW, power_factor, reported_price, production
+  reference_year: {start: "2025-05", end: "2026-04"}
+  enduse_shares: data/enduse_shares.csv      # end_use, share (one audited month)
+  climate_monthly: data/climate_monthly.csv  # NASA POWER 2001-2025 climatology, kWh/m2/d
+  weather_hourly: data/weather_hourly.csv    # NASA POWER 2023 hourly, W/m2
+  weather_hourly_options: {label_utc_offset: -7, rescale_to_climatology: true}
+
+tariff:
+  type: q_based_demand                       # CFE GDMTO: billed demand = min(Dmax, Q/(24 d 0.55))
+  schedule: data/tariff_monthly.csv          # Centro Oriente, monthly official charges
+  current_month: "2026-10"
+  load_factor: 0.55
+  pf_rule: mx_cfe
+  validation_price_column: reported_price
+
+baseline:
+  production_column: production
+  exclude_months: ["2025-11", "2025-12", "2026-01"]   # 24-h shifts
+
+schedule:                                    # used by the hourly module only
+  weekday_hours: [8, 18]
+  saturday_hours: [8, 13]
+  continuous_months: [11, 12, 1]
+
+grid:
+  emission_factor_t_per_MWh: {value: 0.444, status: official, source: "SEMARNAT 2025, FE-SEN 2024"}
+  gas_share_generation: {value: [0.638, 0.60, 0.68], status: official, source: "SENER PLADESE 2025"}
+  heat_rate_GJ_per_MWh: [7.2, 6.5, 8.5]
+  gas_import_share: {value: [0.74, 0.70, 0.78], status: official, source: "EIA 2025"}
+
+finance:
+  discount_rate: [0.10, 0.06, 0.14]
+  horizon_yr: 20
+  tariff_real_escalation: [0.0, -0.01, 0.02]
+
+measures:
+  - id: E4
+    name: Base-load (idle) control
+    type: base_load
+    saving_frac: {value: [0.10, 0.05, 0.20], status: literature, source: "Mouzon 2007; Kara 2011"}
+    capex: [40000, 20000, 70000]
+    life: 10
+  - id: E1
+    name: Compressed-air package
+    type: enduse
+    end_uses: [compressed air room]
+    saving_frac: {value: [0.20, 0.10, 0.30], status: literature, source: "US DOE 2016"}
+    capex: {value: [50000, 35000, 80000], status: quote}
+    om: [8000, 5000, 12000]
+    life: 10
+  - id: E2
+    name: Servo motors (sewing)
+    type: enduse
+    end_uses: [stitching (sewing)]
+    share_of_enduse: [0.70, 0.50, 0.85]      # clutch-motor share of stitching energy
+    saving_frac: {value: [0.65, 0.50, 0.75], status: literature}
+    capex_per_unit: [3800, 2800, 5500]       # number of units derived from energy / (unit_kW x hours)
+    unit_kW: {value: [0.35, 0.25, 0.45], status: literature, source: clutch motor running power}
+    hours_per_month: 240
+    life: 10
+  - id: E3
+    name: Insulation of heated platens/barrels
+    type: enduse
+    end_uses: [vulcanising, sole injection moulding]
+    share_of_enduse: [0.65, 0.50, 0.80]
+    saving_frac: {value: [0.20, 0.10, 0.30], status: literature}
+    capex: [100000, 60000, 150000]
+    life: 8
+  - id: E5
+    name: Power-factor correction
+    type: pf_correction
+    pf_after: [0.97, 0.95, 0.99]
+    capex: {value: [85000, 70000, 110000], status: quote}
+    life: 15
+
+pv:
+  reference_kWp: 163.8                       # supply-only design proposed for the site
+  cost_per_W: {value: [11.0, 9.0, 14.0], status: quote}
+  PR: {value: [0.80, 0.75, 0.85], status: literature, source: Reich et al. 2012}
+  tilt_deg: {value: 20, status: design}
+  albedo: 0.2
+  degradation: {value: [0.005, 0.003, 0.008], status: literature}
+  om_frac: [0.01, 0.005, 0.015]
+  inverter_repl_frac: [0.10, 0.08, 0.15]
+  inverter_repl_year: 12
+  life: {value: 25, status: literature}
+  m2_per_kWp: [5.5, 5.0, 6.5]
+  demand_credit: {value: 1.0, status: regulatory, mc: false}   # 0 in the regulatory stress test
+
+netzero:
+  night_load_kW: [15.0, 8.0, 25.0]           # always-on load; no interval data available
+  bat_cost_per_kWh: [8500, 6000, 12000]
+  bat_rte: {value: 0.85, status: literature, source: NREL ATB 2024}
+  bat_dod: 0.90
+  bat_c_rate: 0.5
+  bat_om_frac: {value: 0.025, status: literature, source: NREL ATB 2024}
+  bat_life: {value: 15, status: literature, source: NREL ATB 2024}
+  expired_credit_value: 0.0
+  net_billing_export_value: [1.0, 0.6, 1.5]
+  credit_expiry_months: 12
+  pv_limit_kWp: 700                          # 0.7 MW distributed-generation limit
+  pv_multipliers: [0.6, 2.41, 0.1]
+  battery_kWh: [0, 2401, 100]
+  self_sufficiency_targets: [0.7, 0.8, 0.9]
+
+security:
+  energy_charge_shock: 0.5
+  demand_threshold_kW: 100                   # GDMTO eligibility limit
+
+thermal:                                     # per GJ useful heat (fuel use not metered at this site)
+  fuels:
+    - {name: LPG boiler, price_per_GJ: 360.14, kgCO2_per_GJ: 63.1, efficiency: 0.85}
+    - {name: Natural-gas boiler, price_per_GJ: 107.08, kgCO2_per_GJ: 56.1, efficiency: 0.85}
+  heat_pump_cop: [2.5, 3.0, 4.0]
+
+montecarlo: {n: 5000, seed: 20261014}

@@ -1,0 +1,11 @@
+item,value,unit,source,url
+Net generation injected to SEN 2024,352305,GWh,SENER Plan de Desarrollo del Sector Electrico (DOF 17-10-2025) Tabla 2.2,https://dof.gob.mx/nota_detalle.php?codigo=5770297&fecha=17/10/2025
+Combined-cycle generation 2024,212819,GWh,idem,idem
+Gas-turbine generation 2024,12017,GWh,idem,idem
+US pipeline natural gas exports to Mexico 2024,6.4,Bcf/d,EIA Today in Energy 20-10-2025,https://www.eia.gov/todayinEnergy/detail.php?id=66404
+Mexico natural gas consumption 2024,8.6,Bcf/d,idem,idem
+Distributed generation capacity threshold,0.7,MW,Ley del Sector Electrico (2025) art. 25,https://mley.mx/LSE/articulo/25/
+GDMTO load factor for billed demand,0.55,-,CRE tariff agreement (DOF 24-01-2025) Anexo Unico 3.1.2 Tabla 2,https://dof.gob.mx/nota_detalle.php?codigo=5747760&fecha=24/01/2025
+GDMTO applicability threshold (measured demand),100,kW,CFE GDMTO tariff page,https://app.cfe.mx/Aplicaciones/CCFE/Tarifas/TarifasCREIndustria/Tarifas/GranDemandaMTO.aspx
+Power-factor surcharge cap,120,%,DOF 24-01-2025 Anexo Unico 5.5.5,idem
+Power-factor bonus cap,2.5,%,DOF 24-01-2025 Anexo Unico 5.5.5,idem

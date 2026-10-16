@@ -1,0 +1,28 @@
+__pycache__/
+*.pyc
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.fls
+manuscript/*.fdb_latexmk
+manuscript/*.blg
+manuscript/*.spl
+energyplus/*/eplusout.*
+energyplus/*/eplusmtr.csv
+energyplus/*/eplustbl.*
+energyplus/*/sqlite.err
+
+# confidential plant records (company has not authorised release)
+data/raw/billing_monthly.csv
+data/raw/area_disaggregation_reference_month.csv
+results/tariff_validation.csv
+energyplus/*/
+urbs/plant_urbs.xlsx
+
+# ee1st toolkit: confidential plant records and generated outputs
+ee1st/examples/footwear_mx/data/billing_monthly.csv
+ee1st/examples/footwear_mx/data/enduse_shares.csv
+ee1st/examples/*/results/
+ee1st/src/*.egg-info/
+.pytest_cache/
+urbs/urbs_dispatch.csv.gz

@@ -1,0 +1,709 @@
+\begin{thebibliography}{71}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Misc
+\bibitem[{{Alberú Argüeso} et~al.(2026){Alberú Argüeso}, {Aguado Guerra},
+  {Acosta Sosa}, {Rosas-Meléndez} and {García Kerdan}}]{ee1st2026}
+\bibinfo{author}{{Alberú Argüeso}, Y.}, \bibinfo{author}{{Aguado Guerra},
+  I.}, \bibinfo{author}{{Acosta Sosa}, F.}, \bibinfo{author}{{Rosas-Meléndez},
+  S.A.}, \bibinfo{author}{{García Kerdan}, I.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{efficiency-first-sme: model, public data, results and
+  the ee1st energy efficiency first toolkit for small and medium enterprises}.
+\newblock \bibinfo{howpublished}{Zenodo, version 1.0.0}.
+\newblock \DOIprefix\doi{10.5281/zenodo.XXXXXXX}. \bibinfo{note}{software}.
+%Type = Article
+\bibitem[{Anh et~al.(2024)Anh, Quang and Anh}]{anh2024}
+\bibinfo{author}{Anh, D.L.T.}, \bibinfo{author}{Quang, N.T.T.},
+  \bibinfo{author}{Anh, N.T.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Investment decision and efficiency: Global insights
+  on manufacturing firms amidst energy uncertainties}.
+\newblock \bibinfo{journal}{Energy Economics} \bibinfo{volume}{137},
+  \bibinfo{pages}{107793}.
+\newblock \DOIprefix\doi{10.1016/j.eneco.2024.107793}.
+%Type = Article
+\bibitem[{Arpagaus et~al.(2018)Arpagaus, Bless, Uhlmann, Schiffmann and
+  Bertsch}]{arpagaus2018}
+\bibinfo{author}{Arpagaus, C.}, \bibinfo{author}{Bless, F.},
+  \bibinfo{author}{Uhlmann, M.}, \bibinfo{author}{Schiffmann, J.},
+  \bibinfo{author}{Bertsch, S.S.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{High temperature heat pumps: Market overview, state
+  of the art, research status, refrigerants, and application potentials}.
+\newblock \bibinfo{journal}{Energy} \bibinfo{volume}{152},
+  \bibinfo{pages}{985--1010}.
+\newblock \DOIprefix\doi{10.1016/j.energy.2018.03.166}.
+%Type = Article
+\bibitem[{Cagno et~al.(2013)Cagno, Worrell, Trianni and Pugliese}]{cagno2013}
+\bibinfo{author}{Cagno, E.}, \bibinfo{author}{Worrell, E.},
+  \bibinfo{author}{Trianni, A.}, \bibinfo{author}{Pugliese, G.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{A novel approach for barriers to industrial energy
+  efficiency}.
+\newblock \bibinfo{journal}{Renewable and Sustainable Energy Reviews}
+  \bibinfo{volume}{19}, \bibinfo{pages}{290--308}.
+\newblock \DOIprefix\doi{10.1016/j.rser.2012.11.007}.
+%Type = Misc
+\bibitem[{{C{\'a}mara de Diputados}(2025)}]{lse2025}
+\bibinfo{author}{{C{\'a}mara de Diputados}}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Ley del sector el{\'e}ctrico, art{\'i}culo 25
+  (generaci{\'o}n distribuida)}.
+\newblock \bibinfo{howpublished}{Diario Oficial de la Federaci{\'o}n, 18 March
+  2025}.
+\newblock \bibinfo{note}{Consulted via \url{https://mley.mx/LSE/articulo/25/},
+  14 October 2026}.
+%Type = Article
+\bibitem[{Cheah et~al.(2013)Cheah, Duque~Ciceri, Olivetti, Matsumura, Forterre,
+  Roth and Kirchain}]{cheah2013}
+\bibinfo{author}{Cheah, L.}, \bibinfo{author}{Duque~Ciceri, N.},
+  \bibinfo{author}{Olivetti, E.}, \bibinfo{author}{Matsumura, S.},
+  \bibinfo{author}{Forterre, D.}, \bibinfo{author}{Roth, R.},
+  \bibinfo{author}{Kirchain, R.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Manufacturing-focused emissions reductions in
+  footwear production}.
+\newblock \bibinfo{journal}{Journal of Cleaner Production}
+  \bibinfo{volume}{44}, \bibinfo{pages}{18--29}.
+\newblock \DOIprefix\doi{10.1016/j.jclepro.2012.11.037}.
+%Type = Misc
+\bibitem[{{Comisi{\'o}n Federal de Electricidad}(2026)}]{cfe2026gdmto}
+\bibinfo{author}{{Comisi{\'o}n Federal de Electricidad}}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Tarifa {GDMTO}: Gran demanda en media tensi{\'o}n
+  ordinaria. cuotas aplicables, divisi{\'o}n centro oriente, enero
+  2024--octubre 2026}.
+\newblock
+  \bibinfo{howpublished}{\url{https://app.cfe.mx/Aplicaciones/CCFE/Tarifas/TarifasCREIndustria/Tarifas/GranDemandaMTO.aspx}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{Comisi{\'o}n Nacional de Energ{\'i}a}(2026)}]{cne2026ipgn}
+\bibinfo{author}{{Comisi{\'o}n Nacional de Energ{\'i}a}}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{{\'I}ndice de referencia nacional de precios de gas
+  natural al mayoreo ({IPGN}), september 2025--august 2026}.
+\newblock \bibinfo{howpublished}{\url{https://www.cne.gob.mx/IPGN/}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{Comisi{\'o}n Reguladora de Energ{\'i}a}(2017)}]{cre2017dg}
+\bibinfo{author}{{Comisi{\'o}n Reguladora de Energ{\'i}a}},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Resoluci{\'o}n {RES}/142/2017 por la que se expiden
+  las disposiciones administrativas de car{\'a}cter general, los modelos de
+  contrato, la metodolog{\'i}a de c{\'a}lculo de contraprestaci{\'o}n y las
+  especificaciones t{\'e}cnicas generales aplicables a las centrales
+  el{\'e}ctricas de generaci{\'o}n distribuida y generaci{\'o}n limpia
+  distribuida}.
+\newblock \bibinfo{howpublished}{Diario Oficial de la Federaci{\'o}n, 7 March
+  2017. \url{https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/GenDis/(DOF
+  2017-03-07 CRE) RES-142-2017 DACG Generaci\%C3\%B3n Distribuida.pdf}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{Comisi{\'o}n Reguladora de Energ{\'i}a}(2023)}]{cre2023fesen2022}
+\bibinfo{author}{{Comisi{\'o}n Reguladora de Energ{\'i}a}},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Aviso. factor de emisi{\'o}n del sistema
+  el{\'e}ctrico nacional 2022}.
+\newblock \bibinfo{howpublished}{27 February 2023.
+  \url{https://www.gob.mx/cms/uploads/attachment/file/806468/4_-Aviso_FE_2022__1_.pdf}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{Comisi{\'o}n Reguladora de Energ{\'i}a}(2024)}]{cre2024fesen2023}
+\bibinfo{author}{{Comisi{\'o}n Reguladora de Energ{\'i}a}},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Aviso. factor de emisi{\'o}n del sistema
+  el{\'e}ctrico nacional 2023}.
+\newblock \bibinfo{howpublished}{28 February 2024.
+  \url{https://www.gob.mx/cms/uploads/attachment/file/895937/Aviso_FE-SEN23.pdf}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{Comisi{\'o}n Reguladora de Energ{\'i}a}(2025)}]{dof2025tariffs}
+\bibinfo{author}{{Comisi{\'o}n Reguladora de Energ{\'i}a}},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Acuerdo por el que la {CRE} autoriza el c{\'a}lculo y
+  ajuste de tarifas finales que aplicar{\'a} de manera individual {CFE}
+  suministrador de servicios b{\'a}sicos \ldots\ aplicables del 1 de enero al
+  31 de diciembre de 2025 y su anexo {\'u}nico}.
+\newblock \bibinfo{howpublished}{Diario Oficial de la Federaci{\'o}n, 24
+  January 2025.
+  \url{https://dof.gob.mx/nota_detalle.php?codigo=5747760&fecha=24/01/2025}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{CONUEE} and {GIZ}(2022)}]{conuee2022}
+\bibinfo{author}{{CONUEE}}, \bibinfo{author}{{GIZ}}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Manual para la implementaci{\'o}n de un sistema de
+  gesti{\'o}n de la energ{\'i}a}.
+\newblock \bibinfo{howpublished}{Gobierno de M{\'e}xico.
+  \url{https://www.gob.mx/conuee/documentos/manual-para-la-implementacion-de-un-sistema-de-gestion-de-la-energia}}.
+%Type = Article
+\bibitem[{Delf{\'i}n-Portela et~al.(2023)Delf{\'i}n-Portela, Sandoval-Herazo,
+  Reyes-Gonz{\'a}lez, Mata-Alejandro, L{\'o}pez-M{\'e}ndez,
+  Fern{\'a}ndez-Lambert and Betanzo-Torres}]{delfinportela2023}
+\bibinfo{author}{Delf{\'i}n-Portela, E.}, \bibinfo{author}{Sandoval-Herazo,
+  L.C.}, \bibinfo{author}{Reyes-Gonz{\'a}lez, D.},
+  \bibinfo{author}{Mata-Alejandro, H.}, \bibinfo{author}{L{\'o}pez-M{\'e}ndez,
+  M.C.}, \bibinfo{author}{Fern{\'a}ndez-Lambert, G.},
+  \bibinfo{author}{Betanzo-Torres, E.A.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Grid-connected solar photovoltaic system for {Nile}
+  tilapia farms in southern {Mexico}: Techno-economic and environmental
+  evaluation}.
+\newblock \bibinfo{journal}{Applied Sciences} \bibinfo{volume}{13},
+  \bibinfo{pages}{570}.
+\newblock \DOIprefix\doi{10.3390/app13010570}.
+%Type = Article
+\bibitem[{Dindorf(2012)}]{dindorf2012}
+\bibinfo{author}{Dindorf, R.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Estimating potential energy savings in compressed air
+  systems}.
+\newblock \bibinfo{journal}{Procedia Engineering} \bibinfo{volume}{39},
+  \bibinfo{pages}{204--211}.
+\newblock \DOIprefix\doi{10.1016/j.proeng.2012.07.026}.
+%Type = Techreport
+\bibitem[{{Efficiency Valuation Organization}(2022)}]{evo2022ipmvp}
+\bibinfo{author}{{Efficiency Valuation Organization}}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{International Performance Measurement and
+  Verification Protocol ({IPMVP}): Core Concepts 2022}.
+\newblock \bibinfo{type}{Technical Report}. Efficiency Valuation Organization
+  (EVO).
+\newblock \URLprefix
+  \url{https://evo-world.org/en/news-media/evo-news/1280-release-of-the-new-ipmvp-core-concepts-2022}.
+%Type = Misc
+\bibitem[{{European Commission}(2021)}]{ec2021ee1st}
+\bibinfo{author}{{European Commission}}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Commission recommendation ({EU}) 2021/1749 of 28
+  september 2021 on energy efficiency first: from principles to practice ---
+  guidelines and examples for its implementation in decision-making in the
+  energy sector and beyond}.
+\newblock \bibinfo{howpublished}{Official Journal of the European Union, L 350,
+  4.10.2021, p. 9}.
+\newblock \URLprefix \url{https://eur-lex.europa.eu/eli/reco/2021/1749/oj}.
+%Type = Misc
+\bibitem[{{European Commission}(2024)}]{ec2024ee1st}
+\bibinfo{author}{{European Commission}}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Commission recommendation ({EU}) 2024/2143 of 29 july
+  2024 setting out guidelines for the interpretation of article 3 of directive
+  ({EU}) 2023/1791 as regards the energy efficiency first principle}.
+\newblock \bibinfo{howpublished}{Official Journal of the European Union, L
+  series, 9.8.2024}.
+\newblock \URLprefix \url{https://eur-lex.europa.eu/eli/reco/2024/2143/oj}.
+%Type = Misc
+\bibitem[{{European Parliament and Council of the European
+  Union}(2023)}]{eu2023eed}
+\bibinfo{author}{{European Parliament and Council of the European Union}},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Directive ({EU}) 2023/1791 of the {European
+  Parliament} and of the {Council} of 13 september 2023 on energy efficiency
+  and amending regulation ({EU}) 2023/955 (recast)}.
+\newblock \bibinfo{howpublished}{Official Journal of the European Union, L 231,
+  20.9.2023, p. 1}.
+\newblock \URLprefix \url{https://eur-lex.europa.eu/eli/dir/2023/1791/oj}.
+%Type = Article
+\bibitem[{Fleiter et~al.(2012)Fleiter, Schleich and Ravivanpong}]{fleiter2012}
+\bibinfo{author}{Fleiter, T.}, \bibinfo{author}{Schleich, J.},
+  \bibinfo{author}{Ravivanpong, P.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Adoption of energy-efficiency measures in {SMEs}---an
+  empirical analysis based on energy audit data from {Germany}}.
+\newblock \bibinfo{journal}{Energy Policy} \bibinfo{volume}{51},
+  \bibinfo{pages}{863--875}.
+\newblock \DOIprefix\doi{10.1016/j.enpol.2012.09.041}.
+%Type = Article
+\bibitem[{Gutowski et~al.(2009)Gutowski, Branham, Dahmus, Jones, Thiriez and
+  Sekulic}]{gutowski2009}
+\bibinfo{author}{Gutowski, T.G.}, \bibinfo{author}{Branham, M.S.},
+  \bibinfo{author}{Dahmus, J.B.}, \bibinfo{author}{Jones, A.J.},
+  \bibinfo{author}{Thiriez, A.}, \bibinfo{author}{Sekulic, D.P.},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Thermodynamic analysis of resources used in
+  manufacturing processes}.
+\newblock \bibinfo{journal}{Environmental Science \& Technology}
+  \bibinfo{volume}{43}, \bibinfo{pages}{1584--1590}.
+\newblock \DOIprefix\doi{10.1021/es8016655}.
+%Type = Article
+\bibitem[{Herce et~al.(2024)Herce, Martini, Toro, Biele and Salvio}]{herce2024}
+\bibinfo{author}{Herce, C.}, \bibinfo{author}{Martini, C.},
+  \bibinfo{author}{Toro, C.}, \bibinfo{author}{Biele, E.},
+  \bibinfo{author}{Salvio, M.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Energy efficiency policies for small and medium-sized
+  enterprises: A review}.
+\newblock \bibinfo{journal}{Sustainability} \bibinfo{volume}{16},
+  \bibinfo{pages}{1023}.
+\newblock \DOIprefix\doi{10.3390/su16031023}.
+%Type = Article
+\bibitem[{Huang et~al.(2016)Huang, Kuo and Chou}]{huang2016}
+\bibinfo{author}{Huang, S.K.}, \bibinfo{author}{Kuo, L.},
+  \bibinfo{author}{Chou, K.L.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{The applicability of marginal abatement cost
+  approach: A comprehensive review}.
+\newblock \bibinfo{journal}{Journal of Cleaner Production}
+  \bibinfo{volume}{127}, \bibinfo{pages}{59--71}.
+\newblock \DOIprefix\doi{10.1016/j.jclepro.2016.04.013}.
+%Type = Techreport
+\bibitem[{{International Energy Agency}(2022)}]{iea2022heatpumps}
+\bibinfo{author}{{International Energy Agency}}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{The Future of Heat Pumps}.
+\newblock \bibinfo{type}{Technical Report}. IEA. \bibinfo{address}{Paris}.
+\newblock \URLprefix
+  \url{https://www.iea.org/reports/the-future-of-heat-pumps}.
+  \bibinfo{note}{published 30 November 2022. Licence: CC BY 4.0}.
+%Type = Techreport
+\bibitem[{{International Energy Agency}(2024)}]{iea2024ee}
+\bibinfo{author}{{International Energy Agency}}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Energy Efficiency 2024}.
+\newblock \bibinfo{type}{Technical Report}. IEA. \bibinfo{address}{Paris}.
+\newblock \URLprefix \url{https://www.iea.org/reports/energy-efficiency-2024}.
+  \bibinfo{note}{published 7 November 2024. Licence: CC BY 4.0}.
+%Type = Techreport
+\bibitem[{{International Energy Agency}(2025)}]{iea2025ee}
+\bibinfo{author}{{International Energy Agency}}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Energy Efficiency 2025}.
+\newblock \bibinfo{type}{Technical Report}. IEA. \bibinfo{address}{Paris}.
+\newblock \URLprefix \url{https://www.iea.org/reports/energy-efficiency-2025}.
+  \bibinfo{note}{published 20 November 2025. Licence: CC BY 4.0}.
+%Type = Techreport
+\bibitem[{{International Renewable Energy Agency}(2025)}]{irena2025costs}
+\bibinfo{author}{{International Renewable Energy Agency}},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Renewable Power Generation Costs in 2024}.
+\newblock \bibinfo{type}{Technical Report}. IRENA. \bibinfo{address}{Abu
+  Dhabi}.
+\newblock \URLprefix
+  \url{https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024}.
+%Type = Techreport
+\bibitem[{{IPCC}(2006)}]{ipcc2006}
+\bibinfo{author}{{IPCC}}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{2006 {IPCC} Guidelines for National Greenhouse Gas
+  Inventories, Volume 2: Energy}.
+\newblock \bibinfo{type}{Technical Report}. Institute for Global Environmental
+  Strategies. \bibinfo{address}{Hayama, Japan}.
+%Type = Misc
+\bibitem[{{ISO}(2018)}]{iso50001}
+\bibinfo{author}{{ISO}}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{ISO} 50001:2018 energy management systems ---
+  requirements with guidance for use}.
+%Type = Misc
+\bibitem[{{ISO}(2023)}]{iso50006}
+\bibinfo{author}{{ISO}}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{{ISO} 50006:2023 energy management systems ---
+  evaluating energy performance using energy performance indicators and energy
+  baselines}.
+%Type = Article
+\bibitem[{Jackson(2010)}]{jackson2010}
+\bibinfo{author}{Jackson, J.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Promoting energy efficiency investments with risk
+  management decision tools}.
+\newblock \bibinfo{journal}{Energy Policy} \bibinfo{volume}{38},
+  \bibinfo{pages}{3865--3873}.
+\newblock \DOIprefix\doi{10.1016/j.enpol.2010.03.006}.
+%Type = Article
+\bibitem[{Jalo et~al.(2021)Jalo, Johansson, Kanchiralla and
+  Thollander}]{jalo2021}
+\bibinfo{author}{Jalo, N.}, \bibinfo{author}{Johansson, I.},
+  \bibinfo{author}{Kanchiralla, F.M.}, \bibinfo{author}{Thollander, P.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Do energy efficiency networks help reduce barriers to
+  energy efficiency? -- a case study of a regional {Swedish} policy program for
+  industrial {SMEs}}.
+\newblock \bibinfo{journal}{Renewable and Sustainable Energy Reviews}
+  \bibinfo{volume}{151}, \bibinfo{pages}{111579}.
+\newblock \DOIprefix\doi{10.1016/j.rser.2021.111579}.
+%Type = Article
+\bibitem[{Johansson et~al.(2019)Johansson, Mardan, Cornelis, Kimura and
+  Thollander}]{johansson2019}
+\bibinfo{author}{Johansson, I.}, \bibinfo{author}{Mardan, N.},
+  \bibinfo{author}{Cornelis, E.}, \bibinfo{author}{Kimura, O.},
+  \bibinfo{author}{Thollander, P.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Designing policies and programmes for improved energy
+  efficiency in industrial {SMEs}}.
+\newblock \bibinfo{journal}{Energies} \bibinfo{volume}{12},
+  \bibinfo{pages}{1338}.
+\newblock \DOIprefix\doi{10.3390/en12071338}.
+%Type = Article
+\bibitem[{Kalantzis and Revoltella(2019)}]{kalantzis2019}
+\bibinfo{author}{Kalantzis, F.}, \bibinfo{author}{Revoltella, D.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Do energy audits help {SMEs} to realize
+  energy-efficiency opportunities?}
+\newblock \bibinfo{journal}{Energy Economics} \bibinfo{volume}{83},
+  \bibinfo{pages}{229--239}.
+\newblock \DOIprefix\doi{10.1016/j.eneco.2019.07.005}.
+%Type = Article
+\bibitem[{Kara and Li(2011)}]{kara2011}
+\bibinfo{author}{Kara, S.}, \bibinfo{author}{Li, W.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Unit process energy consumption models for material
+  removal processes}.
+\newblock \bibinfo{journal}{CIRP Annals} \bibinfo{volume}{60},
+  \bibinfo{pages}{37--40}.
+\newblock \DOIprefix\doi{10.1016/j.cirp.2011.03.018}.
+%Type = Book
+\bibitem[{Kent(2018)}]{kent2018}
+\bibinfo{author}{Kent, R.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Energy Management in Plastics Processing: Strategies,
+  Targets, Techniques, and Tools}.
+\newblock \bibinfo{edition}{Third} ed., \bibinfo{publisher}{Elsevier}.
+%Type = Article
+\bibitem[{Kesicki and Ekins(2012)}]{kesicki2012}
+\bibinfo{author}{Kesicki, F.}, \bibinfo{author}{Ekins, P.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Marginal abatement cost curves: a call for caution}.
+\newblock \bibinfo{journal}{Climate Policy} \bibinfo{volume}{12},
+  \bibinfo{pages}{219--236}.
+\newblock \DOIprefix\doi{10.1080/14693062.2011.582347}.
+%Type = Article
+\bibitem[{Klein(1977)}]{klein1977}
+\bibinfo{author}{Klein, S.A.}, \bibinfo{year}{1977}.
+\newblock \bibinfo{title}{Calculation of monthly average insolation on tilted
+  surfaces}.
+\newblock \bibinfo{journal}{Solar Energy} \bibinfo{volume}{19},
+  \bibinfo{pages}{325--329}.
+\newblock \DOIprefix\doi{10.1016/0038-092X(77)90001-9}.
+%Type = Techreport
+\bibitem[{Linvill and Brutkoski(2017)}]{linvill2017}
+\bibinfo{author}{Linvill, C.}, \bibinfo{author}{Brutkoski, D.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Designing Distributed Generation in {Mexico}}.
+\newblock \bibinfo{type}{Technical Report}. National Renewable Energy
+  Laboratory. \bibinfo{address}{Golden, CO}.
+\newblock \DOIprefix\doi{10.2172/1357885}.
+%Type = Article
+\bibitem[{Madeddu et~al.(2020)Madeddu, Ueckerdt, Pehl, Peterseim, Lord, Kumar,
+  Kr{\"u}ger and Luderer}]{madeddu2020}
+\bibinfo{author}{Madeddu, S.}, \bibinfo{author}{Ueckerdt, F.},
+  \bibinfo{author}{Pehl, M.}, \bibinfo{author}{Peterseim, J.},
+  \bibinfo{author}{Lord, M.}, \bibinfo{author}{Kumar, K.A.},
+  \bibinfo{author}{Kr{\"u}ger, C.}, \bibinfo{author}{Luderer, G.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{The {CO$_2$} reduction potential for the {European}
+  industry via direct electrification of heat supply (power-to-heat)}.
+\newblock \bibinfo{journal}{Environmental Research Letters}
+  \bibinfo{volume}{15}, \bibinfo{pages}{124004}.
+\newblock \DOIprefix\doi{10.1088/1748-9326/abbd02}.
+%Type = Article
+\bibitem[{Mandel et~al.(2023)Mandel, Kranzl, Popovski, Sensfu{\ss}, M{\"u}ller
+  and Eichhammer}]{mandel2023}
+\bibinfo{author}{Mandel, T.}, \bibinfo{author}{Kranzl, L.},
+  \bibinfo{author}{Popovski, E.}, \bibinfo{author}{Sensfu{\ss}, F.},
+  \bibinfo{author}{M{\"u}ller, A.}, \bibinfo{author}{Eichhammer, W.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Investigating pathways to a net-zero emissions
+  building sector in the {European Union}: what role for the energy efficiency
+  first principle?}
+\newblock \bibinfo{journal}{Energy Efficiency} \bibinfo{volume}{16},
+  \bibinfo{pages}{22}.
+\newblock \DOIprefix\doi{10.1007/s12053-023-10100-0}.
+%Type = Article
+\bibitem[{Mandel and Pat{\'o}(2024)}]{mandel2024}
+\bibinfo{author}{Mandel, T.}, \bibinfo{author}{Pat{\'o}, Z.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Towards effective implementation of the energy
+  efficiency first principle: a theory-based classification and analysis of
+  policy instruments}.
+\newblock \bibinfo{journal}{Energy Research \& Social Science}
+  \bibinfo{volume}{115}, \bibinfo{pages}{103613}.
+\newblock \DOIprefix\doi{10.1016/j.erss.2024.103613}.
+%Type = Article
+\bibitem[{Mandel et~al.(2022)Mandel, Pat{\'o}, Broc and
+  Eichhammer}]{mandel2022}
+\bibinfo{author}{Mandel, T.}, \bibinfo{author}{Pat{\'o}, Z.},
+  \bibinfo{author}{Broc, J.S.}, \bibinfo{author}{Eichhammer, W.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Conceptualising the energy efficiency first
+  principle: insights from theory and practice}.
+\newblock \bibinfo{journal}{Energy Efficiency} \bibinfo{volume}{15},
+  \bibinfo{pages}{41}.
+\newblock \DOIprefix\doi{10.1007/s12053-022-10053-w}.
+%Type = Article
+\bibitem[{McKane et~al.(2017)McKane, Therkelsen, Scodel, Rao, Aghajanzadeh,
+  Hirzel, Zhang, Prem, Fossa, Lazarevska, Matteini, Schreck, Allard,
+  Villegal~Alc{\'a}ntar, Steyn, H{\"u}rdo{\u g}an, Bj{\"o}rkman and
+  O'Sullivan}]{mckane2017}
+\bibinfo{author}{McKane, A.T.}, \bibinfo{author}{Therkelsen, P.L.},
+  \bibinfo{author}{Scodel, A.}, \bibinfo{author}{Rao, P.},
+  \bibinfo{author}{Aghajanzadeh, A.}, \bibinfo{author}{Hirzel, S.},
+  \bibinfo{author}{Zhang, R.}, \bibinfo{author}{Prem, R.},
+  \bibinfo{author}{Fossa, A.}, \bibinfo{author}{Lazarevska, A.M.},
+  \bibinfo{author}{Matteini, M.}, \bibinfo{author}{Schreck, B.},
+  \bibinfo{author}{Allard, F.}, \bibinfo{author}{Villegal~Alc{\'a}ntar, N.},
+  \bibinfo{author}{Steyn, K.}, \bibinfo{author}{H{\"u}rdo{\u g}an, E.},
+  \bibinfo{author}{Bj{\"o}rkman, T.}, \bibinfo{author}{O'Sullivan, J.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Predicting the quantifiable impacts of {ISO} 50001 on
+  climate change mitigation}.
+\newblock \bibinfo{journal}{Energy Policy} \bibinfo{volume}{107},
+  \bibinfo{pages}{278--288}.
+\newblock \DOIprefix\doi{10.1016/j.enpol.2017.04.049}.
+%Type = Article
+\bibitem[{Meier et~al.(1982)Meier, Rosenfeld and Wright}]{meier1982}
+\bibinfo{author}{Meier, A.}, \bibinfo{author}{Rosenfeld, A.H.},
+  \bibinfo{author}{Wright, J.}, \bibinfo{year}{1982}.
+\newblock \bibinfo{title}{Supply curves of conserved energy for {California}'s
+  residential sector}.
+\newblock \bibinfo{journal}{Energy} \bibinfo{volume}{7},
+  \bibinfo{pages}{347--358}.
+\newblock \DOIprefix\doi{10.1016/0360-5442(82)90094-9}.
+%Type = Article
+\bibitem[{Mil{\`a} et~al.(1998)Mil{\`a}, Dom{\`e}nech, Rieradevall, Fullana and
+  Puig}]{mila1998}
+\bibinfo{author}{Mil{\`a}, L.}, \bibinfo{author}{Dom{\`e}nech, X.},
+  \bibinfo{author}{Rieradevall, J.}, \bibinfo{author}{Fullana, P.},
+  \bibinfo{author}{Puig, R.}, \bibinfo{year}{1998}.
+\newblock \bibinfo{title}{Application of life cycle assessment to footwear}.
+\newblock \bibinfo{journal}{The International Journal of Life Cycle Assessment}
+  \bibinfo{volume}{3}, \bibinfo{pages}{203--208}.
+\newblock \DOIprefix\doi{10.1007/BF02977570}.
+%Type = Article
+\bibitem[{Mills et~al.(2006)Mills, Kromer, Weiss and Mathew}]{mills2006}
+\bibinfo{author}{Mills, E.}, \bibinfo{author}{Kromer, S.},
+  \bibinfo{author}{Weiss, G.}, \bibinfo{author}{Mathew, P.A.},
+  \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{From volatility to value: analysing and managing
+  financial and performance risk in energy savings projects}.
+\newblock \bibinfo{journal}{Energy Policy} \bibinfo{volume}{34},
+  \bibinfo{pages}{188--199}.
+\newblock \DOIprefix\doi{10.1016/j.enpol.2004.08.042}.
+%Type = Article
+\bibitem[{Moreno et~al.(2026)Moreno, Fuchs, Miller and Therkelsen}]{moreno2026}
+\bibinfo{author}{Moreno, F.L.}, \bibinfo{author}{Fuchs, H.},
+  \bibinfo{author}{Miller, W.}, \bibinfo{author}{Therkelsen, P.},
+  \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{The global policy landscape of {ISO} 50001 energy
+  management systems}.
+\newblock \bibinfo{journal}{Energy Policy} \bibinfo{volume}{216},
+  \bibinfo{pages}{115198}.
+\newblock \DOIprefix\doi{10.1016/j.enpol.2026.115198}.
+%Type = Article
+\bibitem[{Mouzon et~al.(2007)Mouzon, Yildirim and Twomey}]{mouzon2007}
+\bibinfo{author}{Mouzon, G.}, \bibinfo{author}{Yildirim, M.B.},
+  \bibinfo{author}{Twomey, J.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Operational methods for minimization of energy
+  consumption of manufacturing equipment}.
+\newblock \bibinfo{journal}{International Journal of Production Research}
+  \bibinfo{volume}{45}, \bibinfo{pages}{4247--4271}.
+\newblock \DOIprefix\doi{10.1080/00207540701450013}.
+%Type = Misc
+\bibitem[{{NASA Langley Research Center}(2026)}]{nasapower}
+\bibinfo{author}{{NASA Langley Research Center}}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{{POWER} climatology {API} v2.10.1, 2001--2025 monthly
+  climatology, 20.10\,$^\circ$n, 98.76\,$^\circ$w}.
+\newblock \bibinfo{howpublished}{\url{https://power.larc.nasa.gov/}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{National Renewable Energy Laboratory}(2024)}]{nrel2024atb}
+\bibinfo{author}{{National Renewable Energy Laboratory}}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{2024 annual technology baseline: Commercial battery
+  storage}.
+\newblock
+  \bibinfo{howpublished}{\url{https://atb.nrel.gov/electricity/2024/commercial_battery_storage}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Article
+\bibitem[{Nehler(2018)}]{nehler2018}
+\bibinfo{author}{Nehler, T.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Linking energy efficiency measures in industrial
+  compressed air systems with non-energy benefits -- a review}.
+\newblock \bibinfo{journal}{Renewable and Sustainable Energy Reviews}
+  \bibinfo{volume}{89}, \bibinfo{pages}{72--87}.
+\newblock \DOIprefix\doi{10.1016/j.rser.2018.02.018}.
+%Type = Article
+\bibitem[{Nehler and Rasmussen(2016)}]{nehler2016}
+\bibinfo{author}{Nehler, T.}, \bibinfo{author}{Rasmussen, J.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{How do firms consider non-energy benefits?
+  {Empirical} findings on energy-efficiency investments in {Swedish} industry}.
+\newblock \bibinfo{journal}{Journal of Cleaner Production}
+  \bibinfo{volume}{113}, \bibinfo{pages}{472--482}.
+\newblock \DOIprefix\doi{10.1016/j.jclepro.2015.11.070}.
+%Type = Article
+\bibitem[{Neme{\v s}a(2023)}]{nemesa2023}
+\bibinfo{author}{Neme{\v s}a, I.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Energy saving motors for sewing machines}.
+\newblock \bibinfo{journal}{Tekstilna industrija} \bibinfo{volume}{71},
+  \bibinfo{pages}{39--43}.
+\newblock \DOIprefix\doi{10.5937/tekstind2301039n}.
+%Type = Article
+\bibitem[{Pat{\'o} and Mandel(2022)}]{pato2022}
+\bibinfo{author}{Pat{\'o}, Z.}, \bibinfo{author}{Mandel, T.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Energy efficiency first in the power sector:
+  incentivising consumers and network companies}.
+\newblock \bibinfo{journal}{Energy Efficiency} \bibinfo{volume}{15},
+  \bibinfo{pages}{57}.
+\newblock \DOIprefix\doi{10.1007/s12053-022-10062-9}.
+%Type = Misc
+\bibitem[{{Procuradur{\'i}a Federal del Consumidor}(2026)}]{profeco2026lpg}
+\bibinfo{author}{{Procuradur{\'i}a Federal del Consumidor}},
+  \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Precios m{\'a}ximos de gas {LP} por regi{\'o}n,
+  semana del 11 al 17 de octubre de 2026}.
+\newblock
+  \bibinfo{howpublished}{\url{https://combustibles.profeco.gob.mx/maximoGas/2026/MAXIMOGAS_101126.pdf}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Article
+\bibitem[{Reich et~al.(2012)Reich, Mueller, Armbruster, van Sark, Kiefer and
+  Reise}]{reich2012}
+\bibinfo{author}{Reich, N.H.}, \bibinfo{author}{Mueller, B.},
+  \bibinfo{author}{Armbruster, A.}, \bibinfo{author}{van Sark, W.G.J.H.M.},
+  \bibinfo{author}{Kiefer, K.}, \bibinfo{author}{Reise, C.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Performance ratio revisited: is {PR} > 90\%
+  realistic?}
+\newblock \bibinfo{journal}{Progress in Photovoltaics: Research and
+  Applications} \bibinfo{volume}{20}, \bibinfo{pages}{717--726}.
+\newblock \DOIprefix\doi{10.1002/pip.1219}.
+%Type = Article
+\bibitem[{Saidur et~al.(2010)Saidur, Rahim and Hasanuzzaman}]{saidur2010}
+\bibinfo{author}{Saidur, R.}, \bibinfo{author}{Rahim, N.A.},
+  \bibinfo{author}{Hasanuzzaman, M.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{A review on compressed-air energy use and energy
+  savings}.
+\newblock \bibinfo{journal}{Renewable and Sustainable Energy Reviews}
+  \bibinfo{volume}{14}, \bibinfo{pages}{1135--1153}.
+\newblock \DOIprefix\doi{10.1016/j.rser.2009.11.013}.
+%Type = Article
+\bibitem[{Schlosser et~al.(2020)Schlosser, Jesper, Vogelsang, Walmsley,
+  Arpagaus and Hesselbach}]{schlosser2020}
+\bibinfo{author}{Schlosser, F.}, \bibinfo{author}{Jesper, M.},
+  \bibinfo{author}{Vogelsang, J.}, \bibinfo{author}{Walmsley, T.G.},
+  \bibinfo{author}{Arpagaus, C.}, \bibinfo{author}{Hesselbach, J.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Large-scale heat pumps: Applications, performance,
+  economic feasibility and industrial integration}.
+\newblock \bibinfo{journal}{Renewable and Sustainable Energy Reviews}
+  \bibinfo{volume}{133}, \bibinfo{pages}{110219}.
+\newblock \DOIprefix\doi{10.1016/j.rser.2020.110219}.
+%Type = Misc
+\bibitem[{{Secretar{\'i}a de Energ{\'i}a}(2025)}]{sener2025plan}
+\bibinfo{author}{{Secretar{\'i}a de Energ{\'i}a}}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Acuerdo por el que la secretar{\'i}a de energ{\'i}a
+  emite el plan de desarrollo del sector el{\'e}ctrico}.
+\newblock \bibinfo{howpublished}{Diario Oficial de la Federaci{\'o}n, 17
+  October 2025.
+  \url{https://dof.gob.mx/nota_detalle.php?codigo=5770297&fecha=17/10/2025}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Misc
+\bibitem[{{Secretar{\'i}a de Medio Ambiente y Recursos
+  Naturales}(2025)}]{semarnat2025fesen}
+\bibinfo{author}{{Secretar{\'i}a de Medio Ambiente y Recursos Naturales}},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Aviso: Factor de emisi{\'o}n del sistema
+  el{\'e}ctrico nacional 2024 ({FESEN} 2024)}.
+\newblock \bibinfo{howpublished}{Registro Nacional de Emisiones (RENE),
+  Gobierno de M{\'e}xico, 28 February 2025}.
+\newblock \URLprefix
+  \url{https://www.gob.mx/cms/uploads/attachment/file/981194/aviso_fesen_2024.pdf}.
+%Type = Misc
+\bibitem[{{Secretar{\'i}a de Medio Ambiente y Recursos
+  Naturales}(2026)}]{semarnat2026aviso}
+\bibinfo{author}{{Secretar{\'i}a de Medio Ambiente y Recursos Naturales}},
+  \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Aviso a los establecimientos sujetos a reporte en el
+  registro nacional de emisiones: factor de emisi{\'o}n del sistema
+  el{\'e}ctrico nacional para el periodo de reporte {COA} 2026}.
+\newblock \bibinfo{howpublished}{29 May 2026.
+  \url{https://www.gob.mx/cms/uploads/attachment/file/1081506/aviso_factor_de_emision_electrico_coa_2026.pdf}}.
+\newblock \bibinfo{note}{Accessed 14 October 2026}.
+%Type = Article
+\bibitem[{Sudhakar and Muthucumaraswamy(2026)}]{sudhakar2025}
+\bibinfo{author}{Sudhakar, P.K.}, \bibinfo{author}{Muthucumaraswamy, R.},
+  \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Optimizing energy, downtime, and throughput in
+  footwear production through machine learning}.
+\newblock \bibinfo{journal}{Scientific Reports} \bibinfo{volume}{16},
+  \bibinfo{pages}{546}.
+\newblock \DOIprefix\doi{10.1038/s41598-025-30082-6}.
+%Type = Article
+\bibitem[{Tesema and Worrell(2015)}]{tesema2015}
+\bibinfo{author}{Tesema, G.}, \bibinfo{author}{Worrell, E.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Energy efficiency improvement potentials for the
+  cement industry in {Ethiopia}}.
+\newblock \bibinfo{journal}{Energy} \bibinfo{volume}{93},
+  \bibinfo{pages}{2042--2052}.
+\newblock \DOIprefix\doi{10.1016/j.energy.2015.10.057}.
+%Type = Article
+\bibitem[{Thollander et~al.(2025)Thollander, Andrei, Jalo, Rohdin, Palm,
+  Sann{\"o}, Colding, Barthel, Uddin and Xavier}]{thollander2025}
+\bibinfo{author}{Thollander, P.}, \bibinfo{author}{Andrei, M.},
+  \bibinfo{author}{Jalo, N.}, \bibinfo{author}{Rohdin, P.},
+  \bibinfo{author}{Palm, J.}, \bibinfo{author}{Sann{\"o}, A.},
+  \bibinfo{author}{Colding, J.}, \bibinfo{author}{Barthel, S.},
+  \bibinfo{author}{Uddin, G.S.}, \bibinfo{author}{Xavier, B.M.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Advances in the social construction of energy
+  management and energy efficiency in industry}.
+\newblock \bibinfo{journal}{Nature Communications} \bibinfo{volume}{16},
+  \bibinfo{pages}{4075}.
+\newblock \DOIprefix\doi{10.1038/s41467-025-59284-2}.
+%Type = Article
+\bibitem[{Trianni et~al.(2017)Trianni, Cagno, Marchesani and
+  Spallina}]{trianni2017}
+\bibinfo{author}{Trianni, A.}, \bibinfo{author}{Cagno, E.},
+  \bibinfo{author}{Marchesani, F.}, \bibinfo{author}{Spallina, G.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Classification of drivers for industrial energy
+  efficiency and their effect on the barriers affecting the investment
+  decision-making process}.
+\newblock \bibinfo{journal}{Energy Efficiency} \bibinfo{volume}{10},
+  \bibinfo{pages}{199--215}.
+\newblock \DOIprefix\doi{10.1007/s12053-016-9455-6}.
+%Type = Techreport
+\bibitem[{{U.S. Department of Energy} and {Compressed Air
+  Challenge}(2016)}]{doe2016compressed}
+\bibinfo{author}{{U.S. Department of Energy}}, \bibinfo{author}{{Compressed Air
+  Challenge}}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Improving Compressed Air System Performance: A
+  Sourcebook for Industry}.
+\newblock \bibinfo{type}{Technical Report}. U.S. Department of Energy, Office
+  of Energy Efficiency and Renewable Energy, Advanced Manufacturing Office.
+  \bibinfo{address}{Washington, DC}.
+\newblock \URLprefix
+  \url{https://www.energy.gov/sites/prod/files/2016/03/f30/Improving%20Compressed%20Air%20Sourcebook%20version%203.pdf}.
+  \bibinfo{note}{prepared by Lawrence Berkeley National Laboratory and Resource
+  Dynamics Corporation}.
+%Type = Misc
+\bibitem[{{U.S. Energy Information Administration}(2025)}]{eia2025mexico}
+\bibinfo{author}{{U.S. Energy Information Administration}},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{{U.S.} natural gas exports to {Mexico} reach new
+  records}.
+\newblock \bibinfo{howpublished}{U.S. Energy Information Administration, Today
+  in Energy, 20 October 2025}.
+\newblock \URLprefix
+  \url{https://www.eia.gov/todayinEnergy/detail.php?id=66404}.
+%Type = Article
+\bibitem[{Worrell et~al.(2003)Worrell, Laitner, Ruth and Finman}]{worrell2003}
+\bibinfo{author}{Worrell, E.}, \bibinfo{author}{Laitner, J.A.},
+  \bibinfo{author}{Ruth, M.}, \bibinfo{author}{Finman, H.},
+  \bibinfo{year}{2003}.
+\newblock \bibinfo{title}{Productivity benefits of industrial energy efficiency
+  measures}.
+\newblock \bibinfo{journal}{Energy} \bibinfo{volume}{28},
+  \bibinfo{pages}{1081--1098}.
+\newblock \DOIprefix\doi{10.1016/S0360-5442(03)00091-4}.
+%Type = Article
+\bibitem[{Zhang et~al.(2026)Zhang, Feng, Hu, Yan, Li, Wu, Li, Min, Li, Tian and
+  Chen}]{zhang2026}
+\bibinfo{author}{Zhang, B.}, \bibinfo{author}{Feng, C.}, \bibinfo{author}{Hu,
+  Y.}, \bibinfo{author}{Yan, K.}, \bibinfo{author}{Li, F.},
+  \bibinfo{author}{Wu, T.}, \bibinfo{author}{Li, S.}, \bibinfo{author}{Min,
+  P.}, \bibinfo{author}{Li, L.}, \bibinfo{author}{Tian, J.},
+  \bibinfo{author}{Chen, L.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Unveiling the resolution-induced variability in
+  product carbon footprints: Evidence from multi-level electricity consumption
+  data in footwear manufacturing}.
+\newblock \bibinfo{journal}{Resources, Conservation and Recycling}
+  \bibinfo{volume}{231}, \bibinfo{pages}{108938}.
+\newblock \DOIprefix\doi{10.1016/j.resconrec.2026.108938}.
+%Type = Article
+\bibitem[{Zhang et~al.(2025)Zhang, Wei and Affuso}]{zhang2025credit}
+\bibinfo{author}{Zhang, D.}, \bibinfo{author}{Wei, T.},
+  \bibinfo{author}{Affuso, E.}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Credit constraints and energy efficiency: evidence
+  from manufacturing firms}.
+\newblock \bibinfo{journal}{Energy Efficiency} \bibinfo{volume}{18},
+  \bibinfo{pages}{65}.
+\newblock \DOIprefix\doi{10.1007/s12053-025-10355-9}.
+
+\end{thebibliography}

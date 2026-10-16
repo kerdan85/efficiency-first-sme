@@ -1,0 +1,47 @@
+{
+ "marginal_value": 2.6437906698564593,
+ "pv_unit_per_kWp": 1.0093522915718622,
+ "load_MWh": 460.8,
+ "load_after_all_EE_MWh": 355.69941336599294,
+ "pv_specific_yield": 1522.5380429578543,
+ "pv_inv_cost_per_kWp": 11350.493899481393,
+ "bat_cost_per_usable_kWh": 9444.444444444443,
+ "co2_baseline_t": 204.5952,
+ "ef": 0.444,
+ "net_billing_export": 1.0,
+ "measures": {
+  "E4": {
+   "process": "EE base-load control",
+   "peak_kW": 5.606312875395257,
+   "annual_kWh": 30408.641036143887,
+   "capex": 40000,
+   "om": 0.0,
+   "life": 10
+  },
+  "E1": {
+   "process": "EE compressed air",
+   "peak_kW": 4.981070165249889,
+   "annual_kWh": 14459.428095749707,
+   "capex": 50000,
+   "om": 8000,
+   "life": 10
+  },
+  "E2": {
+   "process": "EE servo motors",
+   "peak_kW": 13.35236230809025,
+   "annual_kWh": 38760.24956427081,
+   "capex": 240682.87999999995,
+   "om": 0.0,
+   "life": 10
+  },
+  "E3": {
+   "process": "EE insulation",
+   "peak_kW": 7.396895125947566,
+   "annual_kWh": 21472.2679378427,
+   "capex": 100000,
+   "om": 0.0,
+   "life": 8
+  }
+ },
+ "discount_rate": 0.1
+}

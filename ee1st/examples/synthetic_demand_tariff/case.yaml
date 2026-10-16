@@ -1,0 +1,63 @@
+# SYNTHETIC EXAMPLE - all data are invented to show the inputs a non-Mexican SME needs.
+# Energy + measured-peak demand tariff (typical of EU/US small-industrial contracts), no production data,
+# no hourly weather (net-zero module skipped). Currency: EUR, VAT excluded.
+
+case:
+  name: Synthetic metal-working SME (fictional)
+  currency: EUR
+  location: {lat: 40.4, lon: -3.7, utc_offset: 1}
+
+data:
+  billing: data/billing_monthly.csv
+  reference_year: {start: "2025-01", end: "2025-12"}
+  enduse_shares: data/enduse_shares.csv
+  climate_monthly: data/climate_monthly.csv
+
+tariff:
+  type: energy_demand            # demand charge on the measured monthly peak; PV does not reduce it
+  charges: {fixed: 40.0, energy: 0.14, demand: 4.5}
+  peak_coincidence: 0.5          # half of an efficiency measure's average-power cut lowers the peak
+  pf_rule: none
+
+baseline:
+  base_load_kWh_month: 14000     # from a weekend/night meter reading; no production series
+
+grid:
+  emission_factor_t_per_MWh: 0.15
+  gas_share_generation: 0.20
+  heat_rate_GJ_per_MWh: 7.0
+  gas_import_share: 0.70
+
+finance:
+  discount_rate: [0.07, 0.04, 0.10]
+  horizon_yr: 20
+  tariff_real_escalation: [0.0, -0.01, 0.02]
+
+measures:
+  - {id: B1, name: Idle and weekend shutdown, type: base_load, saving_frac: [0.15, 0.08, 0.25], capex: [6000, 3000, 10000], life: 10}
+  - {id: A1, name: Compressed-air leaks and pressure, type: enduse, end_uses: [compressed air],
+     saving_frac: [0.25, 0.15, 0.35], capex: [5000, 3000, 8000], om: [800, 500, 1200], life: 10}
+  - {id: M1, name: VSDs on fans and pumps, type: enduse, end_uses: [motors and drives], share_of_enduse: [0.4, 0.3, 0.5],
+     saving_frac: [0.25, 0.15, 0.35], capex: [18000, 12000, 26000], life: 15}
+  - {id: L1, name: LED retrofit with controls, type: enduse, end_uses: [lighting], saving_frac: [0.55, 0.45, 0.65],
+     capex: [9000, 7000, 12000], life: 12}
+
+pv:
+  reference_kWp: 150
+  cost_per_W: [0.75, 0.6, 0.95]
+  PR: [0.82, 0.78, 0.86]
+  tilt_deg: 30
+  degradation: 0.005
+  om_frac: 0.012
+  inverter_repl_frac: 0.08
+  life: 25
+  m2_per_kWp: 5.5
+
+security: {energy_charge_shock: 0.5}
+
+thermal:
+  fuels:
+    - {name: Natural-gas boiler, price_per_GJ: 14.0, kgCO2_per_GJ: 56.1, efficiency: 0.9}
+  heat_pump_cop: [2.5, 3.0, 4.0]
+
+montecarlo: {n: 1000, seed: 42}

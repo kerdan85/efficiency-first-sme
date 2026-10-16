@@ -1,0 +1,19 @@
+\begin{table}[!htbp]
+\centering
+\caption{Net-zero designs: Python model versus EnergyPlus 25.1 (annual values).}
+\label{tab:energyplus}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+Design & PV (kWp) & Battery (kWh) & PV output (MWh) & Grid imports (MWh) & Exports (MWh) & Self-sufficiency (\%) \\
+\midrule
+NZ-S annual net zero, supply only & 302.7 & 0 & 461 / 441 & 199 / 200 & 199 / 180 & 56.8 / 56.6 \\
+NZ-E annual net zero, efficiency first & 233.6 & 0 & 356 / 340 & 152 / 153 & 152 / 137 & 57.3 / 57.1 \\
+80\% self-sufficiency, supply only & 423.7 & 400 & 645 / 617 & 91 / 89 & 260 / 229 & 80.3 / 80.7 \\
+80\% self-sufficiency, efficiency first & 350.4 & 300 & 534 / 510 & 71 / 70 & 238 / 213 & 80.0 / 80.4 \\
+90\% self-sufficiency, efficiency first & 467.2 & 800 & 711 / 680 & 35 / 33 & 374 / 341 & 90.2 / 90.7 \\
+NZ-S re-sized with EnergyPlus yield & 316.5 & 0 & -- / 461 & -- / 197 & -- / 197 & -- / 57.2 \\
+NZ-E re-sized with EnergyPlus yield & 244.3 & 0 & -- / 356 & -- / 150 & -- / 150 & -- / 57.7 \\
+\bottomrule
+\end{tabular}}
+\end{table}

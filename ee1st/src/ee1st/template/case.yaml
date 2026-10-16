@@ -1,0 +1,47 @@
+# Blank case file. Replace every <...>. Numbers may be  x  |  [central, low, high]  |  {value: ..., status: ..., source: ...}
+# status: measured | official | literature | quote | design | assumption | regulatory
+# See docs/INPUTS.md for definitions and minimum data.
+
+case:
+  name: <plant name>
+  currency: <MXN|EUR|USD>
+  location: {lat: <deg>, lon: <deg>, utc_offset: <h>}
+
+data:
+  billing: data/billing_monthly.csv          # >= 12 consecutive months; production column optional
+  reference_year: {start: "<YYYY-MM>", end: "<YYYY-MM>"}
+  enduse_shares: data/enduse_shares.csv      # from a walk-through audit or clamp-meter month; must sum to 1
+  climate_monthly: data/climate_monthly.csv  # NASA POWER or PVGIS monthly GHI and DHI (kWh/m2/d)
+  # weather_hourly: data/weather_hourly.csv  # optional: timestamp,GHI,DHI (W/m2) for the net-zero module
+  # weather_hourly_options: {label_utc_offset: <h>, rescale_to_climatology: true}
+
+tariff:
+  type: <q_based_demand|energy_demand|flat>
+  schedule: data/tariff_monthly.csv          # or:  charges: {fixed: , energy: , demand: }
+  current_month: "<YYYY-MM>"
+  pf_rule: <mx_cfe|none>
+  validation_price_column: reported_price    # remove if bills do not report an average price
+
+baseline:
+  production_column: production              # or  base_load_kWh_month: <kWh>
+  exclude_months: []
+
+schedule: {weekday_hours: [8, 18], saturday_hours: [8, 13], continuous_months: []}
+
+grid: {emission_factor_t_per_MWh: <t/MWh>, gas_share_generation: <0-1>, heat_rate_GJ_per_MWh: 7.2, gas_import_share: <0-1>}
+
+finance: {discount_rate: [0.10, 0.06, 0.14], horizon_yr: 20, tariff_real_escalation: [0.0, -0.01, 0.02]}
+
+measures:
+  - {id: B1, name: Base-load control, type: base_load, saving_frac: [0.10, 0.05, 0.20], capex: <>, life: 10}
+  - {id: A1, name: Compressed air, type: enduse, end_uses: [<end use name in enduse_shares.csv>],
+     saving_frac: [0.20, 0.10, 0.30], capex: <>, om: <>, life: 10}
+  # - {id: PF, name: Power-factor correction, type: pf_correction, pf_after: 0.97, capex: <>, life: 15}
+
+pv: {reference_kWp: <kWp>, cost_per_W: [<c>, <lo>, <hi>], PR: [0.80, 0.75, 0.85], tilt_deg: <deg>, life: 25}
+
+# netzero: {night_load_kW: [<c>, <lo>, <hi>], bat_cost_per_kWh: [<c>, <lo>, <hi>], pv_limit_kWp: <kWp>}
+
+security: {energy_charge_shock: 0.5}
+
+montecarlo: {n: 1000, seed: 1}

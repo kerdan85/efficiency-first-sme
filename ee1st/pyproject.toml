@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ee1st"
+version = "1.0.0"
+description = "Energy Efficiency First appraisal of demand- and supply-side options for SMEs: CCE, NPV, emissions, energy security and net-zero electricity with PV and storage"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "Ivan García Kerdan", email = "i.garciakerdan@tec.mx"}]
+dependencies = ["numpy>=1.24", "pandas>=2.0", "matplotlib>=3.7", "pyyaml>=6.0"]
+keywords = ["energy efficiency first", "SME", "cost of conserved energy", "rooftop PV", "net zero", "energy audit"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+ee1st = "ee1st.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ee1st = ["template/*.yaml", "template/data/*.csv"]
+
+[tool.pytest.ini_options]
+markers = ["slow: Monte Carlo and hourly tests (deselect with -m 'not slow')"]

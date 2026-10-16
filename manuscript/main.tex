@@ -1,0 +1,463 @@
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{lineno}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\emergencystretch=2em
+\usepackage{xurl}
+
+\input{numbers.tex}
+\newcommand{\AQ}[1]{\textcolor{red}{\textbf{[AQ:} #1\textbf{]}}}
+\newcommand{\MXN}{MXN}
+\newcommand{\coo}{CO$_2$}
+
+\graphicspath{{./}{../}}
+\journal{Energy Efficiency First}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Efficiency first, then solar: cost, emissions and energy-security trade-offs of demand- and supply-side options in a Mexican footwear SME}
+
+\author[tec]{Yeniba Alberú Argüeso}
+\author[tec]{Ivan Aguado Guerra}
+\author[tec]{Francisco Acosta Sosa}
+\author[tec]{Samuel Antonio Rosas-Meléndez}
+\author[tec]{Iván García Kerdan\corref{cor1}}
+\ead{i.garciakerdan@tec.mx}
+\cortext[cor1]{Corresponding author.}
+
+\affiliation[tec]{organization={Tecnologico de Monterrey, School of Engineering and Sciences},
+            country={Mexico}}
+
+\begin{abstract}
+Energy efficiency first (EE1st) asks decision-makers to treat demand-side resources as alternatives to supply investments, but evidence for small and medium-sized manufacturers in emerging economies is scarce. We apply the principle to a safety-footwear plant in Pachuca, Mexico, that buys \nRefMWh\ MWh of grid electricity per year under the medium-voltage GDMTO tariff. Twenty-eight months of bills, production records, official tariffs and an audit end-use estimate feed a transparent model that reproduces reported prices with a mean absolute error of \nTVMape\%. Because billed demand is driven by monthly energy, each avoided kWh is worth \nTMarg\ \MXN. Base-load control, insulation of heated equipment, servo motors and a compressed-air package save \nEESavedPct\% of electricity at \nCCEBase--\nCCECA\ \MXN\ per kWh, below the avoided tariff in more than 99.9\% of 5,000 Monte Carlo runs. Rooftop photovoltaics are also profitable, but sequencing matters: efficiency first reaches the same \nGridTwo\% cut in grid purchases with \nKWpFour\ instead of 163.8 kWp, \nCapexSaveFour\% less capital and a higher net present value in \nProbFourTwo\% of runs. It also lowers the energy-implied peak by \nPeakCutOne\ kW and keeps its value if photovoltaics lose demand-charge credit, which would cut the array's value by \nPVStressDrop\%. Annual net-zero electricity is profitable with \nKWpNZE\ kWp after efficiency (\nNZKWpSave\ kWp less than without it), whereas 80\% hourly self-sufficiency needs \nBatSSE\ kWh of batteries that current tariffs do not repay; EnergyPlus reproduces the hourly photovoltaic and battery flows. For SMEs, efficiency first works best as a sequencing rule: cut waste, then size supply.
+\end{abstract}
+
+\begin{graphicalabstract}
+\includegraphics[width=\linewidth]{figures/graphical_abstract.pdf}
+\end{graphicalabstract}
+
+\begin{highlights}
+\item Bill-validated tariff model shows GDMTO demand charges are driven by energy use
+\item Demand-side measures cost less per kWh than the tariff they avoid
+\item Efficiency first cuts PV need by \nPVSaveFour\% for the same \nGridTwo\% grid reduction
+\item Efficiency savings are robust to net-metering rules; PV value is not
+\item Annual net-zero electricity pays off; storage for 80\% autarky does not yet
+\end{highlights}
+
+\begin{keyword}
+Energy efficiency first \sep Industrial SMEs \sep Energy security \sep Cost of conserved energy \sep Distributed photovoltaics \sep Electricity tariffs \sep Mexico
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+%% ===================================================================
+\section{Introduction}
+\label{sec:intro}
+
+Decarbonising industry while protecting firms from volatile energy markets has become a shared objective of climate and energy-security policy. The European Union has made energy efficiency first (EE1st) a legal principle: decision-makers must consider cost-effective demand-side alternatives before investing in supply, networks or markets \citep{eu2023eed,ec2021ee1st,ec2024ee1st}. Global progress nonetheless remains slow. Energy intensity improved by about 1\% in 2024, far below the doubling pledged at COP28, and governments increasingly justify efficiency policy on grounds of security, affordability and competitiveness \citep{iea2024ee,iea2025ee}. EE1st is therefore more than an accounting rule for emissions. It is a decision principle about which resource is procured first, and in what amount, when demand reduction and supply expansion compete for the same capital.
+
+Most quantitative work on EE1st concerns public decisions in Europe, such as building-sector pathways, power-sector incentives and the design of policy instruments \citep{mandel2022,pato2022,mandel2023,mandel2024}. Far less is known about how the principle performs inside individual firms, particularly small and medium-sized enterprises (SMEs) in emerging economies. There, investment decisions are made by owners with limited technical staff, short payback expectations, constrained credit and tariffs that were not designed with efficiency in mind \citep{cagno2013,trianni2017,kalantzis2019,zhang2025credit,herce2024}. In such firms the dominant ``decarbonisation'' proposal is often rooftop photovoltaics (PV). PV is visible, financeable and supported by distributed-generation rules, whereas the cheaper but less tangible demand-side measures are postponed or never quantified \citep{fleiter2012,thollander2025}.
+
+Mexico illustrates why this sequencing matters for energy security as well as cost. In 2024 combined-cycle and gas-turbine plants supplied about two-thirds of the electricity injected into the national grid \citep{sener2025plan}. US pipeline imports covered roughly three-quarters of national natural-gas consumption \citep{eia2025mexico}. The official grid emission factor rose from 0.435 to 0.444~tCO$_2$e~MWh$^{-1}$ between 2022 and 2024 \citep{cre2023fesen2022,cre2024fesen2023,semarnat2025fesen}. Every industrial kWh therefore carries an embedded exposure to imported fossil fuel. The 2025 electricity-sector law also raised the threshold for exempt distributed generation to 0.7~MW \citep{lse2025}, which makes on-site PV more attractive for SMEs. For a medium-voltage industrial customer, the question is no longer whether PV pays, but whether efficiency should come first, and what the firm and the grid lose if it does not.
+
+This paper answers that question for a safety-footwear plant in Pachuca, Hidalgo. The work builds on an energy review and measurement-and-verification (M\&V) plan prepared during a graduate energy-management project, consistent with ISO~50001 and the national implementation manual \citep{iso50001,conuee2022}. We re-estimate the energy baseline from the original records and build a tariff model from official charges, validated against the plant's bills. We then compare demand-side measures and supply-side options on common indicators: energy, emissions, cost of conserved energy, net present value (NPV) and a set of plant-level security and resilience metrics. The analysis is an \emph{ex-ante} evaluation study. It does not observe post-retrofit performance, but it is built on measured bills and official tariffs and quantifies uncertainty explicitly, so that its limits are visible. All data and code are released for reuse.
+
+The rest of the paper is organised as follows. Section~\ref{sec:lit} reviews the literature and states the gap. Section~\ref{sec:method} describes the case, data and model. Section~\ref{sec:results} presents the results. Section~\ref{sec:discussion} discusses their implications and limitations, and Section~\ref{sec:conclusions} concludes.
+
+%% ===================================================================
+\section{Literature review}
+\label{sec:lit}
+
+\subsection{The energy efficiency first principle}
+EE1st originates in least-cost and integrated resource planning, in which demand-side resources compete on equal terms with generation and network capacity. \citet{mandel2022} conceptualise it as a decision principle with three ingredients. These are an equal-footing comparison of demand- and supply-side resources, a societal perspective that includes multiple benefits, and a dynamic view of how decisions interact over time. The EU recast Energy Efficiency Directive turned the principle into an obligation for large planning, policy and investment decisions \citep{eu2023eed}. Commission guidance recommends life-cycle cost-benefit analysis that includes carbon prices and non-energy benefits \citep{ec2021ee1st,ec2024ee1st}. Below the investment thresholds of the Directive, which include almost all decisions taken by SMEs, the principle is encouraged rather than mandated \citep{ec2024ee1st}. Modelling studies show that efficiency-led pathways can lower the total cost of reaching net zero in buildings by avoiding supply and network investment \citep{mandel2023}. In the power sector, network-company incentives determine whether demand-side resources are procured at all \citep{pato2022}. Recent work classifies the policy instruments that can operationalise the principle and highlights an implementation gap between legal recognition and actual decisions \citep{mandel2024}.
+
+Two features of this literature limit its transferability to firms. First, applications are dominated by system-level or sectoral models in high-income economies, where the comparison is between policy pathways rather than between assets that a single owner can buy. Second, the indicators used to judge EE1st, such as system cost and avoided capacity, rarely include the variables that drive industrial decisions. These include tariff structure, roof-space limits, regulatory risk attached to distributed generation and exposure to energy-price shocks.
+
+\subsection{Energy efficiency in industrial SMEs}
+Industrial SMEs face well-documented barriers: limited information and technical skills, competing investment priorities, split incentives and high perceived risk \citep{cagno2013,trianni2017}. Energy audits raise awareness, but adoption of recommended measures remains partial. Low-cost organisational measures and measures with short payback are adopted most often \citep{fleiter2012,kalantzis2019}. Programme design, energy-efficiency networks and access to finance are important levers \citep{johansson2019,jalo2021,herce2024,zhang2025credit}. Energy management is increasingly understood as a socio-technical practice in which routines, roles and organisational learning matter as much as technology \citep{thollander2025}. International uptake of ISO~50001 has been promoted as a scalable route to such practices \citep{mckane2017,moreno2026}. Non-energy benefits, such as productivity, maintenance, noise and thermal comfort, often equal or exceed the value of the energy saved, yet firms seldom include them in investment calculations \citep{worrell2003,nehler2016,nehler2018}.
+
+For the measures considered here the evidence base is uneven. Compressed-air systems are among the best documented. Leaks commonly waste 20--30\% of compressor output in poorly maintained plants, and every 2~psi of excess pressure adds roughly 1\% to compressor energy \citep{doe2016compressed,saidur2010,dindorf2012}. Replacing clutch motors on industrial sewing machines with servo motors is reported to cut motor energy by 65--70\% \citep{nemesa2023}. Idle and base loads frequently dominate specific energy use at low throughput, so operational switch-off strategies can deliver large savings at negligible cost \citep{mouzon2007,kara2011,gutowski2009}. Footwear-specific evidence focuses on product carbon footprints. It shows that factory electricity is a material contributor to the footprint and that results depend strongly on metering resolution \citep{mila1998,cheah2013,zhang2026}. Production scheduling has been shown to reduce energy by about 5\% \citep{sudhakar2025}. Peer-reviewed quantification of insulation savings for heated barrels and platens is scarce. Practitioner guidance reports short paybacks \citep{kent2018}.
+
+\subsection{Comparing demand- and supply-side options}
+The cost of conserved energy (CCE), the annualised cost of a measure divided by the energy it saves, provides a common metric for ranking efficiency against energy prices or supply costs \citep{meier1982,tesema2015}. Marginal abatement cost curves extend the idea to emissions. They are criticised for ignoring interactions between measures, uncertainty, non-financial costs and path dependency \citep{kesicki2012,huang2016}. Supply-side options for industrial SMEs include on-site PV, whose levelised cost has fallen sharply \citep{irena2025costs}. Mexican case studies report attractive returns under net metering \citep{delfinportela2023,linvill2017}. A further option is electrification of process heat, where heat pumps can supply low-temperature heat with coefficients of performance (COP) well above one \citep{arpagaus2018,schlosser2020,madeddu2020,iea2022heatpumps}. Because savings are uncertain and energy prices volatile, risk-aware appraisal methods such as Monte Carlo simulation are recommended for efficiency investments \citep{mills2006,jackson2010}. Measured savings should be verified ex post through protocols such as IPMVP \citep{evo2022ipmvp}. Firm-level evidence shows that energy-price uncertainty also shapes manufacturers' investment efficiency \citep{anh2024}.
+
+\subsection{Research gap and contribution}
+Taken together, the literature offers a well-defined principle, mature appraisal metrics and abundant evidence on individual measures. It offers little evidence on how EE1st changes concrete investment decisions of SMEs operating under emerging-economy tariffs and fossil-import dependence. Three gaps stand out. First, plant-level studies typically appraise efficiency measures or PV in isolation, so they cannot show how efficiency changes the size, cost and roof requirement of the supply option that follows. Second, the tariff structure is usually reduced to an average price. That hides whether demand charges reward energy savings, peak reduction or neither, and therefore how robust each option is to regulatory change. Third, security and resilience are discussed qualitatively at the firm level, even though they are a central motivation for the principle.
+
+This study addresses these gaps with a reproducible, bill-validated appraisal of a Mexican footwear SME. Its contribution is fivefold. (i) It places demand-side measures, rooftop PV and fuel switching on common indicators of energy, emissions, CCE, NPV and security, using official tariffs, prices and emission factors. (ii) It quantifies EE1st as a sequencing decision, comparing supply-only and efficiency-first pathways that reach the same reduction in grid purchases. (iii) It introduces plant-level security indicators: imported gas embodied in grid purchases, bill exposure to an energy-charge shock, regulatory stress on distributed-generation compensation and proximity to the tariff-class threshold. (iv) It tests whether the plant can reach net-zero electricity with renewables and storage, distinguishing annual netting from hourly self-sufficiency. (v) It releases the code, public input data and derived results, together with an open toolkit that generalises the method so that other SMEs can repeat the assessment from their own monthly bills.
+
+%% ===================================================================
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Case study and data}
+The plant produces safety footwear in the Pachuca de Soto area, Hidalgo (city coordinates 20.10$^\circ$N, 98.76$^\circ$W, about 2,340~m above sea level). Processes include cutting, stitching, lasting, rubber vulcanising and direct sole injection moulding. Production is flexible. The plant normally operates from 08:00 to 18:00 on weekdays and from 08:00 to 13:00 on Saturdays, and it ran 24-hour shifts during a production surge in November 2025--January 2026. It is supplied at medium voltage under the CFE GDMTO tariff (ordinary large demand, medium voltage), Centro Oriente division. Offices and warehouses share the meter but were outside the scope of the audit. The company and its exact location are not disclosed. Its billing, production and audit records are confidential and are reported here only in anonymised and aggregated form. Fig.~\ref{fig:site} locates the plant at city scale. Fig.~\ref{fig:sitediagram} shows the production sequence, the energy services and electricity share of each area, the supply and compressed-air networks and where each measure acts; it is a schematic, and no architectural drawings or building models are shown. Shares refer to the audited reference month (April 2026).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.62\linewidth]{figures/fig0_site.pdf}
+\caption{Location of the plant (Pachuca de Soto, Hidalgo). Boundaries: Natural Earth.}
+\label{fig:site}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_site_diagram.pdf}
+\caption{Plant layout and energy flows (schematic, not to scale). Percentages: share of plant electricity; E1--E5: measures.}
+\label{fig:sitediagram}
+\end{figure*}
+
+Table~\ref{tab:data} summarises the data and their status. Monthly electricity consumption, billed demand, power factor (PF) and the average price per kWh were transcribed from \nNMonths\ utility bills (January 2024--April 2026, Table~\ref{tab:billing}). Monthly production in pairs was taken from plant records for \nProdMonths\ of these months. During a walk-through audit in the first half of 2026 the audit team estimated the distribution of electricity use across twelve production areas for a reference month (April 2026). Significant energy uses were vulcanising (29.2\%), stitching (19.8\%), the compressed-air room (16.8\%) and sole injection moulding (9.1\%) (Fig.~\ref{fig:cce}a). Tariff charges for every month from January 2024 to October 2026 were retrieved from the utility \citep{cfe2026gdmto} (Table~\ref{tab:tariffs}). The emission factor, fuel prices, grid mix and solar resource were taken from official or institutional sources (Table~\ref{tab:data}). Monetary values are in 2026 Mexican pesos (\MXN; kMXN and MMXN denote thousands and millions) excluding value-added tax (VAT), which firms recover. For reference, 1~USD = \nUSDRate~\MXN\ \citep{cne2026ipgn}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Data sources and their status.}
+\label{tab:data}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3.3cm}p{6.2cm}p{4.3cm}}
+\toprule
+Item & Content & Source / status \\
+\midrule
+Electricity bills & kWh, billed kW, PF and average price; Jan 2024--Apr 2026 (\nNMonths\ months) & Utility bills, transcribed (measured) \\
+Production & Pairs per month; Apr 2024--Apr 2026 (\nProdMonths\ months) & Plant records (measured) \\
+End-use split & Share of 12 areas in the reference month & Audit walk-through estimate \\
+Tariff & GDMTO fixed, energy, distribution and capacity charges, Centro Oriente, monthly 2024--2026 & \citet{cfe2026gdmto,dof2025tariffs} (official) \\
+Billed-demand rule & $\min\{D_{\max},\,Q/(24\,d\,F_C)\}$, $F_C=0.55$; PF surcharge and bonus & \citet{dof2025tariffs} (official) \\
+Grid emission factor & 0.444 tCO$_2$e MWh$^{-1}$ (2024), still mandated for 2026 reporting & \citet{semarnat2025fesen,semarnat2026aviso} (official) \\
+Grid mix and gas imports & Gas-fired share of 2024 generation; US pipeline imports vs.\ consumption & \citet{sener2025plan,eia2025mexico} \\
+Fuel prices & Natural-gas wholesale index (12-month mean); LP-gas maximum price for Pachuca & \citet{cne2026ipgn,profeco2026lpg} (official) \\
+Solar resource & Monthly global and diffuse irradiation, 2001--2025 climatology & \citet{nasapower} \\
+Measure costs & Capital costs of PV, capacitor bank and compressed-air works & Audit quotations; other costs assumed (Table~\ref{tab:parameters}) \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\subsection{Energy baseline and performance indicator}
+Following ISO~50006 \citep{iso50006}, the energy baseline (EnB) relates monthly electricity use $E_m$ to production $P_m$ through ordinary least squares, $E_m = a + b\,P_m + \varepsilon_m$. The intercept $a$ is interpreted as production-independent (base) load. Three specifications were estimated and compared with the regression originally reported by the audit team: all \nNAll\ months; \nNExcl\ months excluding the documented 24-hour-shift months; and the original 16-month subset (April 2024--June 2025 plus September 2025). Model adequacy is reported through $R^2$ and the coefficient of variation of the root-mean-square error (CV-RMSE). The specification that excludes the 24-hour-shift months is used to define the base load targeted by the operational measure (E4).
+
+\subsection{Tariff model and validation}
+The GDMTO bill (pre-VAT) in month $m$ is
+\begin{equation}
+B_m = \big[c_f + c_e\,Q_m + (c_d + c_c)\,D^{b}_m\big]\,(1+\phi_m), \qquad D^{b}_m = \min\left\{D^{\max}_m,\ \frac{Q_m}{24\,d_m\,F_C}\right\},
+\label{eq:bill}
+\end{equation}
+where $c_f$ is the fixed charge, $c_e$ the energy charge, $c_d$ and $c_c$ the distribution and capacity charges per kW, $Q_m$ the energy consumed, $d_m$ the days in the billing period and $F_C=0.55$ the load factor prescribed for GDMTO \citep{dof2025tariffs}. Because GDMTO has no peak period, the capacity charge always applies the energy-based term; the distribution charge applies the smaller of measured maximum demand and the energy-based term \citep{cfe2026gdmto}. The PF adjustment $\phi_m$ is a surcharge of $\tfrac{3}{5}(90/\mathrm{PF}-1)$ below 90\% PF and a bonus of $\tfrac{1}{4}(1-90/\mathrm{PF})$ at or above 90\%, capped at 120\% and 2.5\% respectively \citep{dof2025tariffs}.
+
+The model was validated by applying month-specific official charges to the recorded consumption, billed demand and PF of all \nNMonths\ months and comparing the result with the average price reported on each bill. The reported billed demand closely matches the energy-based term $Q_m/(24 d_m F_C)$ (mean ratio \nKWRatio). We therefore model billed demand with the energy-based term in all scenarios. Where $Q_m/(24 d_m F_C)$ falls below the measured peak, as appears to be the case here, a kWh saved reduces both the energy charge and the two demand charges. The avoided cost per kWh is then
+\begin{equation}
+v = c_e + \frac{c_d + c_c}{24\,\bar d\,F_C},
+\label{eq:marginal}
+\end{equation}
+evaluated at the October 2026 charges and an average month length $\bar d = 30.4$ days. All scenarios use these charges with constant real prices. The reference year is May 2025--April 2026, the latest twelve billed months (\nRefMWh~MWh).
+
+\subsection{Options appraised}
+\paragraph{Demand-side measures}
+Five measures derived from the audit were modelled (Table~\ref{tab:parameters}). They are applied sequentially to avoid double counting: E4 first scales all end uses, then component measures act on the remaining energy of their target areas.
+\begin{itemize}
+\item \textbf{E1 Compressed-air package}: leak detection and repair, reduction of discharge pressure and no-load control of the two compressors. The saving is 10--30\% of compressed-air energy (central 20\%) \citep{doe2016compressed}. Capital cost follows the audit estimate, plus an annual ultrasonic leak survey.
+\item \textbf{E2 Servo motors on sewing machines}: clutch motors in the stitching area are replaced with servo motors that save 50--75\% of motor energy (central 65\%) \citep{nemesa2023}. Motors are assumed to use 50--85\% of stitching-area energy. The number of machines (\nNSewing\ in the central case) follows from the motor energy, a clutch-motor running power of 0.25--0.45~kW and the scheduled operating hours. It is multiplied by an installed unit cost.
+\item \textbf{E3 Insulation of heated platens and barrels}: insulating jackets and improved temperature control on vulcanising presses and injection-unit barrels. The saving is 10--30\% of heater energy (central 20\%) \citep{kent2018}. Heaters are assumed to account for 50--80\% of the energy of these areas.
+\item \textbf{E4 Base-load (idle) control}: shutdown routines, timers and sub-metering that cut production-independent load by 5--20\% (central 10\%) \citep{mouzon2007,kara2011}. The base load is taken as the EnB intercept.
+\item \textbf{E5 Power-factor correction}: the 50~kVAr automatic capacitor bank proposed in the audit, raising PF to 0.95--0.99 (central 0.97). It saves money through the PF adjustment but not energy.
+\end{itemize}
+
+\paragraph{Supply-side options}
+\textbf{S1 Rooftop PV} is the 163.8~kWp array (252 modules of 650~W) proposed in the audit, connected under the distributed-generation regime with monthly net metering. Monthly plane-of-array irradiation for a south-facing 20$^\circ$ tilt was computed from NASA POWER global and diffuse irradiation using the isotropic-sky monthly method of \citet{klein1977}. Generation applies a performance ratio of 0.75--0.85 \citep{reich2012} and 0.5\% per year degradation. Net metering reduces $Q_m$ and therefore the energy-based billed demand. A regulatory stress case removes this demand credit, so that PV offsets only the energy charge. Monthly surplus, if any, is conservatively assigned zero value.
+
+\textbf{S2 Fuel substitution and electrification of heat} is assessed parametrically, per GJ of useful heat, because the plant's thermal fuel use was not metered during the audit. Five supply routes are compared: liquefied petroleum gas (LPG) or natural-gas boilers (efficiency 0.85), electric resistance, heat pumps (COP 2.5--4.0; \citealp{arpagaus2018,schlosser2020}) and recovery of compressor heat; more than 80\% of compressor input power becomes available heat \citep{doe2016compressed}, and we conservatively assume that 50--80\% of input power (central 70\%) is recovered. Prices are the LPG maximum price for Pachuca in October 2026 \citep{profeco2026lpg} and the twelve-month mean of the national natural-gas wholesale index \citep{cne2026ipgn}, doubled to approximate transport and distribution to an end user. Electricity is valued with Eq.~\eqref{eq:marginal}. Combustion emission factors follow \citet{ipcc2006}. Because the plant's thermal fuel use is unknown, results are reported per GJ of useful heat and can be scaled by any annual fuel consumption.
+
+\subsection{Common indicators}
+Each option and portfolio is evaluated with the same indicators:
+\begin{itemize}
+\item \emph{Energy}: annual grid purchases and the share avoided.
+\item \emph{Emissions}: grid purchases multiplied by the official factor of 0.444~tCO$_2$e~MWh$^{-1}$, held constant because the official series rose over 2022--2024 \citep{cre2023fesen2022,cre2024fesen2023,semarnat2025fesen}. A decline of 3\% per year would lower lifetime avoided emissions by \nEFTrendDrop\% but would not change any monetary result.
+\item \emph{Cost of conserved energy}: $\mathrm{CCE} = (I\cdot\mathrm{CRF}_{r,L} + C_{\mathrm{O\&M}})/\Delta E$ \citep{meier1982}, where $\mathrm{CRF}_{r,L}$ is the capital recovery factor at discount rate $r$ over life $L$. For PV the analogous metric is the levelised cost of electricity (LCOE). Both are compared with the avoided tariff $v$.
+\item \emph{Economics}: NPV over 20 years at a 10\% real discount rate, with like-for-like reinvestment of short-lived measures, straight-line residual values and a PV inverter replacement in year 12; simple payback; and the net abatement cost, defined as the annualised negative NPV per tonne of CO$_2$.
+\item \emph{Security and resilience}:
+  \begin{itemize}
+  \item imported natural gas avoided upstream, $\Delta E_{\mathrm{grid}}\cdot s_{\mathrm{gas}}\cdot h\cdot s_{\mathrm{imp}}$, with gas-fired share of generation $s_{\mathrm{gas}}=0.638$ \citep{sener2025plan}, heat rate $h=7.2$~GJ~MWh$^{-1}$ and import share $s_{\mathrm{imp}}=0.74$ \citep{eia2025mexico};
+  \item exposure to an energy-price shock, measured as the increase in the annual bill if the energy charge rose by 50\%;
+  \item the highest energy-implied billed demand, a proxy for proximity to the 100~kW threshold above which GDMTO customers must migrate to the time-of-use GDMTH tariff \citep{cfe2026gdmto}; PV is not credited with peak reduction because cloudy days and evening operation make its contribution to the measured peak unreliable;
+  \item the roof area required by PV;
+  \item the sensitivity of value to a change in distributed-generation compensation.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Portfolios and efficiency-first pathways}
+Four portfolios are compared with the baseline (P0): P1, the efficiency bundle (E1--E5); P2, supply only (the 163.8~kWp array); P3, both; and P4, efficiency first, in which the efficiency bundle is implemented and PV is then sized to reach the same grid purchases as P2. To generalise P4, we construct pathways for targets of 5--75\% reduction in grid purchases. The supply-only pathway sizes PV directly to the target (with PF correction in both pathways for fairness). The efficiency-first pathway adds measures in ascending order of CCE until the target is met and closes any remaining gap with PV.
+
+\subsection{Uncertainty analysis}
+Parameter uncertainty is propagated with \nMCN\ Monte Carlo draws from triangular distributions whose bounds are listed in Table~\ref{tab:parameters}. These cover measure savings and costs, PV cost, performance and degradation, discount rate (6--14\%) and real tariff escalation ($-1$ to $+2$\% per year). The grid-gas parameters do not affect monetary results; their ranges are reported for the imported-gas indicator as low and high bounds. We report 5th--95th percentiles, the probability that each portfolio has positive NPV, the probability that P4 outperforms P2 and Spearman rank correlations between inputs and the NPV difference P4$-$P2. One-way sensitivities are given in \ref{app:sens}. The demand-credit rule for PV is treated as a discrete regulatory scenario rather than a random variable.
+
+\subsection{Net-zero scenarios with renewables and storage}
+\label{sec:nzmethod}
+Two net-zero definitions are examined because they lead to different designs. \emph{Annual net-zero electricity} requires on-site PV generation to equal the plant's annual consumption, with the grid used as a seasonal buffer. Under the distributed-generation rules, net-metered surpluses are credited in kWh against later bills for up to 12 months, after which unused credits are paid at the local marginal price \citep{cre2017dg}. We conservatively value expired credits at zero. \emph{Hourly self-sufficiency} measures the share of hourly consumption met on site by PV and a lithium-ion battery, a proxy for physical independence and resilience to supply interruptions. Targets of 70\%, 80\% and 90\% are analysed.
+
+Because interval data are not available, an hourly load profile was synthesised for each reference-year month. It consists of an always-on load of 15~kW (range 8--25~kW, an assumption) and a flat load during scheduled operating hours that closes the monthly energy balance; during the three 24-hour-shift months production is spread over Monday--Saturday. Base-load control (E4) is assumed to reduce the always-on load first. Hourly PV output uses NASA POWER 2023 hourly global and diffuse irradiance at the site \citep{nasapower}, transposed to the array plane with an isotropic-sky model and rescaled month by month to the 2001--2025 climatology, which gives a specific yield of \nSpecYieldHourly~kWh~kWp$^{-1}$, consistent with the monthly model. The battery follows a greedy self-consumption dispatch, with 85\% round-trip efficiency, a 15-year life and fixed O\&M of 2.5\% of capital per year \citep{nrel2024atb}, 90\% usable depth of discharge, a power rating of 0.5~kW per kWh and an installed cost of 8,500~\MXN~kWh$^{-1}$ (an assumption anchored on the pack prices of about 200~USD~kWh$^{-1}$ reported by \citealp{nrel2024atb}; its influence is examined through a break-even analysis).
+
+For each portfolio (supply only, or efficiency bundle first) we sweep PV capacity from 0.6 to 2.4 times the annual net-zero size, capped at the 0.7~MW distributed-generation limit \citep{lse2025}, and battery capacity from 0 to 2,400~kWh, and retain the least-capital design that meets each self-sufficiency target. Each design is valued under three compensation regimes: monthly net metering with energy-based billed demand (the central case); net metering in which billed demand follows gross imports rather than net consumption; and net billing, in which imports are billed at the tariff and exports are paid 1.0~\MXN~kWh$^{-1}$. PV degradation of 0.5\% per year is applied to the PV share of the savings. Battery cost is explored through a break-even analysis; the other parameters of the net-zero module are held at their central values except the always-on load.
+
+The five key designs were cross-validated in EnergyPlus 25.1. An EPW file was built from the same rescaled NASA POWER hourly data, converted from local solar to local standard time; PV was modelled with \texttt{Generator:PVWatts} (version 5, 14\% system losses, roof-mounted, 20$^\circ$ tilt, south) and a PVWatts inverter (DC/AC ratio 1.1, 96\% efficiency); storage with \texttt{ElectricLoadCenter:Storage:Simple} using the same capacity, power and efficiencies, AC-coupled and dispatched to track facility demand and store on-site surplus. The same hourly load was imposed through a schedule file, and EnergyPlus hourly purchased and surplus electricity were passed through the same net-metering bank and tariff.
+
+\subsection{Reproducibility, data and code}
+\label{sec:repro}
+The model is written in Python (NumPy, pandas, Matplotlib) and organised as a small package with scripts that regenerate every number, table and figure in this paper from the input data. All numbers quoted in the text are inserted automatically from the results files. The public repository contains the model code, the official tariff, price, emission-factor and climate series with their sources and access dates, all derived results files, the figures, the Monte Carlo seed and a README with run instructions. The plant's billing, production and end-use records are confidential and are not included; the repository documents their format so that the scripts can be run with them, or with another plant's data. Code is released under the MIT licence and public data, results and figures under CC~BY~4.0. The repository is archived on Zenodo (\url{https://doi.org/10.5281/zenodo.XXXXXXX}) and mirrored on GitHub (\url{https://github.com/XXXX/efficiency-first-sme}). \AQ{Replace the Zenodo DOI and GitHub URL after the deposit.}
+
+To make the method usable beyond this plant, the same repository contains \texttt{ee1st}, a general-purpose implementation installable as a Python package from its \texttt{ee1st/} folder \citep{ee1st2026}. A plant is described in a single case file that lists its bills, tariff, end-use split, candidate measures and PV and storage options; every numeric input can be given as a central value or as a (central, low, high) range with a data-status label (for example measured, official, literature, quote or assumption). From this file the toolkit produces the core indicators, portfolios, pathways, Monte Carlo statistics and net-zero designs described in Sections~\ref{sec:method}--\ref{sec:results}, together with a short report; the EnergyPlus cross-check is not part of it. Three tariff structures are supported: Q-based demand charges as in GDMTO, energy plus measured-peak demand charges as common in Europe and North America, and flat energy prices. Measures are declared as base-load, end-use or power-factor measures, and a production series is optional; without it the base load is supplied directly. The footwear case is included as a configuration file with its public inputs; when the confidential plant records are supplied, an automated test confirms that the toolkit reproduces the deterministic results of this paper exactly and the Monte Carlo statistics within sampling error. An explicitly synthetic example, which runs without any confidential data, shows the inputs for a plant under an energy-plus-demand tariff without production records.
+
+%% ===================================================================
+\section{Results}
+\label{sec:results}
+
+\subsection{Energy use, baseline and tariff}
+Monthly consumption ranged from \nKWhMin\ to \nKWhMax~kWh (mean \nKWhMean~kWh), and billed demand reached \nKWMax~kW (Fig.~\ref{fig:data}a). Power factor averaged \nPFMean\% and fell below the 90\% threshold in \nMonthsPFLow\ of \nNMonths\ months, incurring net PF adjustments of about \nPFSurcharge~k\MXN\ in the reference year at 2026 charges. Production explains only part of the variability (Fig.~\ref{fig:data}b). Over all \nNAll\ months the regression gives $E = \nIntAll + \nSlopeAll\,P$ ($R^2 = \nRSqAll$, CV-RMSE \nCVAll\%). Excluding the 24-hour-shift months yields $E = \nIntExcl + \nSlopeExcl\,P$ ($R^2 = \nRSqExcl$, CV-RMSE \nCVExcl\%). The regression in the audit report ($E = \nIntOrig + \nSlopeOrig\,P$, $R^2 = \nRSqOrig$) is reproduced only with the non-contiguous 16-month subset and with one month transcribed as 34,200 instead of 32,400~kWh. With the corrected value the subset gives $R^2 = \nRSqOrigCorr$. Whatever the specification, the intercept is large: base load accounts for about \nBaseShare\% of the reference-year mean consumption. Much of the plant's electricity is therefore not proportional to output, a typical signature of idle equipment, compressed-air leakage and heaters kept at temperature \citep{kara2011,gutowski2009}.
+
+The tariff model reproduces the reported average price of each bill with a mean bias of \nTVBias\% and a mean absolute error of \nTVMape\% (maximum \nTVMax\%; Fig.~\ref{fig:data}c). The small positive bias is consistent with minor charges not itemised in the transcribed data. Two consequences follow. First, the plant's billed demand is set by its monthly energy rather than its instantaneous peak. Under October 2026 charges, an avoided kWh is therefore worth $v = \nTMarg$~\MXN\ (\nTMargUSD~USD), of which only \nTEnergyShare\% is the energy charge itself. Second, billed demand exceeded 100~kW in \nMonthsKWHundred\ months, including three consecutive months during the 24-hour shifts. The load factors printed on the bills, if defined on measured maximum demand, imply measured peaks of \nDmaxImpMin--\nDmaxImpMax~kW, above the 100~kW GDMTO limit in \nMonthsDmaxImp\ of \nNMonths\ months. The plant therefore appears to qualify for reclassification to the time-of-use GDMTH tariff, a regulatory exposure discussed in Section~\ref{sec:discussion}. The reference-year bill is \nBillZero~M\MXN.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_data_baseline.pdf}
+\caption{Energy data, baseline and tariff validation: (a) monthly electricity and production (shading: 24-hour shifts); (b) baseline regressions; (c) reported versus modelled price.}
+\label{fig:data}
+\end{figure*}
+
+\subsection{Cost of conserved energy of demand-side measures}
+Table~\ref{tab:measures} and Fig.~\ref{fig:cce}b rank the measures. Base-load control (E4) is by far the cheapest resource, at \nCCEBase~\MXN~kWh$^{-1}$ for \nSavedBase~MWh per year. It is followed by insulation of heated platens and barrels (E3, \nCCEInsul), servo motors (E2, \nCCEServo, the largest single saving at \nSavedServo~MWh) and the compressed-air package (E1, \nCCECA). At central values all four lie well below the avoided tariff ($v = \nTMarg$) and also below the energy charge alone (\nTEnergy). Their 5th--95th percentile ranges, from \nCCELoBase--\nCCEHiBase\ for E4 to \nCCELoCA--\nCCEHiCA\ for E1, never reach the avoided tariff, and all measures remained below it simultaneously in \nProbAllBelow\% of Monte Carlo draws. Even if only the energy charge were avoided, E1 would still be below it in \nProbBelowEnergyCA\% of draws and the other measures in at least \nProbBelowEnergyServo\%. The measures are of the same order as the PV LCOE (\nPVLCOE~\MXN~kWh$^{-1}$, range \nLCOELo--\nLCOEHi). E4 was cheaper than PV in \nProbBelowPVBase\% of draws and E3 in \nProbBelowPVInsul\%, whereas E2 (\nProbBelowPVServo\%) and E1 (\nProbBelowPVCA\%) were usually slightly more expensive per kWh than PV. The distinctive value of the latter two lies less in their unit cost than in their small capital requirement and their contribution to lower demand (Section~\ref{sec:resil}). Power-factor correction saves no energy but removes the PF surcharge and earns the bonus, returning an NPV of \nNPVPFC~M\MXN\ on \nCapexPFC~k\MXN.
+
+Individually, every measure has a payback of \nPBBase--\nPBPFC\ years (Table~\ref{tab:measures}). Combined (P1), they reduce grid purchases by \nEESavedMWh~MWh per year (\nEESavedPct\%), avoid \nCOOne~tCO$_2$ per year and require \nCapexOne~M\MXN\ (\nCapexOneUSD~kUSD) for an NPV of \nNPVOne~M\MXN.
+
+\input{tables/measures.tex}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_enduses_cce.pdf}
+\caption{End uses and conservation supply curve: (a) electricity share by area; (b) CCE of each measure (whiskers: 5th--95th percentiles).}
+\label{fig:cce}
+\end{figure*}
+
+\subsection{Portfolio comparison}
+Table~\ref{tab:portfolios} and Fig.~\ref{fig:portfolios} compare the portfolios. Supply-only PV (P2) generates \nPVGen~MWh per year with a specific yield of \nSpecYield~kWh~kWp$^{-1}$. It cuts grid purchases by \nGridTwo\% and has a larger absolute NPV (\nNPVTwo~M\MXN) than the efficiency bundle (\nNPVOne~M\MXN), because it is a larger investment. Per peso invested, however, efficiency returns more: NPV/capex is \nNPVCapBase\ for E4 and between \nNPVCapMinEE\ and \nNPVCapMaxEE\ for E1--E3, against \nNPVCapPV\ for PV, and P1 beats P2 on this ratio in \nProbNPVCapex\% of Monte Carlo draws.
+
+The efficiency-first portfolio (P4) reaches the same grid purchases as P2 (\nGridMWhFour~MWh per year, within \nGridDiffFour~MWh) with \nKWpFour~kWp of PV instead of 163.8~kWp. It requires \nCapexSaveFour\% less capital (\nCapexFour\ versus \nCapexTwo~M\MXN) and \nRoofSaveFour\% less roof (\nRoofFour\ versus \nRoofTwo~m$^2$), and achieves a higher NPV (\nNPVFour~M\MXN, $+\nNPVGainFour$~M\MXN). Emissions fall by \nCOFour~t per year in both cases (\nCOPctFour\% of the baseline \nCOBase~t). P4 also lowers the energy-implied peak from \nPeakTwo\ to \nPeakFour~kW, which PV alone cannot do. Installing the efficiency bundle together with the full 163.8~kWp array (P3) cuts grid purchases by \nGridThree\% and emissions by \nCOThree~t per year, with the largest NPV (\nNPVThree~M\MXN) but also the largest capital requirement (\nCapexThree~M\MXN). Net abatement costs are negative for every portfolio, between \nCostTOne\ and \nCostTTwo~\MXN~tCO$_2^{-1}$.
+
+\input{tables/portfolios.tex}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig3_portfolios.pdf}
+\caption{Portfolio indicators: (a) NPV and capital cost; (b) cut in grid purchases; (c) peak billed demand; (d) PV roof area.}
+\label{fig:portfolios}
+\end{figure*}
+
+\subsection{Efficiency-first pathways}
+Fig.~\ref{fig:pathways} generalises the comparison across reduction targets. Up to the \nEESavedPct\% reduction delivered by the efficiency bundle, efficiency measures alone meet the target and no PV is needed. Beyond that point PV is still required, but the array is always smaller than in the supply-only pathway. At a 50\% target, for instance, the efficiency-first pathway needs \nPathEKWp~kWp instead of \nPathSKWp~kWp, \nPathECapex\ instead of \nPathSCapex~M\MXN\ of capital (\nPathCapexSave\% less) and \nPathERoof\ instead of \nPathSRoof~m$^2$ of roof, with an NPV gain of \nPathNPVGain~M\MXN. The NPV gain is positive for every target. It is largest where efficiency alone meets the target and remains roughly constant at intermediate targets, where both pathways add PV at the same marginal value. It rises again above about 65\%, where the supply-only array starts to produce monthly surpluses that net metering does not remunerate in this model. The steps at low targets arise because measures are added as discrete units in merit order and can exceed the target.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4_pathways.pdf}
+\caption{Supply-only versus efficiency-first pathways: (a) capital; (b) PV capacity; (c) NPV gain of efficiency first.}
+\label{fig:pathways}
+\end{figure*}
+
+\subsection{Energy security and resilience}
+\label{sec:resil}
+The security indicators favour efficiency in ways that the averaged economics do not reveal (Fig.~\ref{fig:resilience}).
+\begin{itemize}
+\item \emph{Regulatory stress.} If distributed-generation output no longer reduced billed demand, for example under a move from net metering to net billing, the NPV of the PV array would fall by \nPVStressDrop\% to \nNPVPVStress~M\MXN. The NPV of the efficiency bundle would be unchanged (\nNPVEEStress~M\MXN), because its savings reduce consumption behind the meter.
+\item \emph{Energy-price shock.} A 50\% increase in the energy charge would raise the baseline bill by \nShockZero~k\MXN\ per year. The efficiency bundle cuts this exposure by \nShockCutOne\%, and P4 cuts it by \nShockCutFour\%, at least as much as P2 but with less capital.
+\item \emph{Imported gas.} Upstream, the grid electricity avoided by P1 corresponds to about \nGasOne~GJ per year of imported natural gas (\nGasOneLo--\nGasOneHi~GJ across the parameter ranges), and that avoided by P2 and P4 to \nGasTwo~GJ (\nGasTwoLo--\nGasTwoHi~GJ).
+\item \emph{Tariff-class threshold.} Efficiency reduces the highest energy-implied billed demand by \nPeakCutOne~kW. Neither this indicator in the surge months nor the measured peaks implied by the bills fall below the 100~kW GDMTO limit, so peak management (scheduling of compressors, presses and heaters) would be needed if the plant is reclassified.
+\end{itemize}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig5_resilience.pdf}
+\caption{Resilience indicators: (a) NPV with and without PV demand credit; (b) bill increase if the energy charge rises 50\%; (c) imported gas avoided.}
+\label{fig:resilience}
+\end{figure*}
+
+\subsection{Fuel substitution and electrification of heat}
+\label{sec:thermal}
+Per GJ of useful heat, an LPG boiler costs \nHeatLPG~\MXN\ and emits \nCOLPG~kgCO$_2$. A natural-gas boiler costs \nHeatNG~\MXN\ and emits \nCONG~kgCO$_2$ (Fig.~\ref{fig:thermal}). Electric resistance heating at the avoided tariff costs \nHeatRes~\MXN~GJ$^{-1}$ and emits \nCORes~kgCO$_2$~GJ$^{-1}$, more than either fuel on both counts. A heat pump with COP~3 costs \nHeatHPThree~\MXN\ and emits \nCOHPThree~kgCO$_2$ per GJ. It beats LPG on cost for any COP above \nCOPBELPG\ and on emissions above \nCOPCOLPG. Against pipeline natural gas, however, a heat pump breaks even on emissions at COP \nCOPCONG\ but on cost only at COP \nCOPBENG, because wholesale gas is cheap relative to GDMTO electricity. Electrification is therefore a strong option where the plant burns LPG and a weak one where pipeline gas is available, unless electricity prices or gas prices change.
+
+Efficiency interacts with electrification in two ways. First, it creates headroom: the \nEESavedMWh~MWh saved each year by P1 could supply about \nHeadroomGJ~GJ of useful heat through a COP-3 heat pump without increasing grid purchases above the baseline. Second, it reduces the heat available for recovery. Compressor heat that could be recovered falls from about \nCAHeatBefore\ to \nCAHeatAfter~GJ per year once E1 and E4 are implemented. Recovery projects should therefore be sized after the compressed-air system has been optimised, not before.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig6_thermal.pdf}
+\caption{Heat supply routes: (a) cost and (b) emissions per GJ of useful heat.}
+\label{fig:thermal}
+\end{figure}
+
+\subsection{Uncertainty}
+All portfolios had positive NPV in every Monte Carlo draw (Fig.~\ref{fig:uncertainty}a). The 5th--95th percentile ranges were \nMCLoOne--\nMCHiOne~M\MXN\ for P1, \nMCLoTwo--\nMCHiTwo\ for P2 and \nMCLoFour--\nMCHiFour\ for P4. P4 outperformed P2 in \nProbFourTwo\% of draws. The advantage of efficiency first is driven mainly by the achievable base-load saving ($\rho = \nRhoBase$), followed by the insulation saving ($\rho = \nRhoInsul$) and, at similar magnitude, the servo saving ($\rho = \nRhoServo$) and PV cost ($\rho = \nRhoPVCost$). It shrinks when PV performs better than expected ($\rho = \nRhoPR$; Fig.~\ref{fig:uncertainty}b). One-way sensitivities (\ref{app:sens}) confirm that no single parameter within its range reverses the sign of any portfolio NPV.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig7_uncertainty.pdf}
+\caption{Uncertainty (\nMCN\ draws): (a) NPV distributions; (b) main drivers of the NPV difference P4 $-$ P2.}
+\label{fig:uncertainty}
+\end{figure*}
+
+\subsection{Pathways to net-zero electricity}
+\label{sec:nzresults}
+Annual net-zero electricity is technically and economically within reach (Fig.~\ref{fig:netzero}). Without efficiency, the plant needs \nKWpNZS~kWp of PV on \nRoofNZS~m$^2$ of roof (\nCapexNZS~M\MXN). With the efficiency bundle first it needs \nKWpNZE~kWp on \nRoofNZE~m$^2$ (\nCapexNZE~M\MXN, including the measures), that is \nNZKWpSave~kWp and \nNZRoofSave~m$^2$ less, and its NPV is higher (\nNPVNZE\ versus \nNPVNZS~M\MXN). Under net metering with a 12-month credit bank the annual bill falls to the fixed charge of about \nNZResidualBill~k\MXN, and no credits expire, because the seasonal surplus of the dry months is used during the high-consumption winter months (Fig.~\ref{fig:netzero}c). Both designs stay well below the 0.7~MW distributed-generation limit. Roof space is the binding physical constraint. The usable roof area is not documented; the audit's 252-module layout implies at least about \nRoofTwo~m$^2$. On that area the full efficiency bundle plus the 163.8~kWp array (P3) cuts grid purchases by \nGridThree\%, against \nGridTwo\% for the array alone, whereas annual net zero would need about \nNZRoofSave~m$^2$ more roof without efficiency than with it. The less roof a plant has, the more efficiency first determines how close it can get to net zero.
+
+Annual net zero is not physical independence. Without storage only \nSSNZE\% of hourly consumption is met on site, and gross grid imports remain \nImpNZE~MWh per year in the efficiency-first design (\nCOGrossNZE~tCO$_2$ on a location basis) and \nImpNZS~MWh in the supply-only design. Above about \nFirstBattery\% self-sufficiency storage is needed, from about \nFirstOversizeE--\nFirstOversizeS\% the least-cost designs also oversize the array, and the cost rises steeply (Fig.~\ref{fig:netzero}a). The least-capital efficiency-first design for 80\% self-sufficiency combines \nKWpSSE~kWp with \nBatSSE~kWh (\nCapexSSE~M\MXN, NPV \nNPVSSE~M\MXN); the supply-only equivalent needs \nKWpSSS~kWp and \nBatSSS~kWh, \nSSEightyCapexSave~M\MXN\ more, and has an NPV of only \nNPVSSS~M\MXN, which turns negative if billed demand follows gross imports (\nNPVImpSSS~M\MXN). At 90\% the efficiency-first design needs \nKWpSSNE~kWp and \nBatSSNE~kWh (\nCapexSSNE~M\MXN) and its NPV turns negative (\nNPVSSNE~M\MXN). The highest self-sufficiency within the range explored (PV up to 2.4 times the annual net-zero array or 0.7~MW, and up to 2,400~kWh of storage) is about \nMaxSSE\%, with \nMaxSSKWp~kWp and \nMaxSSBat~kWh. Efficiency first lowers the capital required at every self-sufficiency level. The advantage comes mainly from lower total consumption, which shrinks the array: a supply-only design given the lower night load of the efficiency-first plant still needs \nSupplyLowNightCapex~M\MXN\ for 80\% self-sufficiency.
+
+Storage does not pay under the current rules. Under net metering the grid already acts as a free, lossless seasonal store, so adding 200~kWh to the efficiency-first net-zero design raises self-sufficiency by \nBatMargSS\ percentage points but changes NPV by \nBatMargNM~M\MXN. The loss shrinks if billed demand follows gross imports (\nBatMargImp~M\MXN) or under net billing (\nBatMargNB~M\MXN), but remains negative at current battery costs (Fig.~\ref{fig:netzero}b). Storage would break even only with battery costs \nBatBENB\% lower under net billing or \nBatBEImp\% lower under import-based demand charges, and never under net metering, where round-trip losses add to net imports. The value of storage for this plant is therefore resilience: the 80\% design holds about \nAutoSSE~hours of the always-on load. These results depend on the synthetic profile. Self-sufficiency of the annual net-zero designs ranges from \nNightSSLo\% to \nNightSSHi\% across the assumed always-on loads.
+
+The EnergyPlus runs verify the PV yield and the battery dispatch of the Python model; they use the same synthetic load, weather, credit bank and tariff, so they do not test those inputs (Table~\ref{tab:energyplus}). For the designs with storage, self-sufficiency differs by at most \nEPSSDiffBat\ percentage points and grid imports by at most \nEPImpDiffBat\%; for the annual net-zero designs without storage the difference is at most \nEPSSDiffNZ\ points. EnergyPlus DC output is within \nEPDCvsPy\% of the Python AC output, and its AC yield (\nEPYield~kWh~kWp$^{-1}$) is \nEPYieldDiff\% lower mainly because the PVWatts inverter efficiency (96\%) is applied on top of 14\% system losses, whereas the Python model uses a single performance ratio of 0.80. Sized with the EnergyPlus yield, annual net zero requires \nEPKWpNZE~kWp with efficiency first and \nEPKWpNZS~kWp without it (a gap of \nEPKWpSave~kWp), and the NPVs become \nEPNPVNZE\ and \nEPNPVNZS~M\MXN, so the ranking is unchanged.
+
+\input{tables/energyplus.tex}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig8_netzero.pdf}
+\caption{Net zero with PV and storage: (a) least capital by self-sufficiency target; (b) NPV under three compensation regimes; (c) monthly balance of the efficiency-first net-zero design.}
+\label{fig:netzero}
+\end{figure*}
+
+%% ===================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What efficiency first means at plant scale}
+The results do not support a simple ``efficiency instead of solar'' narrative. Rooftop PV is a profitable investment for this plant, and the largest NPV is obtained by doing both. What EE1st changes is the order and size of the supply investment. Treating demand-side measures as a resource that competes with PV, as the principle requires \citep{mandel2022,ec2021ee1st}, reveals that efficiency delivers the first \nEESavedPct\% of the reduction in grid purchases at low cost. It also shrinks the PV array needed for any higher target, by \nPVDiffFour~kWp in this case. That frees capital, roof area and grid-connection capacity for later steps such as heat electrification. The same logic underpins system-level EE1st analyses \citep{mandel2023,pato2022}. Here it appears in the investment decision of a single SME.
+
+The low cost of the operational measure (E4) deserves emphasis. Its value rests on the large production-independent load revealed by a simple baseline regression. Such loads are common in discrete manufacturing \citep{kara2011,mouzon2007} but invisible in averaged indicators such as kWh per pair. Capturing these savings requires routines, sub-metering and accountability rather than capital, which is why energy management practices and ISO~50001 matter for SMEs \citep{thollander2025,mckane2017}. Efficiency measures can also bring non-energy benefits, such as lower noise from compressed-air systems \citep{nehler2018}. Insulating heated equipment would reduce heat gains in a plant where workers reported high indoor temperatures. These benefits are not monetised here, so the estimates for efficiency are conservative \citep{worrell2003,nehler2016}.
+
+\subsection{Tariff design as a hidden driver}
+The tariff analysis explains why both efficiency and PV look attractive. Under GDMTO the capacity charge, and in practice also the distribution charge, is computed from monthly energy divided by a fixed load factor \citep{dof2025tariffs}. This turns demand charges into a volumetric charge and raises the value of an avoided kWh to \nTMarg~\MXN, \nTEnergyShare\% of which is the energy charge. For efficiency the design is benign, since saved kWh are worth the same whatever their timing. For PV it creates a regulatory dependency, because most of its value rests on net-metered generation reducing the billed demand. The stress case shows that a change in that rule would remove most of the PV's NPV while leaving efficiency untouched. An EE1st appraisal that uses only an average price would miss this asymmetry. The finding echoes the importance of incentive design stressed by \citet{pato2022}, seen here from the customer's side of the meter. The bills also suggest that the plant's measured peaks exceed the 100~kW GDMTO limit. Under the time-of-use GDMTH tariff, capacity is billed on demand coincident with the evening peak period and energy is priced by period \citep{dof2025tariffs}. Base-load reductions that persist into the peak period would then gain value, whereas daytime PV output would contribute little to peak-period demand. Reclassification would therefore be likely to widen the advantage of efficiency first, although this was not simulated.
+
+\subsection{Energy security and the phase-out of fossil fuels}
+Because two-thirds of Mexican grid electricity is gas-fired and roughly three-quarters of the gas is imported \citep{sener2025plan,eia2025mexico}, every kWh saved or self-generated by an SME reduces the country's exposure to an external fuel supply. At the plant level, efficiency and PV reduce exposure to an energy-charge shock by similar amounts for the same reduction in grid purchases. Efficiency, however, does so without regulatory risk, without roof constraints and while lowering demand. For the fossil-fuel phase-out at the heart of this special issue, the thermal analysis adds a nuance. Electrification of heat is economically compelling against LPG but not yet against pipeline gas. Efficiency first makes room for electrification by freeing grid capacity and lowering the plant's peak. The official emission factor has not declined in recent years. Behind-the-meter efficiency is therefore the decarbonisation lever least dependent on progress in the grid.
+
+\subsection{Can the plant reach net zero?}
+For electricity, yes, on an annual basis and at a profit under current rules: an efficiency-first plant with about \nKWpNZE~kWp of rooftop PV generates as much as it consumes. Two qualifications matter for how such a claim is made. First, annual netting is not equivalent to zero emissions in a location-based inventory: about \nCOGrossNZE~tCO$_2$ per year of grid imports remain, mostly at night and in the winter shift months, even though exports displace a similar amount of grid generation during the day. Second, physical self-sufficiency above about \nFirstBattery\% requires batteries whose cost is not recovered under net metering, net billing or energy-based demand charges. A net-zero claim for this plant should therefore be framed as annual net-zero electricity, with gross imports and location-based emissions reported alongside \citep{iso50001}. Storage becomes attractive only if battery costs fall by at least three-quarters, if compensation rules penalise exports more than in the cases tested, or if the firm values resilience to outages explicitly. Efficiency first reduces the cost of every one of these steps, chiefly by shrinking the consumption that PV and storage must cover, and with it the array and the roof. Full net zero also requires the thermal fuels discussed in Section~\ref{sec:thermal} to be electrified, which the electricity headroom created by efficiency makes easier.
+
+\subsection{Implications for practice and policy}
+For the plant, the results suggest a staged plan: (i) implement base-load control, PF correction and compressed-air maintenance immediately, as they are low-cost and verifiable; (ii) retrofit sewing motors and insulate heated equipment; (iii) size PV only after the savings have been measured; (iv) investigate thermal fuel use and heat recovery. The M\&V plan prepared during the audit already specifies IPMVP options for each measure \citep{evo2022ipmvp} and is summarised in \ref{app:mv}. For policy, three implications follow. First, distributed-generation programmes and green-credit lines aimed at SMEs could require an efficiency screening, such as a simple baseline regression and an audit, before PV sizing, in the spirit of the EU's EE1st guidance \citep{ec2024ee1st}. Second, tariff reforms that move GDMTO demand charges towards measured peaks would strengthen incentives for demand management but erode the value of PV. They should therefore be signalled in advance. Third, the large share of production-independent load points to the value of energy-management networks and capacity building for SMEs \citep{jalo2021,johansson2019,herce2024}.
+
+\subsection{Transferability to other SMEs}
+The analysis rests on data that most SMEs already hold or can obtain in a walk-through audit (Table~\ref{tab:datatiers}). Twelve months of bills and an end-use estimate are enough to rank measures against PV, to compare the supply-only and efficiency-first pathways and to compute the security indicators. A production series adds the baseline regression that identified the base load, the cheapest resource in this case. Hourly weather adds the net-zero analysis, and interval metering would replace the synthetic load profile, the weakest element of that analysis. The toolkit lists each input with its data status and its rank correlation with the NPV advantage of the efficiency-first portfolio across the Monte Carlo draws, so that a firm can see where the next measurement is worth making. Three results are likely to transfer: base-load control is cheap wherever production-independent load is large; efficiency first shrinks the PV array whenever the PV surplus is not remunerated; and storage is hard to justify under net metering. Others depend on the tariff. In particular, the regulatory risk to PV found here arises from Q-based demand charges; under a measured-peak tariff the toolkit assumes, conservatively, that PV earns no demand credit, whereas efficiency lowers the peak in proportion to its effect on average power, so efficiency would gain relative value.
+
+\begin{table}[!htbp]
+\centering
+\caption{Data tiers for applying the method to other SMEs.}
+\label{tab:datatiers}
+\footnotesize
+\begin{tabular}{p{0.30\linewidth}p{0.62\linewidth}}
+\toprule
+Data & Analyses enabled \\
+\midrule
+12 monthly bills, tariff, end-use estimate, monthly climate & Tariff check, measure CCE and NPV, merit order, portfolios P1--P4, pathways, CO$_2$ and security indicators, Monte Carlo \\
++ monthly production & ISO~50006 baseline and base-load share \\
++ hourly weather year & Hourly PV, battery dispatch, net-zero and self-sufficiency frontier under three compensation regimes \\
++ interval metering & Measured always-on load in place of the assumed value (load shapes and time-of-use tariffs are not yet implemented) \\
++ fuel records & Scaling the per-GJ heat-electrification results to the plant \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Limitations}
+This is an ex-ante evaluation study, and its limits should be read alongside its findings.
+\begin{itemize}
+\item \emph{Data transcription.} Billing data were transcribed from utility bills rather than obtained from interval metering.
+\item \emph{End-use split.} The split is an audit estimate for one month and is assumed constant across months.
+\item \emph{Measure savings and costs.} Savings of E1--E4 and the costs of E2--E4 come from literature and market ranges rather than plant-specific measurements and quotations. The Monte Carlo analysis shows that the conclusions hold across these ranges, but the absolute savings must be verified through the M\&V plan.
+\item \emph{PV and load models.} The main PV model is monthly. The net-zero analysis uses hourly PV for one weather year rescaled to climatology and a synthetic hourly load built from an assumed always-on load and scheduled operating hours; shading and actual load shapes are not resolved, and inverter clipping is represented only in the EnergyPlus runs. Both models convert the NASA POWER hourly time stamps (UTC$-7$ at this longitude) to local clock time; the EnergyPlus weather file assumes constant relative humidity (60\%) and wind speed (2~m~s$^{-1}$), which affect module temperature only slightly. Storage sizing in particular should be confirmed with interval data.
+\item \emph{Demand ceiling.} Measured maximum demand is only implied by the load factors printed on the bills. The model assumes that the energy-based demand term remains binding, which is consistent with the billed demand.
+\item \emph{Tariff migration.} Migration to GDMTH, which would apply time-of-use energy prices and capacity charges on peak-period demand, is discussed but not simulated because no interval data were available; the bills identify the plant as a GDMTO customer, which is the tariff modelled.
+\item \emph{Thermal fuel use.} Because fuel consumption was not metered, the fuel-substitution analysis is parametric.
+\item \emph{Energy-security indicators.} Imported gas embodied in grid electricity is estimated with average shares and an assumed heat rate rather than with marginal dispatch.
+\end{itemize}
+None of these simplifications favours efficiency systematically. Several are conservative, notably the exclusion of non-energy benefits and the zero value assigned to PV surplus.
+
+%% ===================================================================
+\section{Conclusions}
+\label{sec:conclusions}
+
+This study applied the energy efficiency first principle to the investment choices of a Mexican footwear SME, comparing demand-side measures with rooftop PV and heat electrification on common indicators of energy, emissions, cost and security.
+
+The main conclusions are:
+\begin{itemize}
+\item \emph{Validated tariff model.} A model built from official GDMTO charges reproduces the plant's bills with a mean absolute error of \nTVMape\%. It shows that demand charges are effectively volumetric, so each avoided kWh is worth \nTMarg~\MXN.
+\item \emph{Cost of demand-side measures.} Base-load control, insulation of heated equipment, servo motors and a compressed-air package together save \nEESavedPct\% of grid electricity. Their central costs of \nCCEBase--\nCCECA~\MXN~kWh$^{-1}$ are below even the energy charge alone, and their paybacks are at most \nPBMaxEE\ years.
+\item \emph{Sequencing and PV sizing.} PV is profitable, but sequencing matters. Implementing efficiency first achieves the same \nGridTwo\% reduction in grid purchases with \nPVSaveFour\% less PV capacity, \nCapexSaveFour\% less capital and a higher NPV in \nProbFourTwo\% of uncertainty draws.
+\item \emph{Security and resilience.} Efficiency lowers the plant's peak, preserves its value if distributed-generation compensation changes and reduces exposure to imported gas and to energy-price shocks.
+\item \emph{Heat electrification.} Heat pumps outcompete LPG boilers above a COP of \nCOPBELPG, but not yet pipeline gas at current wholesale prices.
+\item \emph{Net zero.} Annual net-zero electricity is achievable and profitable with \nKWpNZE--\nEPKWpNZE~kWp of PV after efficiency (Python and EnergyPlus sizing; \nNZKWpSave--\nEPKWpSave~kWp less than without it). Hourly self-sufficiency of 80\% needs \nBatSSE~kWh of storage and 90\% turns the NPV negative; under current rules storage is a resilience investment, not a cost saving.
+\end{itemize}
+
+For SMEs in emerging economies, EE1st is best understood as a sequencing rule: measure, cut the waste, then size the supply. The open \texttt{ee1st} toolkit released with this paper allows other plants to repeat the assessment from twelve monthly bills and an end-use estimate, adding detail as production, weather or interval data become available. Future work should verify the savings ex post, add interval data to resolve hourly PV self-consumption and peak demand, and quantify thermal fuel use so that the phase-out of fossil fuels on site can be assessed directly.
+
+\FloatBarrier
+%% ===================================================================
+\section*{CRediT authorship contribution statement}
+\textbf{Yeniba Alberú Argüeso:} Investigation, Data curation, Formal analysis, Writing -- review \& editing. \textbf{Ivan Aguado Guerra:} Investigation, Data curation, Methodology, Writing -- review \& editing. \textbf{Francisco Acosta Sosa:} Investigation, Formal analysis, Writing -- review \& editing. \textbf{Samuel Antonio Rosas-Meléndez:} Validation, Visualization, Writing -- review \& editing. \textbf{Iván García Kerdan:} Conceptualization, Methodology, Software, Validation, Formal analysis, Visualization, Writing -- original draft, Writing -- review \& editing, Supervision.
+
+\section*{Declaration of competing interest}
+Iván García Kerdan is a Guest Editor of the special issue ``Energy Efficiency First for Net Zero: Enhancing Energy Security, Resilience, and Decarbonisation through the Phase-Out of Fossil Fuels'' and a member of the Editorial Board of \emph{Energy Efficiency First}. In accordance with Elsevier policy, the Editor-in-Chief was informed before submission, this is the only manuscript he has submitted to the special issue, and the manuscript was handled by another editor; he had no access to its peer-review process. The other authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{Funding}
+This research received no external funding.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
+During the preparation of this work the authors used Claude 5.5 (Anthropic) to a minimal extent, for language editing and checking of code; the authors reviewed and edited all content and take full responsibility for the publication.
+
+\section*{Data availability}
+The plant's billing, production and audit records are confidential and cannot be shared, because the company has not authorised their release. The model code, the public input data (tariffs, emission factors, fuel prices and climate), all derived results and the scripts that produce the tables and figures are openly available on Zenodo (\url{https://doi.org/10.5281/zenodo.XXXXXXX}) under MIT (code) and CC~BY~4.0 (data and results) licences. The same deposit contains the generalised toolkit \texttt{ee1st} (folder \texttt{ee1st/}), with the footwear plant and a synthetic plant as examples. See Section~\ref{sec:repro}.
+
+\section*{Acknowledgements}
+The authors thank the plant's maintenance manager and site staff for access to the facility and its records. \AQ{Add acknowledgement of the co-instructors of the course if desired.}
+
+%% ===================================================================
+\appendix
+
+\section{Billing, production and tariff data}
+\label{app:data}
+The monthly records were transcribed from utility bills and plant production records; they are confidential and only their summary is reproduced (Table~\ref{tab:billing}). Table~\ref{tab:tariffs} lists the official tariff charges for Pachuca de Soto.
+\input{tables/billing.tex}
+\input{tables/tariffs.tex}
+
+\section{Model parameters}
+\label{app:params}
+Table~\ref{tab:parameters} lists the model parameters. Ranges define triangular distributions whose mode is the central value. Status codes: M measured, O official, O* derived from official data, L literature, Q quotation in the audit report, D design, A assumption, R regulatory scenario. The last nine parameters belong to the hourly net-zero module (Section~\ref{sec:nzmethod}) and are varied in scenario analysis only.
+\input{tables/parameters.tex}
+
+\section{Photovoltaic resource and yield}
+\label{app:pv}
+Monthly mean daily plane-of-array irradiation $\bar H_T$ was computed from NASA POWER monthly mean global ($\bar H$) and diffuse ($\bar H_d$) horizontal irradiation \citep{nasapower} as
+\begin{equation}
+\bar H_T = \bar H\left[\left(1-\frac{\bar H_d}{\bar H}\right)\bar R_b + \frac{\bar H_d}{\bar H}\,\frac{1+\cos\beta}{2} + \rho_g\,\frac{1-\cos\beta}{2}\right],
+\end{equation}
+with the monthly beam tilt factor $\bar R_b$ of \citet{klein1977} for a south-facing surface evaluated on each month's recommended day, tilt $\beta = 20^\circ$ and ground reflectance $\rho_g=0.2$. Annual mean horizontal irradiation is \nGHI~kWh~m$^{-2}$~d$^{-1}$, compared with the 4.8 peak-sun hours used in the audit report, and plane-of-array irradiation is \nPOA~kWh~m$^{-2}$~d$^{-1}$. With a performance ratio of 0.80 the specific yield is \nSpecYield~kWh~kWp$^{-1}$~yr$^{-1}$. The audit report sized the array at \nStuKWp~kWp to cover 80\% of a 28,400~kWh month with 4.8 peak-sun hours and no performance ratio, and proposed 252 modules (\nStuKWpMod~kWp). This study adopts the module-based capacity.
+
+\section{Sensitivity analysis}
+\label{app:sens}
+Table~\ref{tab:sensitivity} gives the 20-year NPV of each portfolio with each parameter at its low and high bound and all others at their central values, ranked by the swing of P4.
+\input{tables/sensitivity.tex}
+
+\section{Measurement and verification plan}
+\label{app:mv}
+The audit team prepared an M\&V plan following IPMVP \citep{evo2022ipmvp}. PV output is verified under Option~B through inverter and bidirectional-meter data with local irradiance. The capacitor bank is verified under Option~C through billed PF and surcharges, or Option~B where a network analyser is installed. Compressed air is verified under Option~B through dedicated metering of kWh, pressure and operating hours, with specific consumption (kWh per m$^3$ of air) as the indicator where flow can be measured. Servo motors and insulation can be verified under Option~A with spot power measurements and logged hours. Base-load control is verified under Option~C through the production-normalised baseline of Section~\ref{sec:method}, complemented by night and weekend load readings. The whole facility is verified under Option~C with at least 12 months of post-implementation billing, adjusted for production and operating hours. Given the CV-RMSE of the baseline (\nCVExcl\%), savings below about 10\% of consumption cannot be detected reliably at whole-facility level. Sub-metering of the compressed-air room and of the vulcanising and stitching areas is therefore recommended as the first implementation step.
+
+\bibliographystyle{elsarticle-harv}
+\bibliography{references}
+
+\end{document}

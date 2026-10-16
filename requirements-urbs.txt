@@ -1,0 +1,9 @@
+# Environment for the urbs benchmark (scripts/run_urbs.py); urbs itself: https://github.com/tum-ens/urbs (commit 37487e6)
+pyomo==6.8.2
+pandas==2.2.3
+numpy==2.0.2
+openpyxl
+xlrd
+highspy
+psutil
+matplotlib

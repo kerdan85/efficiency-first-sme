@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+title: "efficiency-first-sme: model, public data, results and the ee1st toolkit for sizing rooftop PV and batteries after energy efficiency in SMEs"
+version: 1.0.0
+date-released: 2026-10-14
+license: [MIT, CC-BY-4.0]
+repository-code: "https://github.com/XXXX/efficiency-first-sme"
+doi: "10.5281/zenodo.XXXXXXX"
+authors:
+  - family-names: "Alberú Argüeso"
+    given-names: "Yeniba"
+    affiliation: "Tecnologico de Monterrey, School of Engineering and Sciences"
+  - family-names: "Aguado Guerra"
+    given-names: "Ivan"
+    affiliation: "Tecnologico de Monterrey, School of Engineering and Sciences"
+  - family-names: "Acosta Sosa"
+    given-names: "Francisco"
+    affiliation: "Tecnologico de Monterrey, School of Engineering and Sciences"
+  - family-names: "Rosas-Meléndez"
+    given-names: "Samuel Antonio"
+    affiliation: "Tecnologico de Monterrey, School of Engineering and Sciences"
+  - family-names: "García Kerdan"
+    given-names: "Iván"
+    affiliation: "Tecnologico de Monterrey, School of Engineering and Sciences"
+    email: "i.garciakerdan@tec.mx"
+keywords:
+  - energy efficiency first
+  - energy systems modelling
+  - optimisation
+  - industrial SMEs
+  - energy security
+  - cost of conserved energy
+  - photovoltaics
+  - Mexico
+preferred-citation:
+  type: article
+  title: "Sizing Rooftop Photovoltaics and Batteries After Energy Efficiency: An Optimisation Framework for Manufacturing SMEs"
+  authors:
+    - family-names: "Alberú Argüeso"
+      given-names: "Yeniba"
+    - family-names: "Aguado Guerra"
+      given-names: "Ivan"
+    - family-names: "Acosta Sosa"
+      given-names: "Francisco"
+    - family-names: "Rosas-Meléndez"
+      given-names: "Samuel Antonio"
+    - family-names: "García Kerdan"
+      given-names: "Iván"
+  journal: "Processes"
+  year: 2026
+  status: submitted

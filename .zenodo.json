@@ -1,0 +1,43 @@
+{
+  "title": "efficiency-first-sme: model, public data, results and the ee1st toolkit (Energy Efficiency First for SMEs)",
+  "upload_type": "software",
+  "description": "Python model, scripts, public input data (official CFE tariffs, emission factors, fuel prices, NASA POWER climate), all derived results and figures of the article 'Sizing Rooftop Photovoltaics and Batteries After Energy Efficiency: An Optimisation Framework for Manufacturing SMEs' (EnergyPlus and urbs inputs and scripts included), and the generalised toolkit ee1st (folder ee1st/) for appraising other SMEs from a single YAML case file. The plant's billing, production and audit records are confidential and not included; their format is documented in data/raw/CONFIDENTIAL.md.",
+  "creators": [
+    {
+      "name": "Alberú Argüeso, Yeniba",
+      "affiliation": "Tecnologico de Monterrey, School of Engineering and Sciences"
+    },
+    {
+      "name": "Aguado Guerra, Ivan",
+      "affiliation": "Tecnologico de Monterrey, School of Engineering and Sciences"
+    },
+    {
+      "name": "Acosta Sosa, Francisco",
+      "affiliation": "Tecnologico de Monterrey, School of Engineering and Sciences"
+    },
+    {
+      "name": "Rosas-Meléndez, Samuel Antonio",
+      "affiliation": "Tecnologico de Monterrey, School of Engineering and Sciences"
+    },
+    {
+      "name": "García Kerdan, Iván",
+      "affiliation": "Tecnologico de Monterrey, School of Engineering and Sciences"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "energy efficiency first",
+    "industrial SMEs",
+    "energy security",
+    "cost of conserved energy",
+    "photovoltaics",
+    "Mexico",
+    "energy systems modelling",
+    "optimisation",
+    "urbs",
+    "EnergyPlus"
+  ],
+  "language": "eng",
+  "access_right": "open",
+  "notes": "Data, results and figures are licensed CC BY 4.0; see LICENSE."
+}
