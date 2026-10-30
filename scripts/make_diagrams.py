@@ -61,7 +61,7 @@ RX, RW = 22.5, 64.5
 ax.add_patch(Rectangle((RX, 40.0), RW, 4.2, fc="none", ec=OI["orange"], lw=0.7, hatch="////"))
 ax.add_patch(Rectangle((RX, 40.0), RW * r4 / r2, 4.2, fc=OI["orange"], alpha=0.5, ec=OI["orange"], lw=0.7))
 ax.text(RX + RW * r4 / r2 / 2, 42.1, f"PV after efficiency (P4): {res['p4_kWp']:.0f} kWp, {r4:.0f} m$^2$",
-        ha="center", va="center", fontsize=5.8)
+        ha="center", va="center", fontsize=5.8, bbox=dict(fc="white", ec="none", pad=0.5))
 ax.text(RX + RW * (1 + r4 / r2) / 2, 42.1, f"PV only (P2): 163.8 kWp, {r2:.0f} m$^2$", ha="center", va="center",
         fontsize=5.8, bbox=dict(fc="white", ec="none", pad=0.5))
 ax.text(RX, 45.0, "Proposed rooftop PV (roof area to scale between options)", fontsize=6.0, color="#8A5A00", va="bottom")
@@ -114,7 +114,8 @@ ax.text(33.0, 9.6, "two compressors\nE1 leaks, pressure, no-load control", ha="c
 ax.plot([42.0, fx + 4.25], [10.4, 10.4], color=OI["blue"], lw=1.1, ls=(0, (3, 1.5)))
 for xx in (xs[2] + w / 2, sx + 10.0, fx + 4.25):
     ax.plot([xx, xx], [10.4, y0 - 3.2 if xx == sx + 10.0 else y0], color=OI["blue"], lw=0.8, ls=(0, (3, 1.5)))
-ax.text(58.0, 10.9, "compressed-air network", fontsize=5.2, color=OI["blue"], va="bottom", ha="center", style="italic")
+ax.text(58.0, 10.9, "compressed-air network", fontsize=5.2, color=OI["blue"], va="bottom", ha="center", style="italic",
+        bbox=dict(fc="#F8F8F8", ec="none", pad=0.4), zorder=10)
 
 # electricity supply
 box(ax, 1.0, 26.0, 10.5, 7.0, "CFE grid\nmedium voltage", fc="white", fs=6.0)

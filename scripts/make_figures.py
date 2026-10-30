@@ -5,7 +5,8 @@ from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
+import matplotlib.pyplot as plt
+import matplotlib.patheffects as pe  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
@@ -59,10 +60,10 @@ import calendar
 ax.set_xticks(x[::6]); ax.set_xticklabels([calendar.month_abbr[int(m[5:])] + " " + m[2:4] for m in b.month[::6]])
 ax.set_ylabel("Index (period mean = 100)")
 ax.set_xlim(-0.8, len(b) - 0.2)
-ax.legend(loc="upper left", ncol=1, handlelength=1.2)
+ax.legend(loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=2, handlelength=1.2, frameon=False, borderaxespad=0.2)
 ax.axvspan(21.5, 24.5, color=OI["yellow"], alpha=0.35, lw=0)
-ax.set_ylim(0, 235)
-ax.text(23, 222, "24-h shifts", ha="center", fontsize=6)
+ax.set_ylim(0, 250)
+ax.text(23, 246, "24-h\nshifts", ha="center", va="top", fontsize=5.5, linespacing=0.9, bbox=dict(fc="white", ec="none", pad=0.3))
 panel(ax, "a", x=-0.12)
 ax = axs[1]
 pp = b.dropna(subset=["production_pairs"])
@@ -113,11 +114,11 @@ for m in order:
     lo, hi = mc[f"cce_{m}"]["p5"], mc[f"cce_{m}"]["p95"]
     ax.bar(x0, h, width=w, align="edge", color=C_EE, edgecolor="white", lw=0.8)
     ax.errorbar(x0 + w / 2, h, yerr=[[h - lo], [hi - h]], color=OI["black"], lw=0.6, capsize=1.5)
-    ax.text(x0 + w / 2, hi + 0.05, labels2[m], ha="center", va="bottom", fontsize=5.8, linespacing=0.95)
+    ax.text(x0 + w / 2, 1.95, labels2[m], ha="center", va="bottom", fontsize=5.8, linespacing=0.95)
     x0 += w
 mv = res["tariff"]["marginal_MXN_per_kWh"]; ec = res["tariff"]["energy"]
 ax.axhline(mv, color=OI["verm"], lw=0.9); ax.text(1, mv + 0.05, "Avoided tariff (energy + energy-based demand charges)", fontsize=6, color=OI["verm"])
-ax.axhline(ec, color=OI["verm"], lw=0.8, ls=":"); ax.text(x0 + 2.5, ec + 0.05, "Energy charge only", fontsize=6, color=OI["verm"], ha="right")
+ax.axhline(ec, color=OI["verm"], lw=0.8, ls=":"); ax.text(1, ec + 0.05, "Energy charge only", fontsize=6, color=OI["verm"], ha="left")
 lc = M.loc["PV", "cce"]
 ax.axhline(lc, color=C_PV, lw=0.9, ls="--"); ax.text(1, lc + 0.05, f"PV LCOE {lc:.2f}", fontsize=6, color="#8a5d00")
 ax.set_xlim(0, x0 + 3); ax.set_ylim(0, 3.2)
@@ -147,9 +148,10 @@ ax.bar(xs, [PT.loc[k, "grid_saved_frac"] * 100 for k in keys], color=cols, width
 ax.set_ylabel("Grid purchases avoided (%)"); ax.set_xticks(xs); ax.set_xticklabels(short); panel(ax, "b", x=-0.35)
 ax = axs[2]
 ax.bar(xs, [PT.loc[k, "billed_peak1_kW"] for k in keys], color=cols, width=0.65)
-ax.axhline(100, color=OI["verm"], lw=0.8, ls="--"); ax.text(3.45, 171, "dashed: GDMTO limit, 100 kW", ha="right", va="top", fontsize=5.8, color=OI["verm"])
-ax.axhline(PT.loc["P0 Baseline", "billed_peak1_kW"], color=OI["grey"], lw=0.8); ax.text(-0.4, PT.loc["P0 Baseline", "billed_peak1_kW"] + 3, "P0", fontsize=6, color="#666666")
-ax.set_ylabel("Peak energy-implied demand (kW)"); ax.set_ylim(0, 175)
+ax.axhline(PT.loc["P0 Baseline", "billed_peak1_kW"], color=OI["grey"], lw=0.8, label="P0 baseline")
+ax.axhline(100, color=OI["verm"], lw=0.8, ls="--", label="GDMTO limit (100 kW)")
+ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.0), fontsize=5.5, handlelength=1.6, frameon=False, borderaxespad=0.1)
+ax.set_ylabel("Peak energy-implied demand (kW)"); ax.set_ylim(0, 215)
 ax.set_xticks(xs); ax.set_xticklabels(short); panel(ax, "c", x=-0.35)
 ax = axs[3]
 ax.bar(xs, [PT.loc[k, "roof_m2"] for k in keys], color=cols, width=0.65)
@@ -275,7 +277,7 @@ for m in order:
     w = M.loc[m, "saved_MWh"]; h = M.loc[m, "cce"]
     ax.bar(x0, h, width=w, align="edge", color=C_EE, edgecolor="white", lw=0.8)
     if h > 0.5:
-        ax.text(x0 + w / 2, h - 0.08, m, ha="center", va="top", fontsize=6, color="white", fontweight="bold")
+        ax.text(x0 + w / 2, min(h, lc) - 0.12, m, ha="center", va="top", fontsize=6, color="white", fontweight="bold")
     else:
         ax.text(x0 + w / 2, h + 0.06, m, ha="center", fontsize=6, color=INK)
     x0 += w
@@ -443,9 +445,10 @@ for f in geo["features"]:
     hid = f["properties"]["name"] == "Hidalgo"
     for poly in f["geometry"]["coordinates"]:
         axi.add_patch(Polygon(poly[0], closed=True, fc=OI["orange"] if hid else "#ECECEC", ec="#8A8A8A", lw=0.35))
-for name, (lo, la) in {"Hidalgo": (-98.95, 20.75), "Querétaro": (-99.95, 21.2), "Estado de\nMéxico": (-99.95, 19.95),
+for name, (lo, la) in {"Hidalgo": (-98.95, 20.75), "Querétaro": (-100.12, 21.36), "Estado de\nMéxico": (-99.95, 19.95),
                        "Veracruz": (-97.85, 21.38), "Tlaxcala": (-98.05, 19.62)}.items():
-    axi.text(lo, la, name, fontsize=4.3, color="#555555", ha="center", va="center", style="italic")
+    axi.text(lo, la, name, fontsize=4.3, color="#555555", ha="center", va="center", style="italic",
+             path_effects=[pe.withStroke(linewidth=1.6, foreground=OI["orange"] if name == "Hidalgo" else "#ECECEC")])
 axi.plot(-98.76, 20.10, "o", ms=3.2, mfc=OI["black"], mec="white", mew=0.5, zorder=5)
 axi.text(-98.70, 20.13, "Pachuca", fontsize=5.2, fontweight="bold", va="bottom")
 axi.plot(-99.13, 19.43, "s", ms=2.2, color="#555555", zorder=5)

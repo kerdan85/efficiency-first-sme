@@ -81,11 +81,11 @@ for i, (name, cap) in enumerate(sel):
                    hatch="" if ee else "////", edgecolor="white", lw=0.3)
             bottom += v
         xt.append(xx); xl.append("E" if ee else "S")
-    ax.annotate(name, xy=(i * 2.6 + 0.5, -0.11), xycoords=("data", "axes fraction"), ha="center", va="top", fontsize=6.5)
+    ax.annotate(name, xy=(i * 2.6 + 0.5, -0.14), xycoords=("data", "axes fraction"), ha="center", va="top", fontsize=6.5)
 ax.set_xticks(xt); ax.set_xticklabels(xl, fontsize=6)
 ax.set_ylabel("Annualised cost (M MXN yr$^{-1}$)"); ax.set_ylim(0, None)
 ax.legend(loc="upper left", fontsize=6, ncol=1)
-ax.text(0.5, -0.24, "CO$_2$ cap (S supply only, E efficiency available)", transform=ax.transAxes, ha="center", va="top", fontsize=7)
+ax.text(0.5, -0.27, "CO$_2$ cap (S supply only, E efficiency available)", transform=ax.transAxes, ha="center", va="top", fontsize=7)
 for ax, l in zip(axs.flat, "abcd"):
     ax.text(-0.16, 1.04, l, transform=ax.transAxes, fontsize=8, fontweight="bold")
 fig.savefig(ROOT / "figures/fig9_urbs.pdf", bbox_inches="tight"); fig.savefig(ROOT / "figures/fig9_urbs.png", bbox_inches="tight")
