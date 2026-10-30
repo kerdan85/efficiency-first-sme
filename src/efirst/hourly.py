@@ -69,17 +69,27 @@ def hourly_pv_per_kWp(P: dict, lat=20.0965, tilt=20.0, albedo=0.2) -> pd.DataFra
 
 
 # ----------------------------------------------------------------------------- load
-def hourly_load(q_month: np.ndarray, months: np.ndarray, w: pd.DataFrame, night_kW: np.ndarray) -> np.ndarray:
+def operating_mask(w: pd.DataFrame, m: int, profile: str = "standard") -> np.ndarray:
+    """Operating hours of month m: standard (Mon-Fri 08-18, Sat 08-13) or extended two-shift
+    (Mon-Fri 06-22, Sat 06-14); Mon-Sat 24 h in the shift months in both cases."""
+    hr = w.timestamp_LST.dt.hour.to_numpy(); wd = w.weekday.to_numpy(); mo = w.month.to_numpy()
+    idx = mo == m
+    if m in SHIFT_MONTHS:
+        return idx & (wd <= 5)
+    if profile == "extended":
+        return idx & (((wd <= 4) & (hr >= 6) & (hr < 22)) | ((wd == 5) & (hr >= 6) & (hr < 14)))
+    return idx & (((wd <= 4) & (hr >= 8) & (hr < 18)) | ((wd == 5) & (hr >= 8) & (hr < 13)))
+
+
+def hourly_load(q_month: np.ndarray, months: np.ndarray, w: pd.DataFrame, night_kW: np.ndarray,
+                profile: str = "standard") -> np.ndarray:
     """Distribute monthly energy into hours: an always-on load N plus a flat
     operating-hours load (Mon-Fri 08-18, Sat 08-13; Mon-Sat 24 h in shift months)."""
     load = np.zeros(len(w))
-    hr = w.timestamp_LST.dt.hour.to_numpy(); wd = w.weekday.to_numpy(); mo = w.month.to_numpy()
+    mo = w.month.to_numpy()
     for q, m, n in zip(q_month, months, night_kW):
         idx = mo == m
-        if m in SHIFT_MONTHS:
-            op = idx & (wd <= 5)
-        else:
-            op = idx & (((wd <= 4) & (hr >= 8) & (hr < 18)) | ((wd == 5) & (hr >= 8) & (hr < 13)))
+        op = operating_mask(w, m, profile)
         h_tot = idx.sum(); h_op = op.sum()
         n_eff = min(n, 0.9 * q / h_tot)
         p_op = (q - n_eff * h_tot) / h_op
@@ -132,21 +142,37 @@ def monthly_net_metering(imp, exp, months_h, ref_months, NZ):
 
 
 # ----------------------------------------------------------------------------- scenario
-def evaluate_nz(measures, kWp, bat_kWh, P=None, NZ=None, data=None, w=None, tariff_mode="net_metering",
-                years_to_steady=5, demand_basis="net"):
-    P = P or central(); NZ = NZ or nz_central(); data = data or load_all(P)
-    w = w if w is not None else hourly_pv_per_kWp(P)
-    ref = data["ref"]; tr = data["tariff"]
-    q0 = ref.energy_kWh.to_numpy(float)
+def load_profile(measures, P, NZ, data, w, e4_mode="offhours", profile="standard"):
+    """Hourly load after measures. e4_mode: 'offhours' assigns the base-load-control saving to the
+    always-on load outside operating hours (central case); 'proportional' splits it between the always-on
+    load and the production-independent load during operating hours in proportion to their energy."""
+    ref = data["ref"]
     meas = [m for m in measures if m != "E5"]
     q_ee, det = measure_savings(ref, P, data["intercept"], meas)
     months = ref.mon.to_numpy()
     h_month = np.array([(w.month == m).sum() for m in months])
-    nonop = h_month - HOURS_OPERATING_PER_MONTH * h_month / 730
     night = np.full(12, NZ["night_load_kW"])
     if "E4" in det:
-        night = np.maximum(night - det["E4"] / nonop, 0.3 * NZ["night_load_kW"])
-    load = hourly_load(q_ee, months, w, night)
+        if e4_mode == "proportional":
+            share = np.minimum(night * h_month / data["intercept"], 1.0)   # always-on share of the base load
+            night = np.maximum(night - det["E4"] * share / h_month, 0.0)
+        else:
+            if profile == "standard":   # central case, as published
+                nonop = h_month - HOURS_OPERATING_PER_MONTH * h_month / 730
+            else:
+                nonop = np.array([((w.month == m).to_numpy() & ~operating_mask(w, m, profile)).sum() for m in months])
+            night = np.maximum(night - det["E4"] / nonop, 0.3 * NZ["night_load_kW"])
+    return hourly_load(q_ee, months, w, night, profile), q_ee, night
+
+
+def evaluate_nz(measures, kWp, bat_kWh, P=None, NZ=None, data=None, w=None, tariff_mode="net_metering",
+                years_to_steady=5, demand_basis="net", e4_mode="offhours", profile="standard"):
+    P = P or central(); NZ = NZ or nz_central(); data = data or load_all(P)
+    w = w if w is not None else hourly_pv_per_kWp(P)
+    ref = data["ref"]; tr = data["tariff"]
+    q0 = ref.energy_kWh.to_numpy(float)
+    months = ref.mon.to_numpy()
+    load, q_ee, night = load_profile(measures, P, NZ, data, w, e4_mode, profile)
     pv = w.pv_kWh_per_kWp.to_numpy() * kWp
     imp, exp = dispatch(load, pv, bat_kWh, NZ)
     mh = w.month.to_numpy()

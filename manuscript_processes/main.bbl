@@ -188,6 +188,8 @@ Thollander, P.; Andrei, M.; Jalo, N.; Rohdin, P.; Palm, J.; Sann{\"o}, A.;
 {ISO}.
 \newblock {ISO} 50001:2018 Energy management systems --- Requirements with
   guidance for use,  2018.
+\newblock Available online: \url{https://www.iso.org/standard/69426.html}
+  (accessed on 14 October 2026).
 
 \bibitem[{CONUEE} and {GIZ}(2022)]{conuee2022}
 {CONUEE}.; {GIZ}.
@@ -471,6 +473,7 @@ Cutler, D.; Olis, D.; Elgqvist, E.; Li, X.; Laws, N.; DiOrio, N.; Walker, A.;
 \newblock {REopt}: A Platform for Energy System Integration and Optimization.
 \newblock Technical Report NREL/TP-7A40-70022, National Renewable Energy
   Laboratory, Golden, CO, USA,  2017.
+\newblock {\url{https://doi.org/10.2172/1395453}}.
 
 \bibitem[Mariaud et~al.(2017)Mariaud, Acha, Ekins-Daukes, Shah, and
   Markides]{mariaud2017}
@@ -542,6 +545,49 @@ Sch{\"u}tz, T.; Schiffer, L.; Harb, H.; Fuchs, M.; M{\"u}ller, D.
 \newblock {\em Applied Energy} {\bf 2017}, {\em 185},~1--15.
 \newblock {\url{https://doi.org/10.1016/j.apenergy.2016.10.049}}.
 
+\bibitem[Zhang et~al.(2017)Zhang, Cai, Fang, Zhao, and
+  Sutherland]{zhang2017factory}
+Zhang, H.; Cai, J.; Fang, K.; Zhao, F.; Sutherland, J.W.
+\newblock Operational optimization of a grid-connected factory with onsite
+  photovoltaic and battery storage systems.
+\newblock {\em Applied Energy} {\bf 2017}, {\em 205},~1538--1547.
+\newblock {\url{https://doi.org/10.1016/j.apenergy.2017.08.140}}.
+
+\bibitem[Zahari et~al.(2023)Zahari, Mokhlis, Mansor, and
+  Sulaima]{zahari2023dsm}
+Zahari, N.E.M.; Mokhlis, H.; Mansor, N.N.; Sulaima, M.F.
+\newblock Modelling of Hybrid Energy System for Demand-Side Management: A Case
+  Study of Industrial Customer in {Malaysia}.
+\newblock In Proceedings of the 2023 Innovations in Power and Advanced
+  Computing Technologies (i-PACT). IEEE,  2023, pp. 1--6.
+\newblock {\url{https://doi.org/10.1109/i-PACT58649.2023.10434432}}.
+
+\bibitem[Zahari et~al.(2024)Zahari, Mokhlis, Mubarak, Mansor, Sulaima,
+  Ramasamy, Zulkapli, Ja'apar, Jaafar, and Marsadek]{zahari2024peak}
+Zahari, N.E.M.; Mokhlis, H.; Mubarak, H.; Mansor, N.N.; Sulaima, M.F.;
+  Ramasamy, A.K.; Zulkapli, M.F.; Ja'apar, M.A.B.; Jaafar, M.; Marsadek, M.B.
+\newblock Integrating Solar {PV}, Battery Storage, and Demand Response for
+  Industrial Peak Shaving: A Systematic Review on Strategy, Challenges and Case
+  Study in {Malaysian} Food Manufacturing.
+\newblock {\em IEEE Access} {\bf 2024}, {\em 12},~106832--106856.
+\newblock {\url{https://doi.org/10.1109/ACCESS.2024.3420941}}.
+
+\bibitem[Georgiadis et~al.(2025)Georgiadis, Dimitriadis, Passalis, and
+  Georgiadis]{georgiadis2025mlmilp}
+Georgiadis, G.P.; Dimitriadis, C.N.; Passalis, N.; Georgiadis, M.C.
+\newblock A hybrid {ML-MILP} framework for the optimal integration of
+  photovoltaic and battery systems in manufacturing industries.
+\newblock {\em Computers \& Chemical Engineering} {\bf 2025}, {\em
+  203},~109356.
+\newblock {\url{https://doi.org/10.1016/j.compchemeng.2025.109356}}.
+
+\bibitem[{Natural Earth}(2023)]{naturalearth}
+{Natural Earth}.
+\newblock Admin 1 -- States, Provinces (1:10m cultural vectors), version 5.1.1.
+\newblock \url{https://www.naturalearthdata.com/}; terms of use:
+  \url{https://www.naturalearthdata.com/about/terms-of-use/},  2023.
+\newblock Public domain. Accessed 30 October 2026.
+
 \bibitem[{Comisi{\'o}n Federal de Electricidad}(2026)]{cfe2026gdmto}
 {Comisi{\'o}n Federal de Electricidad}.
 \newblock Tarifa {GDMTO}: Gran demanda en media tensi{\'o}n ordinaria. Cuotas
@@ -598,6 +644,17 @@ Sch{\"u}tz, T.; Schiffer, L.; Harb, H.; Fuchs, M.; M{\"u}ller, D.
 {ISO}.
 \newblock {ISO} 50006:2023 Energy management systems --- Evaluating energy
   performance using energy performance indicators and energy baselines,  2023.
+\newblock Available online: \url{https://www.iso.org/standard/79367.html}
+  (accessed on 14 October 2026).
+
+\bibitem[{Comisi{\'o}n Federal de Electricidad}(2026)]{cfe2026gdmth}
+{Comisi{\'o}n Federal de Electricidad}.
+\newblock Tarifas finales del Suministro B{\'a}sico vigentes desde el 1 de
+  septiembre de 2026, Anexo {II}: tarifa {GDMTH}, Divisi{\'o}n Centro Oriente.
+\newblock Diario Oficial de la Federaci{\'o}n, September 2026,  2026.
+\newblock Available online:
+  \url{https://sidof.segob.gob.mx/notas/docFuente/5800039} (accessed on 29
+  October 2026).
 
 \bibitem[Klein(1977)]{klein1977}
 Klein, S.A.
@@ -669,6 +726,9 @@ Dorfner, J.;  et~al.
   Savings.
 \newblock Technical report, American Society of Heating, Refrigerating and
   Air-Conditioning Engineers, Atlanta, GA, USA,  2014.
+\newblock Available online:
+  \url{https://webstore.ansi.org/standards/ashrae/ashraeguideline142014}
+  (accessed on 14 October 2026).
 
 \bibitem[{García Kerdan} and {Reyes de Luna}(2026)]{garciakerdan2026educon}
 {García Kerdan}, I.; {Reyes de Luna}, E.F.

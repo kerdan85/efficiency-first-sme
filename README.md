@@ -63,6 +63,12 @@ Each script can also be run alone, in this order:
 | `scripts/urbs_prepare.py` | `urbs/plant_urbs.xlsx` (urbs input: hourly load, PV, efficiency measures as negawatt processes, battery) |
 | `scripts/run_urbs.py` (urbs environment: `requirements-urbs.txt` + urbs from github.com/tum-ens/urbs, commit 37487e6; set `URBS_PYTHON` for `run_all.sh`) | `results/urbs_results.csv` (32 linear programmes: 3 compensation regimes, roof limit, CO2 caps, battery-cost sensitivity; HiGHS), `urbs/urbs_dispatch.csv.gz` (hourly dispatch, confidential) |
 | `scripts/export_urbs.py` | `figures/fig9_urbs.*`, `figures/fig10_urbs_dispatch.*`, `manuscript/tables/urbs.tex`, `urbs_battery.tex`, `manuscript/numbers_urbs.tex`, `results/urbs_dispatch_summary.json` |
+| `scripts/run_e4_stress.py` | `results/e4_stress.json` (efficiency first without base-load control; deterministic and Monte Carlo) |
+| `scripts/run_loadshape.py` | `results/loadshape_sensitivity.csv` (hourly results for six synthetic load profiles) |
+| `scripts/run_billcheck.py` | `results/bill_loadcheck.json` (always-on load and peaks inferred from the bills; needs the confidential bills) |
+| `scripts/run_gdmth.py` | `results/gdmth.json` (time-of-use GDMTH reclassification scenario; tariff in `data/raw/cfe_gdmth_centro_oriente.csv`) |
+| `scripts/run_urbs.py` with `URBS_SUBSET=robust` or `URBS_SUBSET=loadshape URBS_TAG=...` | `results/urbs_robustness.csv`, `results/urbs_loadshape_*.csv` |
+| `scripts/export_revision.py` | `manuscript/numbers_rev.tex`, `manuscript/tables/loadshape.tex`, `urbs_robust.tex` |
 | `scripts/build_processes_manuscript.py` | `manuscript_processes/main.tex`, `tables/`, `numbers.tex`, `references.bib` (MDPI Processes version) |
 
 ## Repository layout

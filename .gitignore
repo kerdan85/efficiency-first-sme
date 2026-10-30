@@ -18,6 +18,7 @@ data/raw/area_disaggregation_reference_month.csv
 results/tariff_validation.csv
 energyplus/*/
 urbs/plant_urbs.xlsx
+urbs/plant_urbs_*.xlsx
 
 # ee1st toolkit: confidential plant records and generated outputs
 ee1st/examples/footwear_mx/data/billing_monthly.csv

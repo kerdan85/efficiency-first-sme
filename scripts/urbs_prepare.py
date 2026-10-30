@@ -15,7 +15,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from efirst.hourly import hourly_load, hourly_pv_per_kWp, nz_central  # noqa: E402
+import os  # noqa: E402
+from efirst.hourly import hourly_load, hourly_pv_per_kWp, load_profile, nz_central  # noqa: E402
 from efirst.model import load_all, marginal_value_per_kWh, measure_capex, measure_savings  # noqa: E402
 from efirst.params import HOURS_OPERATING_PER_MONTH, central  # noqa: E402
 
@@ -25,9 +26,16 @@ ref = D["ref"]; months = ref.mon.to_numpy()
 h_month = np.array([(W.month == m).sum() for m in months])
 nonop = h_month - HOURS_OPERATING_PER_MONTH * h_month / 730
 N = NZ["night_load_kW"]
+# load-profile variant for the sensitivity analysis (default: central profile as published)
+TAG = os.environ.get("URBS_TAG", "")
+VAR = dict(night=float(os.environ.get("URBS_NIGHT_KW", N)), e4_mode=os.environ.get("URBS_E4_MODE", "offhours"),
+           profile=os.environ.get("URBS_PROFILE", "standard"))
 
 
 def load_for(meas):
+    if TAG:
+        NZv = dict(NZ); NZv["night_load_kW"] = VAR["night"]
+        return load_profile(meas, P, NZv, D, W, VAR["e4_mode"], VAR["profile"])[0]
     q, det = measure_savings(ref, P, D["intercept"], meas)
     night = np.full(12, N)
     if "E4" in det:
@@ -121,7 +129,8 @@ trans = pd.DataFrame(columns=["Site In", "Site Out", "Transmission", "Commodity"
                               "base_voltage", "tra-block"])
 dsm = pd.DataFrame(columns=["Site", "Commodity", "delay", "eff", "recov", "cap-max-do", "cap-max-up"])
 
-with pd.ExcelWriter(OUT / "plant_urbs.xlsx") as xw:
+SUF = f"_{TAG}" if TAG else ""
+with pd.ExcelWriter(OUT / f"plant_urbs{SUF}.xlsx") as xw:
     for name, df in (("Global", glob), ("Site", sites), ("Commodity", com), ("Process", pro), ("Process-Commodity", pc),
                      ("Transmission", trans), ("Storage", sto), ("DSM", dsm), ("Demand", dem), ("SupIm", sup),
                      ("Buy-Sell-Price", bsp), ("TimeVarEff", tve)):
@@ -130,7 +139,7 @@ meta = dict(marginal_value=mv, pv_unit_per_kWp=fpk, load_MWh=float(L0.sum() / 10
             pv_specific_yield=float(W.pv_kWh_per_kWp.sum()), pv_inv_cost_per_kWp=pv_inv, bat_cost_per_usable_kWh=bat_usable,
             co2_baseline_t=float(L0.sum() / 1000 * P["ef_grid_t_per_MWh"]), ef=P["ef_grid_t_per_MWh"],
             net_billing_export=NZ["net_billing_export_value"], measures=meas_meta, discount_rate=r)
-json.dump(meta, open(OUT / "plant_urbs_meta.json", "w"), indent=1)
+json.dump(meta, open(OUT / f"plant_urbs{SUF}_meta.json", "w"), indent=1)
 print(json.dumps({k: v for k, v in meta.items() if k != "measures"}, indent=1))
 for m, v in meas_meta.items():
     print(m, {k: round(x, 2) if isinstance(x, float) else x for k, x in v.items()})

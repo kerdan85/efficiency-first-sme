@@ -15,6 +15,11 @@ if [ -n "${URBS_PYTHON:-}" ]; then   # optional: urbs environment (requirements-
   "$URBS_PYTHON" -W ignore scripts/run_urbs.py
 fi
 python3 scripts/export_urbs.py
+python3 scripts/run_e4_stress.py
+python3 scripts/run_loadshape.py
+python3 scripts/run_billcheck.py
+python3 scripts/run_gdmth.py
+python3 scripts/export_revision.py
 python3 scripts/export_numbers.py
 python3 scripts/export_tables.py
 python3 scripts/build_processes_manuscript.py

@@ -1,0 +1,35 @@
+month,fixed_MXN,distribution_MXN_per_kW,transmission_MXN_per_kWh,cenace_MXN_per_kWh,scnmem_MXN_per_kWh,energy_base,energy_intermedia,energy_punta,capacity_MXN_per_kW,energy_base_allin,energy_intermedia_allin,energy_punta_allin,source_url
+2024-01,360.01,155.26,0.1769,0.0065,0.0062,0.8756,1.722,1.9692,397.32,1.0652,1.9116,2.1588,https://sidof.segob.gob.mx/notas/docFuente/5715334
+2024-02,360.01,155.26,0.1769,0.0065,0.0062,0.8807,1.732,1.9806,399.63,1.0703,1.9216,2.1702,https://sidof.segob.gob.mx/notas/docFuente/5717851
+2024-03,,,,,,,,,,,,,NOT FOUND
+2024-04,360.01,155.26,0.1769,0.0065,0.0062,0.8918,1.7539,2.0057,404.68,1.0814,1.9435,2.1953,https://sidof.segob.gob.mx/notas/docFuente/5723641
+2024-05,360.01,155.26,0.1769,0.0065,0.0062,0.8918,1.7539,2.0057,404.68,1.0814,1.9435,2.1953,https://sidof.segob.gob.mx/notas/docFuente/5728426
+2024-06,360.01,155.26,0.1769,0.0065,0.0062,0.8918,1.7539,2.0057,404.68,1.0814,1.9435,2.1953,https://sidof.segob.gob.mx/notas/docFuente/5731343
+2024-07,360.01,155.26,0.1769,0.0065,0.0062,0.9171,1.8035,2.0624,416.12,1.1067,1.9931,2.252,https://sidof.segob.gob.mx/notas/docFuente/5734058
+2024-08,360.01,155.26,0.1769,0.0065,0.0062,0.925,1.8191,2.0803,419.73,1.1146,2.0087,2.2699,https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/Suministro/(DOF%202025-01-06%20CRE)%20Acuerdo%20de%20tarifas%20finales%20del%20suministro%20b%C3%A1sico.pdf
+2024-09,360.01,155.26,0.1769,0.0065,0.0062,0.9251,1.8192,2.0804,419.76,1.1147,2.0088,2.27,https://sidof.segob.gob.mx/notas/docFuente/5739641
+2024-10,360.01,155.26,0.1769,0.0065,0.0062,0.9251,1.8193,2.0805,419.77,1.1147,2.0089,2.2701,https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/Suministro/(DOF%202025-01-07%20CRE)%20Acuerdo%20de%20tarifas%20finales%20del%20suministro%20b%C3%A1sico%20de%20octubre.pdf
+2024-11,360.01,155.26,0.1769,0.0065,0.0062,0.9251,1.8193,2.0804,419.76,1.1147,2.0089,2.27,https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/Suministro/(DOF%202025-01-08%20CRE)%20Acuerdo%20de%20tarifas%20finales%20del%20suministro%20b%C3%A1sico%20de%20noviembre%202024.pdf
+2024-12,360.01,155.26,0.1769,0.0065,0.0062,0.9097,1.7889,2.0458,412.76,1.0993,1.9785,2.2354,https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/Suministro/(DOF%202025-01-09%20CRE)%20Acuerdo%20de%20tarifas%20finales%20del%20suministro%20b%C3%A1sico%20de%20diciembre%202024.pdf
+2025-01,308.1,155.81,0.1809,0.0065,0.0062,0.9202,1.8097,2.0695,417.55,1.1138,2.0033,2.2631,https://sidof.segob.gob.mx/notas/docFuente/5747761
+2025-02,308.1,155.81,0.1809,0.0065,0.0062,0.9217,1.8126,2.0728,418.21,1.1153,2.0062,2.2664,https://sidof.segob.gob.mx/notas/docFuente/5750417
+2025-03,308.1,155.81,0.1809,0.0065,0.0062,0.922,1.8133,2.0736,418.39,1.1156,2.0069,2.2672,https://sidof.segob.gob.mx/notas/docFuente/5753123
+2025-04,,,,,,,,,,,,,NOT FOUND
+2025-05,,,,,,,,,,,,,NOT FOUND
+2025-06,308.1,155.81,0.1809,0.0065,0.0062,0.9439,1.8564,2.1229,428.32,1.1375,2.05,2.3165,https://sidof.segob.gob.mx/notas/docFuente/5761376
+2025-07,308.1,155.81,0.1809,0.0065,0.0062,0.9581,1.8842,2.1547,434.75,1.1517,2.0778,2.3483,https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/Suministro/(DOF%202025-07-29%20CFE)%20Tarifas%20finales%20Suministro%20B%C3%A1sico%20vigente%20desde%201%20julio%202025.pdf
+2025-08,308.1,155.81,0.1809,0.0065,0.0062,0.9594,1.8868,2.1577,435.35,1.153,2.0804,2.3513,https://sidof.segob.gob.mx/notas/docFuente/5766264
+2025-09,308.1,155.81,0.1809,0.0106,0.0062,0.9507,1.8696,2.138,431.37,1.1484,2.0673,2.3357,https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/Suministro/(DOF%202025-09-22%20CFE)%20Tarifas%20finales%20Suministro%20B%C3%A1sico%20vigente%20desde%201%20septiembre%202025.pdf
+2025-10,308.1,155.81,0.1809,0.0106,0.0062,0.9507,1.8696,2.138,431.38,1.1484,2.0673,2.3357,https://sidof.segob.gob.mx/notas/docFuente/5770684
+2025-11,308.1,155.81,0.1809,0.0106,0.0062,0.9221,1.8135,2.0738,418.42,1.1198,2.0112,2.2715,https://www.cenace.gob.mx/Docs/16_MARCOREGULATORIO/Suministro/(DOF%202025-11-28%20CFE)%20Tarifas%20finales%20del%20Suministro%20B%C3%A1sico%20vigente%20desde%20el%2001%20noviembre%202025.pdf
+2025-12,308.1,155.81,0.1809,0.0106,0.0062,0.876,1.7228,1.9701,397.51,1.0737,1.9205,2.1678,https://sidof.segob.gob.mx/notas/docFuente/5777062
+2026-01,335.36,149.44,0.1801,0.0076,0.0069,0.8563,1.684,1.9258,388.56,1.0509,1.8786,2.1204,https://sidof.segob.gob.mx/notas/docFuente/5779203
+2026-02,335.36,149.44,0.1801,0.0076,0.0069,0.8568,1.685,1.9269,388.78,1.0514,1.8796,2.1215,https://sidof.segob.gob.mx/notas/docFuente/5781736
+2026-03,335.36,149.44,0.1801,0.0076,0.0069,0.8573,1.686,1.9281,389.02,1.0519,1.8806,2.1227,https://sdv.com.mx/dof/5784039/ (mirror of DOF codigo 5784039)
+2026-04,335.36,149.44,0.1801,0.0076,0.0069,0.8573,1.686,1.928,389.0,1.0519,1.8806,2.1226,https://sidof.segob.gob.mx/notas/docFuente/5786266
+2026-05,335.36,149.44,0.1801,0.0076,0.0069,0.8487,1.6691,1.9087,385.12,1.0433,1.8637,2.1033,https://sidofqa.segob.gob.mx/notas/docFuente/5788863
+2026-06,335.36,149.44,0.1801,0.0076,0.0069,0.8403,1.6525,1.8897,381.29,1.0349,1.8471,2.0843,https://sidof.segob.gob.mx/notas/docFuente/5791865
+2026-07,335.36,149.44,0.1801,0.0076,0.0069,0.8235,1.6195,1.8519,373.66,1.0181,1.8141,2.0465,https://sidof.segob.gob.mx/notas/docFuente/5795184
+2026-08,335.36,149.44,0.1801,0.0076,0.0069,0.8235,1.6195,1.852,373.66,1.0181,1.8141,2.0466,https://sidof.segob.gob.mx/notas/docFuente/5797487
+2026-09,335.36,149.44,0.1801,0.0076,0.0069,0.8235,1.6195,1.852,373.67,1.0181,1.8141,2.0466,https://sidof.segob.gob.mx/notas/docFuente/5800039
+2026-10,335.36,149.44,0.1801,0.0076,0.0069,0.8235,1.6195,1.852,373.67,1.0181,1.8141,2.0466,"SECONDARY: https://batuenergy.com/tarifas/gdmth (all-in values = Sep-2026; DOF Oct-2026 reported 0.00% generation adjustment vs Sep, elimparcial.com 2026-10-27); official DOF table not retrieved"

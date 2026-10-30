@@ -36,14 +36,18 @@ def _identify_mode(data):
 _ui.identify_mode = _identify_mode
 
 YEAR = 2026
-INPUT = ROOT / "urbs" / "plant_urbs.xlsx"
-meta = json.load(open(ROOT / "urbs" / "plant_urbs_meta.json"))
+TAG = os.environ.get("URBS_TAG", "")
+SUF = f"_{TAG}" if TAG else ""
+INPUT = ROOT / "urbs" / f"plant_urbs{SUF}.xlsx"
+meta = json.load(open(ROOT / "urbs" / f"plant_urbs{SUF}_meta.json"))
+SUBSET = os.environ.get("URBS_SUBSET", "main")
 EE = {m: v["process"] for m, v in meta["measures"].items()}
 SITE = "Plant"
 TIMESTEPS = range(0, 8761)
 
 
-def build(regime, co2_cap=np.inf, allow_ee=True, pv_max_kWp=None, bat_cost_factor=1.0):
+def build(regime, co2_cap=np.inf, allow_ee=True, pv_max_kWp=None, bat_cost_factor=1.0, monthly_nm=False,
+          pv_derate=1.0, binary_ee=False):
     data = urbs.read_input(str(INPUT), YEAR)
     mv = meta["marginal_value"]
     sell = {"net_metering": mv, "net_billing": meta["net_billing_export"], "self_consumption": 0.0}[regime]
@@ -57,13 +61,29 @@ def build(regime, co2_cap=np.inf, allow_ee=True, pv_max_kWp=None, bat_cost_facto
             data["process"].loc[(YEAR, SITE, p), "cap-up"] = 0.0
     if bat_cost_factor != 1.0:
         data["storage"]["inv-cost-c"] *= bat_cost_factor
+    if pv_derate != 1.0:   # lifetime-average PV output after degradation
+        data["supim"][(SITE, "Solar")] *= pv_derate
     urbs.validate_input(data)
     m = urbs.create_model(data, 1, TIMESTEPS, "cost")
     tm = list(m.tm)
     if regime == "net_metering":
         # annual net metering: kWh credited at the tariff, but annual exports cannot exceed annual imports
-        m.nm_limit = pyo.Constraint(expr=sum(m.e_pro_out[t, YEAR, SITE, "Feed-in", "Elec sell"] for t in tm)
-                                    <= sum(m.e_pro_out[t, YEAR, SITE, "Purchase", "Elec"] for t in tm))
+        if monthly_nm:   # netting within each month: no carry-over of credits (stricter than the 12-month bank)
+            mon = pd.date_range("2023-01-01", periods=8760, freq="h").month
+            m.nm_month = pyo.ConstraintList()
+            for mm in range(1, 13):
+                ts = [t for t in tm if mon[t - 1] == mm]
+                m.nm_month.add(sum(m.e_pro_out[t, YEAR, SITE, "Feed-in", "Elec sell"] for t in ts)
+                               <= sum(m.e_pro_out[t, YEAR, SITE, "Purchase", "Elec"] for t in ts))
+        else:
+            m.nm_limit = pyo.Constraint(expr=sum(m.e_pro_out[t, YEAR, SITE, "Feed-in", "Elec sell"] for t in tm)
+                                        <= sum(m.e_pro_out[t, YEAR, SITE, "Purchase", "Elec"] for t in tm))
+    if binary_ee and allow_ee:   # all-or-nothing adoption of each measure (mixed-integer programme)
+        m.adopt = pyo.Var(list(EE.values()), domain=pyo.Binary)
+        m.adopt_c = pyo.ConstraintList()
+        for p in EE.values():
+            k = (YEAR, SITE, p)
+            m.adopt_c.add(m.cap_pro_new[k] == m.adopt[p] * m.process_dict["cap-up"][k])
     return m
 
 
@@ -136,8 +156,15 @@ def dispatch(m):
 def solve(m):
     opt = SolverFactory("appsi_highs")
     t0 = time.time()
-    res = opt.solve(m, load_solutions=True)
-    assert str(res.solver.termination_condition) == "optimal", res.solver.termination_condition
+    if hasattr(m, "adopt"):   # mixed-integer: no duals exist, so drop the dual suffix urbs creates
+        for sfx in ("dual", "rc"):
+            if hasattr(m, sfx):
+                m.del_component(getattr(m, sfx))
+        res = opt.solve(m, load_solutions=True)
+        assert str(res.solver.termination_condition) == "optimal", res.solver.termination_condition
+    else:
+        res = opt.solve(m, load_solutions=True)
+        assert str(res.solver.termination_condition) == "optimal", res.solver.termination_condition
     return time.time() - t0
 
 
@@ -160,6 +187,25 @@ for f in (0.75, 0.50, 0.25):
                 kw["co2_cap"] = cap
             CASES.append(("battery-cost", "net_metering", allow, kw))
 DISPATCH = {("co2-cap", True, 0.20), ("co2-cap", False, 0.20)}
+if SUBSET == "robust":   # robustness of the urbs conclusions to its simplifications (reviewer request)
+    CASES = []
+    for cap in (None, 0.30, 0.20, 0.10):
+        for allow in (True, False):
+            for name, kw in (("monthly-netting", dict(monthly_nm=True)),
+                             ("degradation", dict(pv_derate=0.953, bat_cost_factor=1 / 0.9)),
+                             ("binary-adoption", dict(binary_ee=True)),
+                             ("all-three", dict(monthly_nm=True, pv_derate=0.953, bat_cost_factor=1 / 0.9, binary_ee=True))):
+                if name == "binary-adoption" and not allow:
+                    continue
+                k = dict(kw)
+                if cap is not None:
+                    k["co2_cap"] = cap
+                CASES.append((name, "net_metering", allow, k))
+    DISPATCH = set()
+elif SUBSET == "loadshape":   # central cases re-solved with an alternative load profile
+    CASES = [("cost-optimal", "net_metering", a, {}) for a in (True, False)]
+    CASES += [("co2-cap", "net_metering", a, dict(co2_cap=c)) for c in (0.30, 0.20, 0.10) for a in (True, False)]
+    DISPATCH = set()
 
 
 def run(case_spec):
@@ -177,7 +223,9 @@ def run(case_spec):
     except AssertionError as e:
         r = dict(infeasible=str(e)); s = np.nan
     r.update(case=case, regime=regime, efficiency=allow, co2_cap_frac=frac if frac is not None else np.nan,
-             pv_max_kWp=kw.get("pv_max_kWp", 700.0), bat_cost_factor=kw.get("bat_cost_factor", 1.0), solve_s=s)
+             pv_max_kWp=kw.get("pv_max_kWp", 700.0), bat_cost_factor=kw.get("bat_cost_factor", 1.0), solve_s=s,
+             monthly_nm=kw.get("monthly_nm", False), pv_derate=kw.get("pv_derate", 1.0), binary_ee=kw.get("binary_ee", False),
+             load_variant=TAG or "central")
     print(case, regime, allow, frac, kw.get("bat_cost_factor", 1.0), round(r.get("total_cost", np.nan)), flush=True)
     return r, disp
 
@@ -190,7 +238,8 @@ if __name__ == "__main__":
     R = pd.DataFrame([r for r, _ in out])
     R["base_cost"] = meta["load_MWh"] * 1000 * meta["marginal_value"]
     (ROOT / "results").mkdir(exist_ok=True)
-    R.to_csv(ROOT / "results" / "urbs_results.csv", index=False)
+    outname = {"main": "urbs_results.csv", "robust": "urbs_robustness.csv"}.get(SUBSET, f"urbs_loadshape{SUF}.csv")
+    R.to_csv(ROOT / "results" / outname, index=False)
     D = [d for _, d in out if d is not None]
     if D:
         # hourly dispatch is derived from the confidential load profile: kept out of the public repository

@@ -209,7 +209,7 @@ for ax, col, xl, let in ((axs[0], "cost_MXN_per_GJ", "Cost of useful heat (MXN G
                          (axs[1], "kgCO2_per_GJ", "Emissions (kgCO$_2$ GJ$^{-1}$ useful heat)", "b")):
     yy = np.arange(len(TH))[::-1]
     ax.barh(yy, TH[col], color=[colmap[o] for o in TH.option], height=0.65)
-    ax.set_yticks(yy); ax.set_yticklabels(TH.option if let == "a" else [""] * len(TH))
+    ax.set_yticks(yy); ax.set_yticklabels([o.replace("Compressor heat recovery", "Compressor heat recovery\n(upper bound)") for o in TH.option] if let == "a" else [""] * len(TH))
     ax.set_xlabel(xl)
     for yi, v in zip(yy, TH[col]):
         ax.text(v + TH[col].max() * 0.02, yi, f"{v:.0f}", va="center", fontsize=6)
@@ -482,5 +482,5 @@ for title, x, fc, items in cols:
                 fontweight="bold" if key else "normal")
 for x in (24.0, 49.0, 74.0):
     ax.annotate("", xy=(x + 2.2, 24.3), xytext=(x, 24.3), arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#888888"))
-ax.text(64.0, 1.2, "EnergyPlus 25.1 verifies hourly PV yield and battery dispatch", ha="center", fontsize=7, color="#555555", style="italic")
+ax.text(64.0, 1.2, "EnergyPlus 25.1 cross-checks hourly PV yield and battery dispatch", ha="center", fontsize=7, color="#555555", style="italic")
 save(fig, "fig_framework")

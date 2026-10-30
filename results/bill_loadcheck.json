@@ -1,0 +1,51 @@
+{
+ "calendar_regression": {
+  "central (24 h Mon-Sat shifts, with production)": {
+   "always_on_kW": 15.130370210068463,
+   "ci": [
+    6.7334837034010615,
+    23.527256716735863
+   ],
+   "operating_kW": 80.06266770799985,
+   "n": 25
+  },
+  "without production": {
+   "always_on_kW": 22.396254504830512,
+   "ci": [
+    14.34962715619478,
+    30.442881853466247
+   ],
+   "operating_kW": 93.15924725772855,
+   "n": 28
+  },
+  "shifts 24 h Mon-Fri only": {
+   "always_on_kW": 8.65477159692228,
+   "ci": [
+    -0.7872882475384522,
+    18.096831441383014
+   ],
+   "operating_kW": 94.17825765391441,
+   "n": 25
+  },
+  "shifts 20 h Mon-Sat": {
+   "always_on_kW": 7.506729476659333,
+   "ci": [
+    -2.3465878913279807,
+    17.360046844646646
+   ],
+   "operating_kW": 96.75284542604474,
+   "n": 25
+  }
+ },
+ "lowest_month_mean_load_kW": 25.591397849462364,
+ "peaks": {
+  "measured_min": 127.23962103903999,
+  "measured_max": 189.9225921556214,
+  "model_min": 75.96000000000001,
+  "model_max": 128.76,
+  "ratio_min": 1.194372191200347,
+  "ratio_max": 2.2016665351517815,
+  "months_model_below_cap": 3,
+  "months_measured_below_cap": 0
+ }
+}

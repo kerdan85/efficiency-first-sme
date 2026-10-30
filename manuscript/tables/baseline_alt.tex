@@ -1,0 +1,22 @@
+\begin{table}[H]
+\caption{Alternative baseline specifications. The base load is the production-independent consumption (intercept, or the regression evaluated at zero production for multivariate and calendar models); only base-load control (E4) depends on it. For each base load, efficiency first (P4) is re-sized to match the grid purchases of PV only (P2).}
+\label{tab:baselinealt}
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+ & & & & Base load & \multicolumn{2}{c}{P4 vs.\ P2, E4 central} & E4 lowest \\
+\cmidrule(lr){6-7}\cmidrule(lr){8-8}
+Specification & $n$ & $R^2$ & CV-RMSE (\%) & kWh/month (\% of mean) & $\Delta$NPV (MMXN) & Capital saving (\%) & $\Delta$NPV (MMXN) \\
+\midrule
+Production, shift months excluded (central) & 22 & 0.38 & 16.0 & 25{,}341 (66) & 0.24 & 13 & 0.09 \\
+Production, all months & 25 & 0.29 & 26.7 & 24{,}349 (63) & 0.23 & 13 & 0.09 \\
+Production and shift dummy, all months & 25 & 0.77 & 15.5 & 25{,}576 (67) & 0.24 & 14 & 0.09 \\
+Production and mean temperature & 22 & 0.40 & 16.3 & 25{,}349 (66) & 0.24 & 13 & 0.09 \\
+Production and working days & 22 & 0.41 & 16.0 & 25{,}959 (68) & 0.24 & 14 & 0.09 \\
+Calendar hours and production, all months & 25 & 0.80 & 14.5 & 26{,}108 (68) & 0.25 & 14 & 0.09 \\
+Production, robust (Huber) fit & 22 & 0.37 & 16.2 & 25{,}547 (67) & 0.24 & 13 & 0.09 \\
+Lower 95\% bound of the central intercept & 22 & -- & -- & 20{,}615 (54) & 0.20 & 12 & 0.07 \\
+\bottomrule
+\end{tabular}}
+\end{table}
