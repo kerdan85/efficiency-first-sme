@@ -200,7 +200,7 @@ y["SupplyLowNightCapex"] = mm(nz["ss80_supply_with_low_night_capex"])
 EPV = pd.read_csv(ROOT / "results/energyplus_validation.csv").set_index("design")
 main = EPV.loc[["NZ-S", "NZ-E", "SS80-S", "SS80-E", "SS90-E"]]
 y["EPYield"] = f(EPV.specific_yield_ac.iloc[0]); y["PyYield"] = f(nz["specific_yield_hourly"])
-y["EPYieldDiff"] = f(100 * (EPV.specific_yield_ac.iloc[0] / nz["specific_yield_hourly"] - 1), 1)
+y["EPYieldDiff"] = f(abs(100 * (EPV.specific_yield_ac.iloc[0] / nz["specific_yield_hourly"] - 1)), 1)
 y["EPSSDiff"] = f(100 * (main.self_sufficiency - main.py_self_sufficiency).abs().max(), 1)
 y["EPSSDiffBat"] = f(100 * (main[main.bat_kWh > 0].self_sufficiency - main[main.bat_kWh > 0].py_self_sufficiency).abs().max(), 1)
 y["EPSSDiffNZ"] = f(100 * (main[main.bat_kWh == 0].self_sufficiency - main[main.bat_kWh == 0].py_self_sufficiency).abs().max(), 1)

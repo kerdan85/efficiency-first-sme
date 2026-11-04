@@ -4,7 +4,7 @@
  "NPVGainNoE": "0.08",
  "NPVGainLowE": "0.09",
  "CapexSaveLowE": "7",
- "NPVGainNoELowAll": "-0.16",
+ "NPVGainNoELowAll": "\\ensuremath{-}0.16",
  "ProbNoE": "69",
  "ProbCapexNoE": "80",
  "ProbLowE": "72",

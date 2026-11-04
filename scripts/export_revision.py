@@ -18,7 +18,7 @@ e = json.load(open(RES / "e4_stress.json"))
 d = e["deterministic"]
 N.update(KWpNoE=f(d["no_E4"]["kWp"], 1), CapexSaveNoE=pct(d["no_E4"]["capex_save"]), NPVGainNoE=mm(d["no_E4"]["npv_gain"]),
          NPVGainLowE=mm(d["E4_low_saving_high_cost"]["npv_gain"]), CapexSaveLowE=pct(d["E4_low_saving_high_cost"]["capex_save"]),
-         NPVGainNoELowAll=mm(d["no_E4_low_E1_E3"]["npv_gain"]),
+         NPVGainNoELowAll=mm(d["no_E4_low_E1_E3"]["npv_gain"]).replace("-", r"\ensuremath{-}"),
          ProbNoE=pct(e["mc_no_E4"]["prob_npv_gt_P2"]), ProbCapexNoE=pct(e["mc_no_E4"]["prob_capex_lt_P2"]))
 
 if "mc_E4_low" in e:

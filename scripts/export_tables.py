@@ -170,7 +170,7 @@ LABEL = {  # readable parameter name and cleaned source note (citation keys are 
     "boiler_eff": ("Boiler efficiency", ""),
     "hp_cop": ("Heat-pump COP", "arpagaus2018; schlosser2020 ($<$100\\,$^\\circ$C)"),
     "ca_heat_recovery_frac": ("Recoverable compressor heat (share of input)", "doe2016compressed: $>$80\\% available"),
-    "night_load_kW": ("Always-on load (kW)", "Needs interval data"),
+    "night_load_kW": ("Always-on load (kW)", "Bounded by the bills (Section 3.9); needs interval data"),
     "bat_cost_per_kWh": ("Battery installed cost (MXN per nameplate kWh)", "nrel2024atb pack 199 USD kWh$^{-1}$ plus inverter and balance of system; break-even analysis"),
     "bat_rte": ("Battery round-trip efficiency", "nrel2024atb"),
     "bat_dod": ("Battery usable fraction of nameplate", ""),
